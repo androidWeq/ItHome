@@ -15,5 +15,6 @@
     <color name="transparent">#00000000</color>
     <color name="green">#FF06c1ae</color>
     <color name="lapin_listview_dividerColor">#E4E4E4</color>
+    <color name=“xiugai”>#FFf29837</color>
     
 </resources>
