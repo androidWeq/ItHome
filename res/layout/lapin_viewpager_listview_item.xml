@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical" 
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="5dp"
+    android:background="#F8F8F8"
+    android:paddingRight="20dp">
+    
+    <ImageView
+        android:id="@+id/lapin_listview_item_leftImg" 
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="#f00"/>
+    
+    <LinearLayout android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginLeft="5dp">
+        
+        <TextView
+            android:id="@+id/lapin_listview_item_title" 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/lapin_listview_item_titleTxtSize"
+            android:text="晒单送5元E卡 : 399斐讯K2千兆双频路由器白拿+赚8元"/>
+        <TextView
+            android:id="@+id/lapin_listview_item_youhui" 
+            android:layout_width="fill_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:textSize="@dimen/lapin_listview_item_youhuiTxtSize"
+            android:textColor="@color/red"
+            android:layout_height="wrap_content"      
+            android:text="不止0元购"/>
+        <TextView
+            android:id="@+id/lapin_listview_time" 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"      
+            android:text="9:12"
+            android:textSize="@dimen/lapin_listview_item_timeTxtSize"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+</LinearLayout>

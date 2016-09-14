@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="pressed_bg">#8033B5E5</color>
+    <color name="dialog_text_hint">#ffb0b0b0</color>
+    <color name="purple">#FF800080</color>
+    <color name="gray">#FFE8EDF3</color>
+    <color name="gray_heavy">#FF898989</color>
+    <color name="gray_light">#FFf7f7f7</color>
+    <color name="orange">#FFf29837</color>
+    <color name="blue">#FF007aff</color>
+    <color name="red">#FFCC0000</color>
+    <color name="transparent">#00000000</color>
+    <color name="green">#FF06c1ae</color>
+    <color name="lapin_listview_dividerColor">#E4E4E4</color>
+    
+</resources>

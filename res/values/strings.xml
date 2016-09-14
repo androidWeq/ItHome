@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ITHome</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="lapin_topTextLeft">全部</string>
+    <string name="lapin_topTextCenter">白菜价</string>
+    <string name="lapin_topTextRight">福利</string>
+
+</resources>

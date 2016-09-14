@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/fragHome"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.67" >
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/gray"
+        android:orientation="vertical" >
+
+        <RadioGroup
+            android:id="@+id/rgHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/rbNews"
+                style="@style/Home.RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawablePadding="-2dp"
+                android:drawableTop="@drawable/selector_rb_news"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:text="资讯" />
+
+            <RadioButton
+                android:id="@+id/rbHotgoods"
+                style="@style/Home.RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawablePadding="-2dp"
+                android:drawableTop="@drawable/selector_rb_hotgoods"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:text="辣品" />
+
+            <RadioButton
+                android:id="@+id/rbItcircle"
+                style="@style/Home.RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawablePadding="-2dp"
+                android:drawableTop="@drawable/selector_rb_itcircle"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:text="IT圈" />
+
+            <RadioButton
+                android:id="@+id/rbMine"
+                style="@style/Home.RadioButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawablePadding="-2dp"
+                android:drawableTop="@drawable/selector_rb_mine"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:text="我" />
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>
