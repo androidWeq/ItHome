@@ -9,5 +9,28 @@
     <dimen name="lapin_listview_item_titleTxtSize">16sp</dimen>
     <dimen name="lapin_listview_item_youhuiTxtSize">14sp</dimen>
     <dimen name="lapin_listview_item_timeTxtSize">13sp</dimen>
+    
+    
+    <!-- 高度、宽度、间距(刘双杰)start -->
+    <dimen name="gridViewHeight">250dp</dimen>
+    <dimen name="columnWidth">50dp</dimen>
+    <dimen name="topHeight">40dp</dimen>
+    <dimen name="jianju_stytle1">10dp</dimen>
+    <dimen name="jianju_stytle2">5dp</dimen>
+    <dimen name="jianju_stytle3">15dp</dimen>
+    
+    <!-- 高度(刘双杰)end -->
+    
+    
+    
+    <!-- 文字大小 (刘双杰)start-->
+    <dimen name="wenzi_Style_1">20sp</dimen>
+    <dimen name="wenzi_Style_2">18sp</dimen>
+    <dimen name="wenzi_Style_3">16sp</dimen>
+    <dimen name="wenzi_Style_4">14sp</dimen>
+    <dimen name="wenzi_Style_5">12sp</dimen>
+    <dimen name="wenzi_Style_6">10sp</dimen>
+    <!-- 文字大小 (刘双杰)end-->
+ 
 
 </resources>

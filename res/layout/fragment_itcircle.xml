@@ -2,8 +2,63 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
-    android:orientation="vertical" >
-    
-
+    android:orientation="vertical" 
+    android:background="#ccc">
+    <!-- top开始 -->    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topHeight"
+        android:background="#f00">
+        <TextView 
+            android:id="@+id/itquan_top_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="圈子"
+            android:textSize="@dimen/wenzi_Style_1"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"/>
+        <LinearLayout
+            android:id="@+id/itquan_login" 
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true">
+             <TextView 
+            android:id="@+id/itquan_login_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+0/43"
+            android:textSize="@dimen/wenzi_Style_4"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:drawableLeft="@drawable/main_coin_night"/>
+        </LinearLayout>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_search"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/jianju_stytle2"
+            android:layout_marginRight="@dimen/jianju_stytle1"/>
+    </RelativeLayout>
+<!-- top结束 -->
+       <FrameLayout 
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+            <!-- ListView开始 -->
+        <com.hkd.xlistview.XListView 
+            android:id="@+id/itquan_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null">
+        </com.hkd.xlistview.XListView>
+        <!-- ListView结束 -->
+      <!--   <ImageView 
+    android:id="@+id/img_animation"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:visibility="gone"/> -->
+       </FrameLayout>
+       
 </LinearLayout>

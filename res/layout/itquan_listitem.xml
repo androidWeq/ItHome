@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#fff">
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/jianju_stytle1">
+        <ImageView 
+            android:id="@+id/itquan_listitem_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher"
+            android:layout_margin="@dimen/jianju_stytle1"/>
+        <TextView 
+            android:id="@+id/itquan_listitem_tvType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[讨论]"
+            android:textSize="@dimen/wenzi_Style_1"
+            android:layout_toRightOf="@id/itquan_listitem_img"
+            android:layout_alignTop="@id/itquan_listitem_img"/>
+        <TextView 
+            android:id="@+id/itquan_listitem_tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UWP微信"
+            android:textSize="@dimen/wenzi_Style_1"
+            android:layout_marginLeft="@dimen/jianju_stytle2"
+            android:layout_toRightOf="@id/itquan_listitem_tvType"
+            android:layout_alignTop="@id/itquan_listitem_img"/>
+
+        <TextView
+            android:id="@+id/itquan_listitem_tvAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/itquan_listitem_tvType"
+            android:layout_below="@+id/itquan_listitem_tvType"
+            android:layout_toRightOf="@id/itquan_listitem_img"
+            android:text="shuai11055"
+            android:layout_marginTop="@dimen/jianju_stytle2"
+            android:textSize="@dimen/wenzi_Style_4" />
+
+        <TextView 
+            android:id="@+id/itquan_listitem_tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3天前"
+            android:textSize="@dimen/wenzi_Style_4"
+            android:textColor="#ccc"
+            android:layout_marginLeft="@dimen/jianju_stytle2"
+            android:layout_toRightOf="@id/itquan_listitem_tvAuthor"
+            android:layout_below="@id/itquan_listitem_tvType"
+            android:layout_alignTop="@id/itquan_listitem_tvAuthor"/>
+        <TextView 
+            android:id="@+id/itquan_listitem_tvAuthor2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&apos;Pose"
+            android:textSize="@dimen/wenzi_Style_4"
+            android:layout_marginLeft="@dimen/jianju_stytle1"
+            android:layout_toRightOf="@id/itquan_listitem_tvDate"
+            android:layout_below="@id/itquan_listitem_tvType"
+            android:layout_alignTop="@id/itquan_listitem_tvAuthor"/>
+        <TextView 
+            android:id="@+id/itquan_listitem_tvDate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1天前"
+            android:textSize="@dimen/wenzi_Style_4"
+            android:textColor="#ccc"
+            android:layout_marginLeft="@dimen/jianju_stytle2"
+            android:layout_toRightOf="@id/itquan_listitem_tvAuthor2"
+            android:layout_below="@id/itquan_listitem_tvType"
+            android:layout_alignTop="@id/itquan_listitem_tvAuthor"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/jianju_stytle2" >
+
+        <TextView
+            android:id="@+id/itquan_listitem_tvphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Win10手机圈" />
+
+        <TextView
+            android:id="@+id/itquan_listitem_tvResponse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/jianju_stytle1"
+            android:drawableLeft="@drawable/quan_comment"
+            android:drawablePadding="@dimen/jianju_stytle2"
+            android:text="53" />
+
+        <TextView
+            android:id="@+id/itquan_listitem_tvScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/jianju_stytle1"
+            android:layout_toLeftOf="@id/itquan_listitem_tvResponse"
+            android:drawableLeft="@drawable/quan_hit"
+            android:drawablePadding="@dimen/jianju_stytle2"
+            android:text="3149" />
+        <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#ccc"
+        android:layout_below="@id/itquan_listitem_tvScan"
+        android:layout_marginTop="@dimen/jianju_stytle1"/>
+    </RelativeLayout>
+    
+
+</LinearLayout>
