@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/lapin_quanbu_listviewHead_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" >
+        </android.support.v4.view.ViewPager>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:background="@color/black"
+            android:alpha="0.3"
+            android:paddingRight="10dp" >
+
+            <TextView
+                android:id="@+id/lapin_quanbu_listviewHead_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="先科N-162金属小钢炮蓝牙音箱24.9元" />
+
+            <ImageView
+                android:id="@+id/lapin_quanbu_listviewHead_img1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/indicator_unactive" />
+
+            <ImageView
+                android:id="@+id/lapin_quanbu_listviewHead_img2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/indicator_unactive" />
+
+            <ImageView
+                android:id="@+id/lapin_quanbu_listviewHead_img3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/indicator_unactive" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

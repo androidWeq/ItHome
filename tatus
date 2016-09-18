@@ -1,0 +1,41 @@
+[33mcommit 421bc7beae078ebfab81a159b8457ddd4d751edf[m
+Merge: 5a4689e 13b9632
+Author: androidWeq <405793463@qq.com>
+Date:   Wed Sep 14 10:26:10 2016 +0800
+
+    Merge pull request #1 from JckYabo/master
+    
+    陈雅博修改测试3
+
+[33mcommit 13b96324dc6043c2bde0130661eab468fdbeea9a[m
+Author: JckYabo <jackyabo@126.com>
+Date:   Wed Sep 14 10:22:57 2016 +0800
+
+    陈雅博修改测试3
+    
+    陈雅博修改测试3
+
+[1mdiff --git a/.DS_Store b/.DS_Store[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b895ff3[m
+Binary files /dev/null and b/.DS_Store differ
+[1mdiff --git a/res/.DS_Store b/res/.DS_Store[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6c0b955[m
+Binary files /dev/null and b/res/.DS_Store differ
+[1mdiff --git a/res/values/.DS_Store b/res/values/.DS_Store[m
+[1mnew file mode 100644[m
+[1mindex 0000000..a4c64fc[m
+Binary files /dev/null and b/res/values/.DS_Store differ
+[1mdiff --git a/res/values/colors.xml b/res/values/colors.xml[m
+[1mindex e84cf4e..2854542 100644[m
+[1m--- a/res/values/colors.xml[m
+[1m+++ b/res/values/colors.xml[m
+[36m@@ -15,5 +15,6 @@[m
+     <color name="transparent">#00000000</color>[m
+     <color name="green">#FF06c1ae</color>[m
+     <color name="lapin_listview_dividerColor">#E4E4E4</color>[m
+[32m+[m[32m    <color name=“xiugai”>#FFf29837</color>[m
+     [m
+ </resources>[m
+\ No newline at end of file[m
