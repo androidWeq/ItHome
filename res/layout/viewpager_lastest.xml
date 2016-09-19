@@ -4,20 +4,12 @@
     android:layout_height="match_parent"
     android:background="@color/white" >
 
-    <!--
-         <com.hkd.ithome.xlistview.XListView
+    <me.maxwin.view.XListView
         android:id="@+id/xListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cacheColorHint="#00000000"
         android:divider="@null" >
-    </com.hkd.ithome.xlistview.XListView>
-    -->
-
-    <ListView
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </ListView>
+    </me.maxwin.view.XListView>
 
 </RelativeLayout>
