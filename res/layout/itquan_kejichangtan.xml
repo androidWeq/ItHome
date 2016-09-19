@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <LinearLayout 
+    <RelativeLayout 
         android:layout_width="match_parent"
         android:layout_height="@dimen/topHeight"
         android:background="@color/red">
@@ -14,15 +14,15 @@
             android:src="@drawable/backward_btn"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="@string/kejichangtan"
-            android:textColor="@android:color/white" 
-            android:textSize="@dimen/wenzi_Style_1"
-            android:layout_marginRight="20dp"
-            android:gravity="center"/>
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/wenzi_Style_1" />
 
-    </LinearLayout>
+    </RelativeLayout>
     <FrameLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,7 +30,8 @@
     <me.maxwin.view.XListView
         android:id="@+id/kejichangtan_xListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/blue">
         
     </me.maxwin.view.XListView>
     <ImageView 
