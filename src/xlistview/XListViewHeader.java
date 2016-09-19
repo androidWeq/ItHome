@@ -78,11 +78,11 @@ public class XListViewHeader extends LinearLayout {
 	public void setState(int state) {
 		if (state == mState) return ;
 		
-		if (state == STATE_REFRESHING) {	// 闁哄嫬澧介妵姘交濞戞ê顔�
+		if (state == STATE_REFRESHING) {	
 			mArrowImageView.clearAnimation();
 			mArrowImageView.setVisibility(View.INVISIBLE);
 			mProgressBar.setVisibility(View.VISIBLE);
-		} else {	// 闁哄嫬澧介妵姘辩不椤撶偑浠堥柛銉ュ⒔閿燂拷?			mArrowImageView.setVisibility(View.VISIBLE);
+		} else {	// 		mArrowImageView.setVisibility(View.VISIBLE);
 			mProgressBar.setVisibility(View.INVISIBLE);
 		}
 		

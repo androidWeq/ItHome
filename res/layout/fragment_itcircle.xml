@@ -46,12 +46,12 @@
            android:layout_width="match_parent"
            android:layout_height="match_parent">
             <!-- ListView开始 -->
-        <com.hkd.xlistview.XListView 
+        <xlistview.XListView 
             android:id="@+id/itquan_listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null">
-        </com.hkd.xlistview.XListView>
+        </xlistview.XListView>
         <!-- ListView结束 -->
       <!--   <ImageView 
     android:id="@+id/img_animation"

@@ -20,7 +20,7 @@
                 android:id="@+id/xlistview_header_hint_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1232143" />
+                android:text="@string/xlistview_header_hint_normal" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="更新时间"
+                    android:text="@string/xlistview_header_last_time"
                     android:textSize="12sp" />
 
                 <TextView
@@ -48,7 +48,7 @@
             android:layout_alignLeft="@id/xlistview_header_text"
             android:layout_centerVertical="true"
             android:layout_marginLeft="-35dp"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/xlistview_arrow" />
 
         <ProgressBar
             android:id="@+id/xlistview_header_progressbar"
