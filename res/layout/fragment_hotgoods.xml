@@ -15,14 +15,16 @@
         android:background="@color/black">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
+            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:text="@string/lapin_topTextLeft"
             android:id="@+id/lapin_title_txt1"
             android:textSize="@dimen/lapin_toptxt_check_size" />
 
         <TextView
-            android:layout_width="wrap_content"
+           android:layout_width="55dp"
+            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -31,7 +33,8 @@
             android:textSize="@dimen/lapin_topTxt_normal_size" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
+            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:text="@string/lapin_topTextRight"
             android:id="@+id/lapin_title_txt3"
