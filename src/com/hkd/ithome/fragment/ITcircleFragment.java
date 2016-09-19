@@ -9,11 +9,13 @@ import me.maxwin.view.XListView;
 import me.maxwin.view.XListView.IXListViewListener;
 
 import com.example.ithome.R;
+import com.hkd.ithome.activities.KejiChatActivity;
 import com.hkd.ithome.adapter.ItQuan_Adapter;
 import com.hkd.ithome.adapter.ItQuan_listAdapter;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,11 +23,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class ITcircleFragment extends Fragment implements IXListViewListener {
+public class ITcircleFragment extends Fragment implements IXListViewListener,OnItemClickListener {
 	ArrayList<HashMap<String, Object>> gridViewdata, listdata;
 	HashMap<String, Object> map, mapList;
 	GridView gridView;
@@ -36,7 +40,6 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 	AnimationDrawable animation;
 	private Handler handler;
 	Date date;
-	// ***********************************************************8
 	ItQuan_Adapter adapter;
 	ItQuan_listAdapter adapterList;
 	int[] img = { R.drawable.quan_zatan, R.drawable.quan_jike,
@@ -53,25 +56,19 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_itcircle, null);
 		ViewUtils.inject(this, v);
-
-		// myList=(ListView) v.findViewById(R.id.itquan_listView);\
-		// animation= (AnimationDrawable)
-		// getActivity().getResources().getDrawable(R.drawable.before_loading);
-		// img_animation.setVisibility(View.VISIBLE);
-		// img_animation.setBackgroundDrawable(animation);
-		// animation.start();
-
+		getListItem();
+		init();
 		
+
+		return v;
+	}
+	
+	
+	public void init(){
 		myList.setXListViewListener(this);
-		
 		//true:可以上拉加载数据    相反false不可以
 		myList.setPullLoadEnable(false);
-		// System.out.println("-----------------------jin");
-
-		/*
-		 * listView
-		 */
-		getListItem();
+		
 		adapterList = new ItQuan_listAdapter(getActivity(), listdata);
 
 		LinearLayout headerViewLayout = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.itquan_gridview, null);
@@ -81,8 +78,8 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 		gridView = (GridView) headerViewLayout.findViewById(R.id.itquan_gridView);
 		getGridItem();
 		myList.setAdapter(adapterList);
-
-		return v;
+		//gridView监听事件
+		gridView.setOnItemClickListener(this);
 	}
 
 	// ��ȡҪ����������Դ
@@ -257,6 +254,50 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 	public void onLoadMore() {
 		// TODO Auto-generated method stub
 
+	}
+     //点击gridViewItem
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		// TODO Auto-generated method stub
+		switch (arg0.getId()) {
+		case 0://科技畅谈
+			System.out.println("-------------进入case 0");
+			Intent intent=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent);
+			break;
+		case 1://科技畅谈
+			Intent intent1=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent1);
+			break;
+		case 2://科技畅谈
+			Intent intent2=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent2);
+			break;
+		case 3://科技畅谈
+			Intent intent3=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent3);
+			break;
+		case 4://科技畅谈
+			Intent intent4=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent4);
+			break;
+		case 5://科技畅谈
+			Intent intent5=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent5);
+			break;
+		case 6://科技畅谈
+			Intent intent6=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent6);
+			break;
+		case 7://科技畅谈
+			Intent intent7=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent7);
+			break;
+
+		default:
+			break;
+		}
+		
 	}
 
 	
