@@ -33,9 +33,9 @@ public class XListViewHeader extends LinearLayout {
 	// 动画持续时间  
 	private final int ROTATE_ANIM_DURATION = 180;
 	
-	public final static int STATE_NORMAL = 0;
-	public final static int STATE_READY = 1;
-	public final static int STATE_REFRESHING = 2;
+	public final static int STATE_NORMAL = 0;//普通状态
+	public final static int STATE_READY = 1;//下拉准备刷新
+	public final static int STATE_REFRESHING = 2;//正在加载
 
 	public XListViewHeader(Context context) {
 		super(context);
@@ -56,7 +56,7 @@ public class XListViewHeader extends LinearLayout {
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
 				LayoutParams.FILL_PARENT, 0);
 		mContainer = (LinearLayout) LayoutInflater.from(context).inflate(
-				R.layout.xlistview_header, null);
+				R.layout.xlistview_header_weq, null);
 		addView(mContainer, lp);
 		setGravity(Gravity.BOTTOM);
 
