@@ -42,7 +42,7 @@ public class HotGoodsListViewAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder viewHolder=null;
-		//�ж��Ƿ񻺴�
+		//第一次加载加载页面
 		if(convertView==null){
 			viewHolder=new ViewHolder();
 			convertView=LayoutInflater.from(context).inflate(R.layout.lapin_viewpager_listview_item,null);
