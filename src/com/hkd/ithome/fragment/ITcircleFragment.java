@@ -1,5 +1,6 @@
 package com.hkd.ithome.fragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -42,8 +43,8 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 			R.drawable.ic_launcher, R.drawable.quan_win10,
 			R.drawable.quan_wp10, R.drawable.quan_ios, R.drawable.quan_ruanmei,
 			R.drawable.quan_zhanwu };
-	String[] tvTop = { "�Ƽ���̸", "����Ȧ", "����Ȧ", "Wind10Ȧ", "Wind10�ֻ�Ȧ",
-			"iOSȦ", "��ý��Ʒ", "վ����" };
+	String[] tvTop = { "科技畅谈", "极客圈", "安卓圈", "Win10圈", "Win10手机圈",
+			"iOS圈", "软媒产品", "站务处理" };
 	String[] tvBelow = { "+312", "+34", "+203", "+96", "+561", "+150", "+40",
 			"+20" };
 
@@ -60,10 +61,11 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 		// img_animation.setBackgroundDrawable(animation);
 		// animation.start();
 
-		// ��listview��������������������¼�
+		
 		myList.setXListViewListener(this);
-		// ���ü����¼�Ϊtrue
-		myList.setPullLoadEnable(true);
+		
+		//true:可以上拉加载数据    相反false不可以
+		myList.setPullLoadEnable(false);
 		// System.out.println("-----------------------jin");
 
 		/*
@@ -73,7 +75,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 		adapterList = new ItQuan_listAdapter(getActivity(), listdata);
 
 		LinearLayout headerViewLayout = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.itquan_gridview, null);
-		// listview��Ȼ����Adapter���μ�ͷβ���������ڲμ�Adapter֮ǰ��
+		// listview添加头部必须在myList.setAdapter()之前
 		myList.addHeaderView(headerViewLayout);
 		// �� gridView
 		gridView = (GridView) headerViewLayout.findViewById(R.id.itquan_gridView);
@@ -177,13 +179,13 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 		for (int i = 0; i < 10; i++) {
 			mapList = new HashMap<String, Object>();
 			mapList.put("img", R.drawable.ic_launcher);
-			mapList.put("type", "[����]");
-			mapList.put("title", "֧��������");
-			mapList.put("author", "����");
-			mapList.put("date", "һ��ǰ");
-			mapList.put("author1", "Ƚʦ��");
-			mapList.put("date1", "17����ǰ");
-			mapList.put("phone", "wind10�ֻ�Ȧ");
+			mapList.put("type", "[求助]");
+			mapList.put("title", "֧地铁上两个百合");
+			mapList.put("author", "独悠");
+			mapList.put("date", "一周前");
+			mapList.put("author1", "每次都为改昵称烦恼");
+			mapList.put("date1", "5天前");
+			mapList.put("phone", "wind10手机圈");
 			// mapList.put("img_scan",R.drawable.quan_hit);//���
 			mapList.put("scan", "1266");
 			// mapList.put("img_response",R.drawable.quan_comment);//�ظ�
@@ -242,9 +244,13 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 
 	private void onLoad() {
 		// TODO Auto-generated method stub
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		//System.out.println());// new Date()为获取当前系统时间
 		myList.stopRefresh();
 		myList.stopLoadMore();
-		myList.setRefreshTime("刚刚");
+		myList.setRefreshTime(df.format(new Date()));
+		//
+		
 	}
 
 	@Override
