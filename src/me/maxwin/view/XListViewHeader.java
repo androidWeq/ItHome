@@ -78,7 +78,6 @@ public class XListViewHeader extends LinearLayout {
 
 	public void setState(int state) {
 		if (state == mState) return ;
-		
 		if (state == STATE_REFRESHING) {	// 显示进度
 			mArrowImageView.clearAnimation();
 			mArrowImageView.setVisibility(View.INVISIBLE);
