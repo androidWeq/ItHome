@@ -4,7 +4,8 @@
  * @author Maxwin
  * @description XListView's footer
  */
-package xlistview;
+package me.maxwin.view;
+
 
 import com.example.ithome.R;
 
@@ -14,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 
 public class XListViewFooter extends LinearLayout {
 	public final static int STATE_NORMAL = 0;
@@ -65,7 +65,6 @@ public class XListViewFooter extends LinearLayout {
 		return lp.bottomMargin;
 	}
 	
-	
 	/**
 	 * normal status
 	 */
@@ -103,7 +102,7 @@ public class XListViewFooter extends LinearLayout {
 	
 	private void initView(Context context) {
 		mContext = context;
-		LinearLayout moreView = (LinearLayout)LayoutInflater.from(mContext).inflate(R.layout.xlistview_footer, null);
+		LinearLayout moreView = (LinearLayout)LayoutInflater.from(mContext).inflate(R.layout.xlistview_footer_weq, null);
 		addView(moreView);
 		moreView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 		

@@ -4,7 +4,9 @@
  * @author Maxwin
  * @description XListView's header
  */
-package xlistview;
+package me.maxwin.view;
+
+import com.example.ithome.R;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -18,24 +20,22 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.ithome.R;
-
-
 public class XListViewHeader extends LinearLayout {
-	private LinearLayout mContainer;
-	private ImageView mArrowImageView;
-	private ProgressBar mProgressBar;
-	private TextView mHintTextView;
-	private int mState = STATE_NORMAL;
-
+	private LinearLayout mContainer;   // 布局容器，也就是根布局 
+	private ImageView mArrowImageView;  // 箭头图片 
+	private ProgressBar mProgressBar;   // 刷新状态显示
+	private TextView mHintTextView;    // 说明文本 
+	private int mState = STATE_NORMAL;    // 记录当前的状态  
+    
+	// 用于改变箭头的方向的动画 
 	private Animation mRotateUpAnim;
 	private Animation mRotateDownAnim;
-	
+	// 动画持续时间  
 	private final int ROTATE_ANIM_DURATION = 180;
 	
-	public final static int STATE_NORMAL = 0;
-	public final static int STATE_READY = 1;
-	public final static int STATE_REFRESHING = 2;
+	public final static int STATE_NORMAL = 0;//普通状态
+	public final static int STATE_READY = 1;//下拉准备刷新
+	public final static int STATE_REFRESHING = 2;//正在加载
 
 	public XListViewHeader(Context context) {
 		super(context);
@@ -51,11 +51,12 @@ public class XListViewHeader extends LinearLayout {
 		initView(context);
 	}
 
-	private void initView(Context context) {	
+	private void initView(Context context) {
+		// 初始情况，设置下拉刷新view高度为0
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
 				LayoutParams.FILL_PARENT, 0);
 		mContainer = (LinearLayout) LayoutInflater.from(context).inflate(
-				R.layout.xlistview_header, null);
+				R.layout.xlistview_header_weq, null);
 		addView(mContainer, lp);
 		setGravity(Gravity.BOTTOM);
 
@@ -77,12 +78,12 @@ public class XListViewHeader extends LinearLayout {
 
 	public void setState(int state) {
 		if (state == mState) return ;
-		
-		if (state == STATE_REFRESHING) {	
+		if (state == STATE_REFRESHING) {	// 显示进度
 			mArrowImageView.clearAnimation();
 			mArrowImageView.setVisibility(View.INVISIBLE);
 			mProgressBar.setVisibility(View.VISIBLE);
-		} else {	// 		mArrowImageView.setVisibility(View.VISIBLE);
+		} else {	// 显示箭头图片
+			mArrowImageView.setVisibility(View.VISIBLE);
 			mProgressBar.setVisibility(View.INVISIBLE);
 		}
 		
