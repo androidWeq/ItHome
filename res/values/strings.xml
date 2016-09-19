@@ -15,4 +15,14 @@
     <string name="xlistview_header_last_time">上次更新时间：</string>
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <!--刘双杰  -->
+    <string name="kejichangtan">科技畅谈</string>
+    <string name="jikequan">极客圈</string>
+    <string name="anzhuoquan">安卓圈</string>
+    <string name="win10quan">Win10圈</string>
+    <string name="win10phonequan">Win10手机圈</string>
+    <string name="iosquan">iOS圈</string>
+    <string name="ruanmeichanpin">软媒产品</string>
+    <string name="zhanwuchuli">站务处理</string>
+    <!--刘双杰  -->
 </resources>

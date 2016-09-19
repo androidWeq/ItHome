@@ -28,6 +28,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class ITcircleFragment extends Fragment implements IXListViewListener,OnItemClickListener {
 	ArrayList<HashMap<String, Object>> gridViewdata, listdata;
@@ -59,6 +60,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		getListItem();
 		init();
 		
+		
 
 		return v;
 	}
@@ -67,6 +69,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	public void init(){
 		myList.setXListViewListener(this);
 		//true:可以上拉加载数据    相反false不可以
+		//
 		myList.setPullLoadEnable(false);
 		
 		adapterList = new ItQuan_listAdapter(getActivity(), listdata);
@@ -77,9 +80,14 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		// �� gridView
 		gridView = (GridView) headerViewLayout.findViewById(R.id.itquan_gridView);
 		getGridItem();
-		myList.setAdapter(adapterList);
-		//gridView监听事件
 		gridView.setOnItemClickListener(this);
+		myList.setAdapter(adapterList);
+		
+		headerViewLayout.setFocusable(true);
+		
+		
+		//gridView监听事件
+		
 	}
 
 	// ��ȡҪ����������Դ
@@ -256,10 +264,10 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 
 	}
      //点击gridViewItem
-	@Override
+	@Override               
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-		switch (arg0.getId()) {
+		switch (arg2) {
 		case 0://科技畅谈
 			System.out.println("-------------进入case 0");
 			Intent intent=new Intent(getActivity(), KejiChatActivity.class);
