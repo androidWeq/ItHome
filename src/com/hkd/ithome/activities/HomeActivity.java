@@ -19,7 +19,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class HomeActivity extends  FragmentActivity {
-    //111
+   
 	@ViewInject(R.id.rgHome)
 	RadioGroup rgHome;
 	@ViewInject(R.id.rbNews)

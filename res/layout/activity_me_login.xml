@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/User_My"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/login_margin_e"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/login_icon"
+            android:drawablePadding="@dimen/login_drawablePadding_e"
+            android:gravity="center_vertical"
+            android:hint="@string/user_hint"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:textColorHint="#e1e1e1" />
+
+        <TextView
+            android:id="@+id/No_Account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/login_marginRight_e"
+            android:gravity="center"
+            android:text="@string/no_account"
+            android:textColor="#ccc" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/login_marginLeft_v"
+        android:layout_marginRight="@dimen/login_marginRight_v"
+        android:background="#e1e1e1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/Password_My"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/login_margin_e"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/login_pass"
+            android:drawablePadding="@dimen/login_drawablePadding_e"
+            android:gravity="center_vertical"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:textColorHint="#e1e1e1" />
+
+        <TextView
+            android:id="@+id/Forget_Pad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/login_marginRight_e"
+            android:gravity="center"
+            android:text="@string/forget_pad"
+            android:textColor="#ccc" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/login_marginLeft_v"
+        android:layout_marginRight="@dimen/login_marginRight_v"
+        android:background="#e1e1e1" />
+
+    <Button
+        android:id="@+id/Login_Me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/login_margin_e"
+        android:background="#fff"
+        android:gravity="center"
+        android:padding="@dimen/login_Padding_b"
+        android:text="@string/login"
+        android:textColor="#ccc" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_weight="1"
+            android:background="#e1e1e1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/fast_login"
+            android:textColor="#ccc" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_weight="1"
+            android:background="#e1e1e1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/Weixin_Login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="@dimen/login_Padding_b"
+            android:drawableTop="@drawable/weixin_login_bg"
+            android:gravity="center"
+            android:text="@string/weixin_login"
+            android:textColor="#ccc" />
+
+        <Button
+            android:id="@+id/Weibo_Login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="@dimen/login_Padding_b"
+            android:drawableTop="@drawable/weibo_login_bg"
+            android:gravity="center"
+            android:text="@string/weibo_login"
+            android:textColor="#ccc" />
+
+        <Button
+            android:id="@+id/Qq_Login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="@dimen/login_Padding_b"
+            android:drawableTop="@drawable/qq_login_bg"
+            android:gravity="center"
+            android:text="@string/qq_login"
+            android:textColor="#ccc" />
+    </LinearLayout>
+
+</LinearLayout>

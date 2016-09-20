@@ -6,13 +6,15 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar" >
+        android:theme="@android:style/Theme.Light.NoTitleBar" >
         <activity
             android:name="com.hkd.ithome.activities.Index"
             android:label="@string/app_name" >
@@ -21,6 +23,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_Ithome" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_Setting" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_Login" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_Theme" >
         </activity>
     </application>
 
