@@ -26,14 +26,18 @@
     <FrameLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
-    <me.maxwin.view.XListView
+        <fragment
+            android:id="@+id/kejichangtan_fragment" 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </fragment>
+    <!-- <me.maxwin.view.XListView
         android:id="@+id/kejichangtan_xListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blue">
         
-    </me.maxwin.view.XListView>
+    </me.maxwin.view.XListView> -->
     <ImageView 
         android:id="@+id/kejichangtan_faTie"
         android:layout_width="wrap_content"
