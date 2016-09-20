@@ -24,5 +24,8 @@
     <string name="iosquan">iOS圈</string>
     <string name="ruanmeichanpin">软媒产品</string>
     <string name="zhanwuchuli">站务处理</string>
+    <string name="hotTie">热帖</string>
+    <string name="newRespons">最新回复</string>
+    <string name="newFaBiao">最新发表</string>
     <!--刘双杰  -->
 </resources>

@@ -2,13 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#336699">
-     <me.maxwin.view.XListView
-        android:id="@+id/kejichangtan_xListView"
+    android:orientation="vertical" >
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpHeader"
+        android:background="#0f0"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blue">
-        
-    </me.maxwin.view.XListView>
+        android:layout_height="200dp"
+        android:layout_gravity="center" />
 
 </LinearLayout>

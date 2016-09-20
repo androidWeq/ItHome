@@ -14,7 +14,7 @@
     <!-- 高度、宽度、间距(刘双杰)start -->
     <dimen name="gridViewHeight">350dp</dimen>
     <dimen name="columnWidth">50dp</dimen>
-    <dimen name="topHeight">40dp</dimen>
+    <dimen name="topHeight">48dp</dimen>
     <dimen name="jianju_stytle1">10dp</dimen>
     <dimen name="jianju_stytle2">5dp</dimen>
     <dimen name="jianju_stytle">2dp</dimen>

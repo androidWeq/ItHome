@@ -89,6 +89,12 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		//gridView监听事件
 		
 	}
+	public void setMenuVisibility(boolean menuVisible) {
+		// TODO Auto-generated method stub
+		super.setMenuVisibility(menuVisible);
+		if(this.getView()!=null)
+			this.getView().setVisibility(menuVisible ? View.VISIBLE :View.GONE);
+	}
 
 	// ��ȡҪ����������Դ
 	// public void getDatasForJson(){
@@ -239,6 +245,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 				}
 				// listdata.add(object)
 				// quanBuDatas.add(quanBuDatas.size() + "下拉刷新,头部");
+//				Toast.makeText(getActivity(), "进入", Toast.LENGTH_LONG).show();
 				adapter.notifyDataSetChanged();
 				onLoad();
 			}
