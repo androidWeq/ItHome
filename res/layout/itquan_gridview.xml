@@ -10,7 +10,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/gridViewHeight"
             android:padding="@dimen/jianju_stytle2"
-            android:layout_marginLeft="@dimen/jianju_stytle3"
             android:columnWidth="@dimen/columnWidth"
             android:numColumns="2"
             android:verticalSpacing="@dimen/jianju_stytle2">

@@ -14,6 +14,7 @@
     <string name="xlistview_header_last_time">上次更新时间：</string>
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
     
     <string name="login_im">立即登录</string>
     <string name="login_prompt">登录后体验更多精彩内容</string>
@@ -62,4 +63,20 @@
     <string name="zeroK">0K</string>
     <string name="version">v3.22</string>
 
+
+
+    <!--刘双杰  -->
+    <string name="kejichangtan">科技畅谈</string>
+    <string name="jikequan">极客圈</string>
+    <string name="anzhuoquan">安卓圈</string>
+    <string name="win10quan">Win10圈</string>
+    <string name="win10phonequan">Win10手机圈</string>
+    <string name="iosquan">iOS圈</string>
+    <string name="ruanmeichanpin">软媒产品</string>
+    <string name="zhanwuchuli">站务处理</string>
+    <string name="hotTie">热帖</string>
+    <string name="newRespons">最新回复</string>
+    <string name="newFaBiao">最新发表</string>
+    <!--刘双杰  -->
 </resources>
+

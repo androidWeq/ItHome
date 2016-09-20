@@ -1,5 +1,6 @@
 package com.hkd.ithome.fragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -8,11 +9,13 @@ import me.maxwin.view.XListView;
 import me.maxwin.view.XListView.IXListViewListener;
 
 import com.example.ithome.R;
+import com.hkd.ithome.activities.KejiChatActivity;
 import com.hkd.ithome.adapter.ItQuan_Adapter;
 import com.hkd.ithome.adapter.ItQuan_listAdapter;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,11 +23,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
-public class ITcircleFragment extends Fragment implements IXListViewListener {
+public class ITcircleFragment extends Fragment implements IXListViewListener,OnItemClickListener {
 	ArrayList<HashMap<String, Object>> gridViewdata, listdata;
 	HashMap<String, Object> map, mapList;
 	GridView gridView;
@@ -35,15 +41,14 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 	AnimationDrawable animation;
 	private Handler handler;
 	Date date;
-	// ***********************************************************8
 	ItQuan_Adapter adapter;
 	ItQuan_listAdapter adapterList;
 	int[] img = { R.drawable.quan_zatan, R.drawable.quan_jike,
 			R.drawable.ic_launcher, R.drawable.quan_win10,
 			R.drawable.quan_wp10, R.drawable.quan_ios, R.drawable.quan_ruanmei,
 			R.drawable.quan_zhanwu };
-	String[] tvTop = { "�Ƽ���̸", "����Ȧ", "����Ȧ", "Wind10Ȧ", "Wind10�ֻ�Ȧ",
-			"iOSȦ", "��ý��Ʒ", "վ����" };
+	String[] tvTop = { "科技畅谈", "极客圈", "安卓圈", "Win10圈", "Win10手机圈",
+			"iOS圈", "软媒产品", "站务处理" };
 	String[] tvBelow = { "+312", "+34", "+203", "+96", "+561", "+150", "+40",
 			"+20" };
 
@@ -52,36 +57,39 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_itcircle, null);
 		ViewUtils.inject(this, v);
-
-		// myList=(ListView) v.findViewById(R.id.itquan_listView);\
-		// animation= (AnimationDrawable)
-		// getActivity().getResources().getDrawable(R.drawable.before_loading);
-		// img_animation.setVisibility(View.VISIBLE);
-		// img_animation.setBackgroundDrawable(animation);
-		// animation.start();
-
-		// ��listview��������������������¼�
-		myList.setXListViewListener(this);
-		// ���ü����¼�Ϊtrue
-		myList.setPullLoadEnable(true);
-		// System.out.println("-----------------------jin");
-
-		/*
-		 * listView
-		 */
 		getListItem();
+		init();
+		
+		
+
+		return v;
+	}
+	
+	
+	public void init(){
+		myList.setXListViewListener(this);
+		//true:可以上拉加载数据    相反false不可以
+		//
+		myList.setPullLoadEnable(false);
+		
 		adapterList = new ItQuan_listAdapter(getActivity(), listdata);
 
 		LinearLayout headerViewLayout = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.itquan_gridview, null);
-		// listview��Ȼ����Adapter���μ�ͷβ���������ڲμ�Adapter֮ǰ��
+		// listview添加头部必须在myList.setAdapter()之前
 		myList.addHeaderView(headerViewLayout);
 		// �� gridView
 		gridView = (GridView) headerViewLayout.findViewById(R.id.itquan_gridView);
 		getGridItem();
+		gridView.setOnItemClickListener(this);
 		myList.setAdapter(adapterList);
-
-		return v;
+		
+		headerViewLayout.setFocusable(true);
+		
+		
+		//gridView监听事件
+		
 	}
+	
 	public void setMenuVisibility(boolean menuVisible) {
 		// TODO Auto-generated method stub
 		super.setMenuVisibility(menuVisible);
@@ -183,13 +191,13 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 		for (int i = 0; i < 10; i++) {
 			mapList = new HashMap<String, Object>();
 			mapList.put("img", R.drawable.ic_launcher);
-			mapList.put("type", "[����]");
-			mapList.put("title", "֧��������");
-			mapList.put("author", "����");
-			mapList.put("date", "һ��ǰ");
-			mapList.put("author1", "Ƚʦ��");
-			mapList.put("date1", "17����ǰ");
-			mapList.put("phone", "wind10�ֻ�Ȧ");
+			mapList.put("type", "[求助]");
+			mapList.put("title", "֧地铁上两个百合");
+			mapList.put("author", "独悠");
+			mapList.put("date", "一周前");
+			mapList.put("author1", "每次都为改昵称烦恼");
+			mapList.put("date1", "5天前");
+			mapList.put("phone", "wind10手机圈");
 			// mapList.put("img_scan",R.drawable.quan_hit);//���
 			mapList.put("scan", "1266");
 			// mapList.put("img_response",R.drawable.quan_comment);//�ظ�
@@ -238,6 +246,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 				}
 				// listdata.add(object)
 				// quanBuDatas.add(quanBuDatas.size() + "下拉刷新,头部");
+//				Toast.makeText(getActivity(), "进入", Toast.LENGTH_LONG).show();
 				adapter.notifyDataSetChanged();
 				onLoad();
 			}
@@ -248,15 +257,63 @@ public class ITcircleFragment extends Fragment implements IXListViewListener {
 
 	private void onLoad() {
 		// TODO Auto-generated method stub
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		//System.out.println());// new Date()为获取当前系统时间
 		myList.stopRefresh();
 		myList.stopLoadMore();
-		myList.setRefreshTime("刚刚");
+		myList.setRefreshTime(df.format(new Date()));
+		//
+		
 	}
 
 	@Override
 	public void onLoadMore() {
 		// TODO Auto-generated method stub
 
+	}
+     //点击gridViewItem
+	@Override               
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		// TODO Auto-generated method stub
+		switch (arg2) {
+		case 0://科技畅谈
+			System.out.println("-------------进入case 0");
+			Intent intent=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent);
+			break;
+		case 1://科技畅谈
+			Intent intent1=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent1);
+			break;
+		case 2://科技畅谈
+			Intent intent2=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent2);
+			break;
+		case 3://科技畅谈
+			Intent intent3=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent3);
+			break;
+		case 4://科技畅谈
+			Intent intent4=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent4);
+			break;
+		case 5://科技畅谈
+			Intent intent5=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent5);
+			break;
+		case 6://科技畅谈
+			Intent intent6=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent6);
+			break;
+		case 7://科技畅谈
+			Intent intent7=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent7);
+			break;
+
+		default:
+			break;
+		}
+		
 	}
 
 	
