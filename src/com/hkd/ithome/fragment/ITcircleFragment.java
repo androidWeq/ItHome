@@ -89,6 +89,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		//gridView监听事件
 		
 	}
+	
 	public void setMenuVisibility(boolean menuVisible) {
 		// TODO Auto-generated method stub
 		super.setMenuVisibility(menuVisible);
