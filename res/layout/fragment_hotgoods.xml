@@ -2,9 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -37,52 +35,54 @@
             android:layout_marginRight="15dp"
             android:background="@drawable/main_search" />
     </LinearLayout>
-    
-    
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:background="#F8F8F8"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:background="#F8F8F8">
+        android:paddingLeft="10dp" >
 
         <TextView
-            android:layout_width="55dp"
-            android:gravity="center_horizontal"
-            android:layout_height="wrap_content"
-            android:text="@string/lapin_topTextLeft"
             android:id="@+id/lapin_title_txt1"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/lapin_topTextLeft"
             android:textColor="@color/red"
             android:textSize="@dimen/lapin_toptxt_check_size" />
 
         <TextView
-           android:layout_width="70dp"
-            android:gravity="center_horizontal"
+            android:id="@+id/lapin_title_txt2"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:gravity="center_horizontal"
             android:text="@string/lapin_topTextCenter"
-            android:id="@+id/lapin_title_txt2"
             android:textSize="@dimen/lapin_topTxt_normal_size" />
 
         <TextView
-            android:layout_width="55dp"
-            android:gravity="center_horizontal"
-            android:layout_height="wrap_content"
-            android:text="@string/lapin_topTextRight"
             android:id="@+id/lapin_title_txt3"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/lapin_topTextRight"
             android:textSize="@dimen/lapin_topTxt_normal_size" />
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/lapin_big_viewpager"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent" >
 
-    
+        <android.support.v4.view.ViewPager
+            android:id="@+id/lapin_big_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </android.support.v4.view.ViewPager>
+
+        <include layout="@layout/lapin_loading" />
+    </RelativeLayout>
 
 </LinearLayout>
