@@ -3,16 +3,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
+    
+    
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
+        android:background="@color/red"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/lapin_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/main_coin" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="辣品"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/lapin_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/main_search" />
+    </LinearLayout>
+    
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="10dp"
         android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:alpha="0.3"
-        android:background="@color/black">
+        android:background="#F8F8F8">
 
         <TextView
             android:layout_width="55dp"
@@ -20,10 +54,11 @@
             android:layout_height="wrap_content"
             android:text="@string/lapin_topTextLeft"
             android:id="@+id/lapin_title_txt1"
+            android:textColor="@color/red"
             android:textSize="@dimen/lapin_toptxt_check_size" />
 
         <TextView
-           android:layout_width="55dp"
+           android:layout_width="70dp"
             android:gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
