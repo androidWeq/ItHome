@@ -8,6 +8,7 @@ import com.hkd.ithome.fragment.NewsFragment;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -38,13 +39,12 @@ public class HomeActivity extends  FragmentActivity {
 	HotgoodsFragment hotgoodsFragment;
 	ITcircleFragment iTcircleFragment;
 	MineFragment mineFragment;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
 		ViewUtils.inject(this);
-
+      
 		manager = getSupportFragmentManager();
 		newsFragment = new NewsFragment();
 		manager.beginTransaction().add(R.id.fragHome, newsFragment).commit();

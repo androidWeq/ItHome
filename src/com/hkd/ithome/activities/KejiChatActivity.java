@@ -28,12 +28,12 @@ import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 
-public class KejiChatActivity extends Activity implements IXListViewListener{//implements OnClickListener
+public class KejiChatActivity extends Activity implements IXListViewListener,OnClickListener{//implements 
 	ArrayList<HashMap<String, Object>> listdata;
 	HashMap<String, Object> map;
 	ItQuan_listAdapter adapterList;
 //	RelativeLayout headLayout;//listView头部布局
-//	@ViewInject(R.id.kejichangtan_top_img)
+	@ViewInject(R.id.kejichangtan_top_img)
 	ImageView kejichangtan_top_img;
 	@ViewInject(R.id.kejichangtan_xListView)
 	XListView myList;
@@ -48,7 +48,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	setContentView(R.layout.itquan_kejichangtan);
 	ViewUtils.inject(this);
 	
-//	kejichangtan_top_img.setOnClickListener(this);
+	kejichangtan_top_img.setOnClickListener(this);
 //	
 	//在setadapter之前添加头部
 	RelativeLayout headerViewLayout=(RelativeLayout) LayoutInflater.from(this).inflate(R.layout.itquan_kejichangtan_listview_head, null);
@@ -82,21 +82,7 @@ rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 	});
 	
 }
-//@Override
-//public void onClick(View arg0) {
-//	// TODO Auto-generated method stub
-//	switch (arg0.getId()) {
-//	case R.id.kejichangtan_top_img:
-//		Intent intent=new Intent(this,HomeActivity.class);
-//		startActivity(intent);
-//		break;
-//
-//	default:
-//		break;
-//	}
-//	
-//}
-   
+
    public void init(){
 	   myList.setPullLoadEnable(false);
 	   myList.setPullRefreshEnable(true);
@@ -156,19 +142,25 @@ public void onLoadMore() {
 	// TODO Auto-generated method stub
 	
 }
-//@Override
-//public void onClick(View arg0) {
-//	// TODO Auto-generated method stub
-//	switch (arg0.getId()) {
-//	case :
-//		
-//		break;
-//
-//	default:
-//		break;
-//	}
-//	
-//}
+@Override
+public void onClick(View arg0) {
+	// TODO Auto-generated method stub
+	switch (arg0.getId()) {
+	case R.id.kejichangtan_top_img:
+		System.out.println("------------点击返回");
+	//	Intent intent=new Intent(KejiChatActivity.this, ITcircleFragment.class);
+//		intent.putExtra("flag", 1);
+//		setResult(10);
+	//	startActivity(intent);
+		finish();
+		Toast.makeText(KejiChatActivity.this, "点击返回", 1000).show();
+		break;
+
+	default:
+		break;
+	}
+	
+}
 	
    
 }
