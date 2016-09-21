@@ -77,6 +77,8 @@
     <string name="hotTie">热帖</string>
     <string name="newRespons">最新回复</string>
     <string name="newFaBiao">最新发表</string>
+    <string name="quanzi">圈子</string>
+    <string name="quanzi_left">+0/43</string>
     <!--刘双杰  -->
 </resources>
 
