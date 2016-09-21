@@ -90,7 +90,7 @@ rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 		listdata = new ArrayList<HashMap<String, Object>>();
 		for (int i = 0; i < 10; i++) {
 			map = new HashMap<String, Object>();
-			map.put("img", R.drawable.ic_launcher);
+			map.put("img", R.drawable.quan_zhanwu);
 			map.put("type", "[总置顶]");
 			map.put("title", "֧地铁上两个百合");
 			map.put("author", "独悠");

@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#fff">
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,7 +12,8 @@
             android:id="@+id/itquan_listitem_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher"
+            android:layout_centerVertical="true"
+            android:src="@drawable/quan_zhanwu"
             android:layout_margin="@dimen/jianju_stytle1"/>
         <TextView 
             android:id="@+id/itquan_listitem_tvType"
@@ -76,26 +76,21 @@
             android:layout_toRightOf="@id/itquan_listitem_tvAuthor2"
             android:layout_below="@id/itquan_listitem_tvType"
             android:layout_alignTop="@id/itquan_listitem_tvAuthor"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/jianju_stytle2" >
-
         <TextView
             android:id="@+id/itquan_listitem_tvphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_below="@id/itquan_listitem_tvAuthor"
+            android:layout_margin="10dp"
             android:text="Win10手机圈" />
-
-        <TextView
+         <TextView
             android:id="@+id/itquan_listitem_tvResponse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/jianju_stytle1"
+            android:layout_alignBottom="@id/itquan_listitem_tvphone"
+            android:layout_marginRight="@dimen/jianju_stytle2"
             android:drawableLeft="@drawable/quan_comment"
             android:drawablePadding="@dimen/jianju_stytle2"
             android:text="53" />
@@ -104,18 +99,20 @@
             android:id="@+id/itquan_listitem_tvScan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/jianju_stytle1"
+            android:layout_alignBottom="@id/itquan_listitem_tvphone"
+            android:layout_marginRight="@dimen/jianju_stytle2"
             android:layout_toLeftOf="@id/itquan_listitem_tvResponse"
             android:drawableLeft="@drawable/quan_hit"
             android:drawablePadding="@dimen/jianju_stytle2"
             android:text="3149" />
-        <LinearLayout 
+        
+    </RelativeLayout>
+   <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#ccc"
-        android:layout_below="@id/itquan_listitem_tvScan"
         android:layout_marginTop="@dimen/jianju_stytle1"/>
-    </RelativeLayout>
+  
     
 
 </LinearLayout>
