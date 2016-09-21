@@ -44,7 +44,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	ItQuan_Adapter adapter;
 	ItQuan_listAdapter adapterList;
 	int[] img = { R.drawable.quan_zatan, R.drawable.quan_jike,
-			R.drawable.ic_launcher, R.drawable.quan_win10,
+			R.drawable.quan_android, R.drawable.quan_win10,
 			R.drawable.quan_wp10, R.drawable.quan_ios, R.drawable.quan_ruanmei,
 			R.drawable.quan_zhanwu };
 	String[] tvTop = { "科技畅谈", "极客圈", "安卓圈", "Win10圈", "Win10手机圈",
@@ -190,7 +190,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		listdata = new ArrayList<HashMap<String, Object>>();
 		for (int i = 0; i < 10; i++) {
 			mapList = new HashMap<String, Object>();
-			mapList.put("img", R.drawable.ic_launcher);
+			mapList.put("img", R.drawable.quan_zhanwu);
 			mapList.put("type", "[求助]");
 			mapList.put("title", "֧地铁上两个百合");
 			mapList.put("author", "独悠");

@@ -9,24 +9,28 @@
         android:background="@drawable/me_list">
         <ImageView
             android:id="@+id/itquan_griditem_img" 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="@dimen/jianju_stytle1"
+            android:layout_centerVertical="true"
+            android:src="@drawable/quan_jike_night"/>
         <TextView 
             android:id="@+id/itquan_griditem_tvAbove" 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="20sp"
+            android:layout_alignTop="@id/itquan_griditem_img"
+            android:text="科技畅谈"
+            android:textSize="@dimen/wenzi_Style_3"
             android:layout_toRightOf="@id/itquan_griditem_img"/>
         
         <TextView 
             android:id="@+id/itquan_griditem_tvBelow" 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:textSize="20sp"
-            android:layout_marginLeft="10dp"
+            android:text="+22"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/red"
+            android:textSize="@dimen/wenzi_Style_3"
             android:layout_toRightOf="@id/itquan_griditem_img"
             android:layout_below="@id/itquan_griditem_tvAbove"
             android:layout_alignLeft="@id/itquan_griditem_tvAbove"/>
