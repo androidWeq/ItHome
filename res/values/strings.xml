@@ -15,7 +15,14 @@
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
 
-    
+    <!-- 陈雅博频道管理 start -->
+    <string name="drawer_btn_rss">频道管理</string>
+    <string name="subscribe_my_category">我的频道</string>
+    <string name="subscribe_more_category">点击添加更多栏目</string>
+    <string name="subscribe_manager_category_info">点击添加更多栏目</string>
+    <string name="subscribe_manager_category_info_2">长按栏目排序或单击删除</string>
+    <!-- 陈雅博频道管理 end -->
+
     <string name="login_im">立即登录</string>
     <string name="login_prompt">登录后体验更多精彩内容</string>
     <string name="gold_shop">金币商城</string>
@@ -63,9 +70,7 @@
     <string name="zeroK">0K</string>
     <string name="version">v3.22</string>
 
-
-
-    <!--刘双杰  -->
+    <!-- 刘双杰 -->
     <string name="kejichangtan">科技畅谈</string>
     <string name="jikequan">极客圈</string>
     <string name="anzhuoquan">安卓圈</string>
@@ -77,6 +82,6 @@
     <string name="hotTie">热帖</string>
     <string name="newRespons">最新回复</string>
     <string name="newFaBiao">最新发表</string>
-    <!--刘双杰  -->
-</resources>
+    <!-- 刘双杰 -->
 
+</resources>

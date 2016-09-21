@@ -13,49 +13,54 @@
 
         <Button
             android:id="@+id/lastest"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest2"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
-       <Button
+        <Button
             android:id="@+id/lastest3"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest4"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,49 +69,54 @@
 
         <Button
             android:id="@+id/lastest"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest2"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
-       <Button
+        <Button
             android:id="@+id/lastest3"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest4"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -115,112 +125,121 @@
 
         <Button
             android:id="@+id/lastest"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest2"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
-       <Button
+        <Button
             android:id="@+id/lastest3"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest4"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
     </LinearLayout>
-    
-    <TextView 
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
         android:background="@color/gray"
-        android:text="点击添加更多栏目"
         android:gravity="center_vertical"
-        android:textColor="@color/gray_heavy"
-        android:textSize="16sp"
         android:paddingLeft="15dp"
-        />
+        android:text="点击添加更多栏目"
+        android:textColor="@color/gray_heavy"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/lastest"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest2"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
-       <Button
+        <Button
             android:id="@+id/lastest3"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest4"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -229,49 +248,52 @@
 
         <Button
             android:id="@+id/lastest"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest2"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
-       <Button
+        <Button
             android:id="@+id/lastest3"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:visibility="invisible"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/lastest4"
-            android:layout_width="75dp"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="@drawable/moreitem_btn_border"
-            android:textColor="@color/gray_heavy"
-            android:textSize="14sp"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/moreitem_btn_border"
             android:gravity="center"
-            android:visibility="invisible"
-            android:text="最新" />
+            android:text="最新"
+            android:textColor="@color/gray_heavy"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </LinearLayout>
