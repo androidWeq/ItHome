@@ -86,8 +86,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/login_margin_e"
-        android:background="#fff"
+        android:background="@drawable/login_btn_bg"
         android:gravity="center"
+        android:enabled="false"
         android:padding="@dimen/login_Padding_b"
         android:text="@string/login"
         android:textColor="#ccc" />

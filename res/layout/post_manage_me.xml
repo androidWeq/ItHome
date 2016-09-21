@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_height"
+        android:background="#d22222"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/focus_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/focus_bk" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/post_manage"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/backward_btn"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/Rg_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/my_post"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/comment_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/my_post"
+            android:textColor="@color/comment_my_color" />
+
+        <RadioButton
+            android:id="@+id/my_Repost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/comment_bg"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/my_Repost"
+            android:textColor="@color/comment_my_color" />
+
+        <RadioButton
+            android:id="@+id/reply_my"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/comment_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/reply_my"
+            android:textColor="@color/comment_my_color" />
+    </RadioGroup>
+
+</LinearLayout>

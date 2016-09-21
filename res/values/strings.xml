@@ -14,8 +14,6 @@
     <string name="xlistview_header_last_time">上次更新时间：</string>
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
-
-    
     <string name="login_im">立即登录</string>
     <string name="login_prompt">登录后体验更多精彩内容</string>
     <string name="gold_shop">金币商城</string>
@@ -62,10 +60,15 @@
     <string name="about">关于</string>
     <string name="zeroK">0K</string>
     <string name="version">v3.22</string>
+    <string name="comment_my">我的评论</string>
+    <string name="my_post">我的帖子</string>
+    <string name="my_Repost">我的回帖</string>
+    <string name="reply_my">回复我的</string>
+    
+    
+    
 
-
-
-    <!--刘双杰  -->
+    <!-- 刘双杰 -->
     <string name="kejichangtan">科技畅谈</string>
     <string name="jikequan">极客圈</string>
     <string name="anzhuoquan">安卓圈</string>
@@ -77,6 +80,6 @@
     <string name="hotTie">热帖</string>
     <string name="newRespons">最新回复</string>
     <string name="newFaBiao">最新发表</string>
-    <!--刘双杰  -->
-</resources>
+    <!-- 刘双杰 -->
 
+</resources>

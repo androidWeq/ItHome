@@ -11,24 +11,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Me_Setting extends Activity {
-
-	@ViewInject(R.id.setting_back)
+public class Me_Post extends Activity {
+	@ViewInject(R.id.focus_back)
 	Button back;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.setting_me);
+		setContentView(R.layout.post_manage_me);
 		ViewUtils.inject(this);
 	}
 
-	@OnClick({ R.id.setting_back })
+	@OnClick({ R.id.focus_back })
 	public void onclick(View v) {
 		Intent intent;
 		switch (v.getId()) {
-		case R.id.setting_back:
+		case R.id.focus_back:
 			finish();
 			break;
 
@@ -36,4 +35,5 @@ public class Me_Setting extends Activity {
 			break;
 		}
 	}
+
 }

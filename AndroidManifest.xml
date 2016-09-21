@@ -33,6 +33,10 @@
         </activity>
         <activity android:name="com.hkd.ithome.activities.Me_Theme" >
         </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_Comment" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_Post" >
+        </activity>
 
         <activity android:name="com.hkd.ithome.activities.KejiChatActivity"></activity>
 
