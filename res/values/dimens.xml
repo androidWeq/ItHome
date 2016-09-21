@@ -32,6 +32,42 @@
     <dimen name="wenzi_Style_5">12sp</dimen>
     <dimen name="wenzi_Style_6">10sp</dimen>
     <!-- 文字大小 (刘双杰)end-->
+    
+    
+    <!-- 我页面主要dimens -->
+    <dimen name="ten">10dp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="fifty">50dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="seventy">70dp</dimen>
+
+    <!-- login登录界面dimens -->
+    <dimen name="login_margin_e">10dp</dimen>
+    <dimen name="login_drawablePadding_e">5dp</dimen>
+    <dimen name="login_marginRight_e">10dp</dimen>
+    <dimen name="login_marginLeft_v">10dp</dimen>
+    <dimen name="login_marginRight_v">10dp</dimen>
+    <dimen name="login_Padding_b">10dp</dimen>
+    <dimen name="login_marginTop_l">10dp</dimen>
+
+    <!-- 关注ITHome页面dimens -->
+    <dimen name="focus_padding_l">10dp</dimen>
+    <dimen name="focus_padding_b">5dp</dimen>
+    <!-- setting设置页面 -->
+    <dimen name="setting_padding_l">15dp</dimen>
+    <dimen name="setting_drawPadding_r">5dp</dimen>
+    <dimen name="setting_marginLeft_r">10dp</dimen>
+    <dimen name="setting_marginRight_r">10dp</dimen>
+    <dimen name="setting_height">48dp</dimen>
+    
+    
+    <dimen name="lapin_topTxt_normal_size">16sp</dimen>
+    <dimen name="lapin_toptxt_check_size">20sp</dimen>
+    <dimen name="lapin_listview_item_titleTxtSize">16sp</dimen>
+    <dimen name="lapin_listview_item_youhuiTxtSize">14sp</dimen>
+    <dimen name="lapin_listview_item_timeTxtSize">13sp</dimen>
+    
+    
  
 
 </resources>
