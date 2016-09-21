@@ -3,16 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:orientation="vertical"
-    android:background="#ccc">
+    android:background="@color/gray">
     <!-- GridView开始 -->
         <GridView 
             android:id="@+id/itquan_gridView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/gridViewHeight"
             android:padding="@dimen/jianju_stytle2"
+            android:layout_marginTop="@dimen/jianju_stytle2"
             android:columnWidth="@dimen/columnWidth"
             android:numColumns="2"
-            android:verticalSpacing="@dimen/jianju_stytle2">
+            android:verticalSpacing="@dimen/jianju_stytle2"
+            android:horizontalSpacing="@dimen/jianju_stytle2">
             
         </GridView>
         <!-- GridView结束 -->
