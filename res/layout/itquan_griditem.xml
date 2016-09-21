@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     <RelativeLayout
-        android:layout_width="166dp"
+        android:layout_width="match_parent"
         android:layout_height="75dp" 
+        android:gravity="center"
         android:background="@drawable/me_list">
         <ImageView
             android:id="@+id/itquan_griditem_img" 
