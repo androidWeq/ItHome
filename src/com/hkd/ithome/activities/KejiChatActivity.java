@@ -10,19 +10,16 @@ import me.maxwin.view.XListView.IXListViewListener;
 
 import com.example.ithome.R;
 import com.hkd.ithome.adapter.ItQuan_listAdapter;
-import com.hkd.ithome.fragment.ITcircleFragment;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -32,12 +29,10 @@ public class KejiChatActivity extends Activity implements IXListViewListener,OnC
 	ArrayList<HashMap<String, Object>> listdata;
 	HashMap<String, Object> map;
 	ItQuan_listAdapter adapterList;
-//	RelativeLayout headLayout;//listView头部布局
 	@ViewInject(R.id.kejichangtan_top_img)
 	ImageView kejichangtan_top_img;
 	@ViewInject(R.id.kejichangtan_xListView)
 	XListView myList;
-//	@ViewInject(R.id.kejichangtan_listHead_rg)
 	RadioGroup rg;
 	
 	Handler handler;
@@ -147,13 +142,7 @@ public void onClick(View arg0) {
 	// TODO Auto-generated method stub
 	switch (arg0.getId()) {
 	case R.id.kejichangtan_top_img:
-		System.out.println("------------点击返回");
-	//	Intent intent=new Intent(KejiChatActivity.this, ITcircleFragment.class);
-//		intent.putExtra("flag", 1);
-//		setResult(10);
-	//	startActivity(intent);
 		finish();
-		Toast.makeText(KejiChatActivity.this, "点击返回", 1000).show();
 		break;
 
 	default:
