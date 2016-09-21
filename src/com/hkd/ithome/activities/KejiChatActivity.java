@@ -10,34 +10,29 @@ import me.maxwin.view.XListView.IXListViewListener;
 
 import com.example.ithome.R;
 import com.hkd.ithome.adapter.ItQuan_listAdapter;
-import com.hkd.ithome.fragment.ITcircleFragment;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 
-public class KejiChatActivity extends Activity implements IXListViewListener{//implements OnClickListener
+public class KejiChatActivity extends Activity implements IXListViewListener,OnClickListener{//implements 
 	ArrayList<HashMap<String, Object>> listdata;
 	HashMap<String, Object> map;
 	ItQuan_listAdapter adapterList;
-//	RelativeLayout headLayout;//listView头部布局
-//	@ViewInject(R.id.kejichangtan_top_img)
+	@ViewInject(R.id.kejichangtan_top_img)
 	ImageView kejichangtan_top_img;
 	@ViewInject(R.id.kejichangtan_xListView)
 	XListView myList;
-//	@ViewInject(R.id.kejichangtan_listHead_rg)
 	RadioGroup rg;
 	
 	Handler handler;
@@ -48,7 +43,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	setContentView(R.layout.itquan_kejichangtan);
 	ViewUtils.inject(this);
 	
-//	kejichangtan_top_img.setOnClickListener(this);
+	kejichangtan_top_img.setOnClickListener(this);
 //	
 	//在setadapter之前添加头部
 	RelativeLayout headerViewLayout=(RelativeLayout) LayoutInflater.from(this).inflate(R.layout.itquan_kejichangtan_listview_head, null);
@@ -82,21 +77,7 @@ rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 	});
 	
 }
-//@Override
-//public void onClick(View arg0) {
-//	// TODO Auto-generated method stub
-//	switch (arg0.getId()) {
-//	case R.id.kejichangtan_top_img:
-//		Intent intent=new Intent(this,HomeActivity.class);
-//		startActivity(intent);
-//		break;
-//
-//	default:
-//		break;
-//	}
-//	
-//}
-   
+
    public void init(){
 	   myList.setPullLoadEnable(false);
 	   myList.setPullRefreshEnable(true);
@@ -109,7 +90,7 @@ rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 		listdata = new ArrayList<HashMap<String, Object>>();
 		for (int i = 0; i < 10; i++) {
 			map = new HashMap<String, Object>();
-			map.put("img", R.drawable.ic_launcher);
+			map.put("img", R.drawable.quan_zhanwu);
 			map.put("type", "[总置顶]");
 			map.put("title", "֧地铁上两个百合");
 			map.put("author", "独悠");
@@ -156,19 +137,19 @@ public void onLoadMore() {
 	// TODO Auto-generated method stub
 	
 }
-//@Override
-//public void onClick(View arg0) {
-//	// TODO Auto-generated method stub
-//	switch (arg0.getId()) {
-//	case :
-//		
-//		break;
-//
-//	default:
-//		break;
-//	}
-//	
-//}
+@Override
+public void onClick(View arg0) {
+	// TODO Auto-generated method stub
+	switch (arg0.getId()) {
+	case R.id.kejichangtan_top_img:
+		finish();
+		break;
+
+	default:
+		break;
+	}
+	
+}
 	
    
 }

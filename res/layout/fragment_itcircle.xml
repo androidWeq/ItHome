@@ -2,45 +2,76 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="#ccc">
+    android:orientation="vertical" >
     <!-- top开始 -->    
-    <RelativeLayout 
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/topHeight"
-        android:background="#f00">
-        <TextView 
-            android:id="@+id/itquan_top_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="圈子"
-            android:textSize="@dimen/wenzi_Style_1"
-            android:textColor="@android:color/white"
-            android:layout_centerInParent="true"/>
+        android:background="@color/red"
+        android:orientation="horizontal" >
+
         <LinearLayout
-            android:id="@+id/itquan_login" 
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_alignParentLeft="true">
-             <TextView 
-            android:id="@+id/itquan_login_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+0/43"
-            android:textSize="@dimen/wenzi_Style_4"
-            android:gravity="center_vertical"
-            android:textColor="@android:color/white"
-            android:drawableLeft="@drawable/main_coin_night"/>
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/red"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/main_coin" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/quanzi"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/ImageView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/main_search" />
         </LinearLayout>
-        <ImageView 
+
+        <TextView
+            android:id="@+id/lapin_coin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/main_search"
-            android:layout_alignParentRight="true"
-            android:padding="@dimen/jianju_stytle2"
-            android:layout_marginRight="@dimen/jianju_stytle1"/>
-    </RelativeLayout>
+            android:gravity="center"
+            android:text="@string/quanzi_left"
+            android:layout_marginLeft="@dimen/jianju_stytle3"
+            android:textColor="@color/white"
+            android:drawableLeft="@drawable/main_coin"
+            android:drawablePadding="@dimen/jianju_stytle2"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/quanzi"
+            android:textColor="@color/white"
+            android:textSize="@dimen/wenzi_Style_1" />
+
+        <ImageView
+            android:id="@+id/lapin_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/jianju_stytle3"
+            android:background="@drawable/main_search" />
+    </LinearLayout>
 <!-- top结束 -->
        <FrameLayout 
            android:layout_width="match_parent"

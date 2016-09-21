@@ -19,7 +19,8 @@
         android:text="@string/hotTie"
         android:textColor="@color/black" 
         android:button="@null"
-        android:background="@drawable/header_middle"/>
+        android:background="@drawable/selector_rb_itcircle_kejichangtan_headleft"
+        android:checked="true"/>
     <RadioButton 
         android:id="@+id/kejichangtan_listHead_rb_newRespon"
         android:layout_width="80dp"
@@ -28,7 +29,7 @@
         android:textColor="@color/black" 
         android:button="@null"
         android:gravity="center"
-        android:background="@drawable/header_middle"/>
+        android:background="@drawable/selector_rb_itcircle_kejichangtan_headmiddle"/>
     <RadioButton 
         android:id="@+id/kejichangtan_listHead_rb_newFaBiao"
         android:layout_width="80dp"
@@ -37,7 +38,7 @@
         android:textColor="@color/black" 
         android:button="@null"
         android:gravity="center"
-        android:background="@drawable/header_right"/>
+        android:background="@drawable/selector_rb_itcircle_kejichangtan_headright"/>
     </RadioGroup>
     
 
