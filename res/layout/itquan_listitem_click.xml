@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/itquan_listitem_click_loadFailu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/itquan_listitem_click_imgRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/refresh_btn_active" />
+        <TextView
+            android:id="@+id/itquan_listitem_click_tvClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clickRefresh"
+            android:textSize="@dimen/wenzi_Style_3"
+            android:textColor="@color/gray_heavy"
+            android:layout_above="@id/itquan_listitem_click_imgRefresh"
+            android:layout_marginTop="@dimen/jianju_stytle2"
+            android:layout_marginBottom="@dimen/jianju_stytle2"
+            android:layout_centerInParent="true"
+            android:src="@drawable/refresh_btn_active" />
+        <TextView
+            android:id="@+id/itquan_listitem_click_tvLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loadFail"
+            android:textSize="@dimen/wenzi_Style_1"
+            android:textColor="@color/gray_heavy"
+            android:layout_above="@id/itquan_listitem_click_tvClick"
+            android:layout_centerInParent="true"
+            android:src="@drawable/refresh_btn_active" />
+    </RelativeLayout>
+
+</LinearLayout>

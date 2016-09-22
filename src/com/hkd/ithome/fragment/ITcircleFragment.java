@@ -9,6 +9,7 @@ import me.maxwin.view.XListView;
 import me.maxwin.view.XListView.IXListViewListener;
 
 import com.example.ithome.R;
+import com.hkd.ithome.activities.ItQuan_ListItemClickActivity;
 import com.hkd.ithome.activities.KejiChatActivity;
 import com.hkd.ithome.adapter.ItQuan_Adapter;
 import com.hkd.ithome.adapter.ItQuan_listAdapter;
@@ -60,7 +61,17 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		getListItem();
 		init();
 		
-		
+		myList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(getActivity(), ItQuan_ListItemClickActivity.class);
+				intent.putExtra("path", "http://....");
+				startActivity(intent);
+			}
+		});
 
 		return v;
 	}
