@@ -95,8 +95,7 @@ rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 		for (int i = 0; i < 10; i++) {
 			map = new HashMap<String, Object>();
 			map.put("img", R.drawable.quan_zhanwu);
-			map.put("type", "[总置顶]");
-			map.put("title", "֧地铁上两个百合");
+			map.put("title", "[总置顶]֧地铁上两个百合");
 			map.put("author", "独悠");
 			map.put("date", "一周前");
 			map.put("author1", "每次都为改昵称烦恼");
@@ -158,6 +157,10 @@ public void onClick(View arg0) {
 public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 	// TODO Auto-generated method stub
 	Intent intent=new Intent(this, ItQuan_ListItemClickActivity.class);
+//	intent.putExtra("title", listdata.get(arg2).get(title));
+	intent.putExtra("title", "昨天买了一个包");
+	intent.putExtra("scanner", 234);
+	intent.putExtra("response", 23);
 	startActivity(intent);
 	
 }
