@@ -6,15 +6,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/item_list_height"
         android:background="@color/white" >
 
         <ImageView
             android:id="@+id/newsPic"
-            android:layout_width="85dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="@dimen/pic_item_list_width"
+            android:layout_height="@dimen/pic_item_list_height"
+            android:layout_marginLeft="@dimen/pic_item_list_margin_left"
+            android:layout_marginTop="@dimen/pic_item_list_margin_right"
             android:background="@drawable/news_item1" />
 
         <TextView
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/newsPic"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="@dimen/title_item_list_margin_left"
             android:layout_toRightOf="@id/newsPic"
             android:text="苹果A10Fusion芯片解析,iPhone7/Plus性能炸裂全靠它"
             android:textColor="@color/black"
@@ -35,19 +35,21 @@
 		    android:textSize="12sp"
 		    android:layout_toRightOf="@id/newsPic"
 		    android:layout_alignBottom="@id/newsPic"
-		    android:layout_marginLeft="5dp"
+		    android:layout_marginLeft="@dimen/time_item_list_margin_left"
+		    android:textColor="@color/gray_heavy"
 		    />
 		<TextView 
 		    android:id="@+id/comment"
-		    android:layout_width="wrap_content"
+		    android:layout_width="@dimen/comment_item_list_width"
 		    android:layout_height="wrap_content"
 		    android:text="25"
-		    android:textSize="12sp"
+		    android:textSize="10sp"
 		    android:layout_alignBottom="@id/newsPic"
-		    android:layout_marginLeft="5dp"
+		    android:layout_marginLeft="@dimen/comment_item_list_margin_left"
 		    android:layout_alignParentRight="true"
-		    android:layout_marginRight="15dp"
+		    android:layout_marginRight="@dimen/comment_item_list_margin_right"
 		    android:gravity="center"
+		    android:textColor="@color/gray_heavy"
 		    android:drawableLeft="@drawable/quan_comment"
 		    />
     </RelativeLayout>
