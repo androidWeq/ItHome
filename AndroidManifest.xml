@@ -49,7 +49,7 @@
 
         <activity android:name="com.hkd.ithome.activities.KejiChatActivity"></activity>
         <activity android:name="com.hkd.ithome.activities.ItQuan_ListItemClickActivity"></activity>
-
+		<activity android:name="com.hkd.ithome.activities.LaPinDetial"></activity>
     </application>
 
 </manifest>

@@ -14,7 +14,7 @@
         android:id="@+id/lapin_listview_item_leftImg" 
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:background="#f00"/>
+        android:background="@color/white"/>
     
     <LinearLayout android:layout_width="0dp"
         android:layout_height="wrap_content"

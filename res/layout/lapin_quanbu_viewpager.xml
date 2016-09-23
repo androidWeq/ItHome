@@ -3,7 +3,8 @@
     android:id="@+id/lapin_quanbu_viewpager_listview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:divider="@color/black"
-    android:cacheColorHint="#00000000" >
+    android:divider="@color/gray_light"
+    android:cacheColorHint="#00000000"
+    android:dividerHeight="1dp" >
 
 </me.maxwin.view.XListView>
