@@ -18,8 +18,8 @@
     <dimen name="jianju_stytle1">10dp</dimen>
     <dimen name="jianju_stytle2">5dp</dimen>
     <dimen name="jianju_stytle">2dp</dimen>
+    <dimen name="jianju_stytleLine">0.5dp</dimen>
     <dimen name="jianju_stytle3">15dp</dimen>
-    
     <!-- 高度(刘双杰)end -->
     
     

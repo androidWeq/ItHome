@@ -14,18 +14,21 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 
-public class KejiChatActivity extends Activity implements IXListViewListener,OnClickListener{//implements 
+public class KejiChatActivity extends Activity implements IXListViewListener,OnClickListener,OnItemClickListener{//implements 
 	ArrayList<HashMap<String, Object>> listdata;
 	HashMap<String, Object> map;
 	ItQuan_listAdapter adapterList;
@@ -82,6 +85,7 @@ rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 	   myList.setPullLoadEnable(false);
 	   myList.setPullRefreshEnable(true);
 	   myList.setXListViewListener(this);
+	   myList.setOnItemClickListener(this);
    }
    
    
@@ -144,10 +148,17 @@ public void onClick(View arg0) {
 	case R.id.kejichangtan_top_img:
 		finish();
 		break;
-
 	default:
 		break;
 	}
+	
+}
+
+@Override
+public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	// TODO Auto-generated method stub
+	Intent intent=new Intent(this, ItQuan_ListItemClickActivity.class);
+	startActivity(intent);
 	
 }
 	
