@@ -3,6 +3,9 @@ package com.hkd.ithome.adapter;
 import java.util.List;
 
 import com.example.ithome.R;
+import com.hkd.ithome.bean.GoodInfo;
+import com.hkd.ithome.tools.NoChange;
+import com.lidroid.xutils.BitmapUtils;
 
 import android.content.Context;
 import android.text.format.Time;
@@ -15,13 +18,13 @@ import android.widget.TextView;
 
 public class HotGoodsListViewAdapter extends BaseAdapter {
 	
-	private List<String> datas;
+	private List<GoodInfo> datas;
 	private Context context;
-	
-	
-	
-	public HotGoodsListViewAdapter(List<String> datas, Context context) {
+	BitmapUtils bitmapUtils;
+
+	public HotGoodsListViewAdapter(List<GoodInfo> datas, Context context) {
 		super();
+		bitmapUtils=new BitmapUtils(context);
 		this.datas = datas;
 		this.context = context;
 	}
@@ -54,7 +57,10 @@ public class HotGoodsListViewAdapter extends BaseAdapter {
 		}else{
 			viewHolder=(ViewHolder) convertView.getTag();
 		}
-		viewHolder.time.setText(datas.get(position));
+		bitmapUtils.display(viewHolder.img,NoChange.WEB_SERVERS_ADDRESS+datas.get(position).getImg());
+		viewHolder.title.setText(datas.get(position).getTitle());
+		viewHolder.youhui.setText("下单立减"+datas.get(position).getYouhui()+"元");
+		viewHolder.time.setText(datas.get(position).getTime());
 		return convertView;
 	}
 	

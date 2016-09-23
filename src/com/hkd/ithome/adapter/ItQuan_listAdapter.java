@@ -56,7 +56,6 @@ public class ItQuan_listAdapter extends BaseAdapter{
 		holder.imgTu=(ImageView) arg1.findViewById(R.id.itquan_listitem_img);
 //		holder.imgScan=(ImageView) arg1.findViewById(R.id.itquan_listitem_img);
 //		holder.imgResponse=(ImageView) arg1.findViewById(R.id.itquan_listitem_img);
-		holder.tvType=(TextView) arg1.findViewById(R.id.itquan_listitem_tvType);
 		holder.tvTitle=(TextView) arg1.findViewById(R.id.itquan_listitem_tvTitle);
 		holder.tvAuthor=(TextView) arg1.findViewById(R.id.itquan_listitem_tvAuthor);
 		holder.tvdate=(TextView) arg1.findViewById(R.id.itquan_listitem_tvDate);
@@ -68,7 +67,6 @@ public class ItQuan_listAdapter extends BaseAdapter{
 		
 		mapList=listdata.get(arg0);
 		holder.imgTu.setBackgroundResource((Integer) mapList.get("img"));
-		holder.tvType.setText(mapList.get("type").toString());
 		holder.tvTitle.setText(mapList.get("title").toString());
 		holder.tvAuthor.setText(mapList.get("author").toString());
 		holder.tvdate.setText(mapList.get("date").toString());
@@ -86,7 +84,7 @@ public class ItQuan_listAdapter extends BaseAdapter{
 	class Holder{
 		
 		ImageView imgTu,imgScan,imgResponse;
-		TextView tvType,tvTitle,tvAuthor,tvdate,tvAuthor1,tvdate1,tvPhone,tvScan,tvResponse;
+		TextView tvTitle,tvAuthor,tvdate,tvAuthor1,tvdate1,tvPhone,tvScan,tvResponse;
 		
 		
 		

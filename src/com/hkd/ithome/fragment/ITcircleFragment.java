@@ -202,8 +202,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		for (int i = 0; i < 10; i++) {
 			mapList = new HashMap<String, Object>();
 			mapList.put("img", R.drawable.quan_zhanwu);
-			mapList.put("type", "[求助]");
-			mapList.put("title", "֧地铁上两个百合");
+			mapList.put("title", "֧[总置顶]地铁上两个百合");
 			mapList.put("author", "独悠");
 			mapList.put("date", "一周前");
 			mapList.put("author1", "每次都为改昵称烦恼");
