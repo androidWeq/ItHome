@@ -99,6 +99,14 @@
     <string name="clickRefresh">点击刷新按钮重新加载</string>
     <string name="loadFail">加载失败</string>
     <string name="remark">写评论</string>
+    <string name="faxintie">发新帖</string>
+    <string name="fabiao">发表</string>
+    <string name="edit_title">标题</string>
+    <string name="edit_help">求助</string>
+    <string name="edit_input">输入内容...</string>
+    
+    
+    
     <!--刘双杰  -->
 
 

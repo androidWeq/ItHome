@@ -67,7 +67,7 @@
         </activity>
         <activity android:name="com.hkd.ithome.activities.Me_Register" >
         </activity>
-
+        <activity android:name="com.hkd.ithome.activities.ItQuan_KeJiChat_ClickImgEdit"></activity>
         <activity android:name="com.hkd.ithome.activities.KejiChatActivity"></activity>
         <activity android:name="com.hkd.ithome.activities.ItQuan_ListItemClickActivity"></activity>
         
