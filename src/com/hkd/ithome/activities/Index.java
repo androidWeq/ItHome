@@ -1,5 +1,6 @@
 package com.hkd.ithome.activities;
 
+
 import com.example.ithome.R;
 import com.hkd.ithome.fragment.HotgoodsFragment;
 import com.hkd.ithome.fragment.ITcircleFragment;
@@ -29,6 +30,7 @@ public class Index extends FragmentActivity  {
 		setContentView(R.layout.home);
 		initFragmentAdapter();
 		initFragment();
+		//SMSSDK.initSDK(this, "1771207c44520", "c9db0f1680bda2e6ad2ca25b5e43037a");
 	}
 	
 	
