@@ -36,12 +36,13 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 
-public class KejiChatActivity extends Activity implements IXListViewListener,OnClickListener,OnItemClickListener{//implements 
+public class KejiChatActivity extends Activity implements IXListViewListener,OnClickListener,OnItemClickListener,OnCheckedChangeListener{//implements 
 	List<ItQuanBeen> listdata;
 	HashMap<String, Object> map;
 	ItQuan_listAdapter adapterList;
@@ -51,7 +52,7 @@ public class KejiChatActivity extends Activity implements IXListViewListener,OnC
 	XListView myList;
 	RadioGroup rg;
 	HttpUtils httpUtils;
-	
+	Gson gson;
 	Handler handler;
    @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -62,42 +63,19 @@ protected void onCreate(Bundle savedInstanceState) {
 	
 	kejichangtan_top_img.setOnClickListener(this);
 //	
-	//在setadapter之前添加头部
-	RelativeLayout headerViewLayout=(RelativeLayout) LayoutInflater.from(this).inflate(R.layout.itquan_kejichangtan_listview_head, null);
-	myList.addHeaderView(headerViewLayout);
-	rg=(RadioGroup) headerViewLayout.findViewById(R.id.kejichangtan_listHead_rg);
-	init();
 	getListViewDatas();
-	
-rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-		
-		@Override
-		public void onCheckedChanged(RadioGroup arg0, int arg1) {
-			// TODO Auto-generated method stub
-			switch (arg1) {
-			case R.id.kejichangtan_listHead_rb_hotTie:
-				Toast.makeText(KejiChatActivity.this, "热帖", Toast.LENGTH_SHORT).show();
-				break;
-			case R.id.kejichangtan_listHead_rb_newRespon:
-				Toast.makeText(KejiChatActivity.this, "最新回复", Toast.LENGTH_SHORT).show();
-				break;
-			case R.id.kejichangtan_listHead_rb_newFaBiao:
-				Toast.makeText(KejiChatActivity.this, "最新发表", Toast.LENGTH_SHORT).show();
-				break;
-
-			default:
-				break;
-			}
-		}
-	});
-	
 }
-
-   public void init(){
+public void init(){
+	//true:可以上拉加载数据    相反false不可以
 	   myList.setPullLoadEnable(false);
 	   myList.setPullRefreshEnable(true);
 	   myList.setXListViewListener(this);
 	   myList.setOnItemClickListener(this);
+		myList.setXListViewListener(this);
+		 RelativeLayout headerViewLayout=(RelativeLayout) LayoutInflater.from(this).inflate(R.layout.itquan_kejichangtan_listview_head, null);
+		 myList.addHeaderView(headerViewLayout);
+		 rg=(RadioGroup) headerViewLayout.findViewById(R.id.kejichangtan_listHead_rg);
+		 rg.setOnCheckedChangeListener(this);
    }
    
    
@@ -106,43 +84,99 @@ rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 	 * @param index  页码
 	 */
 	private void getListViewDatas() {
-		httpUtils = new HttpUtils();
-		httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
-				new RequestCallBack<String>() {
-					public void onSuccess(ResponseInfo<String> responseInfo) {
-						String info = responseInfo.result;
-						// System.out.println(info+"--------");
-						Gson gson = new Gson();
-						 listdata=new ArrayList<ItQuanBeen>();
-						JsonParser jsonParser=new JsonParser();
-						JsonElement jsonElement=jsonParser.parse(info);// 将json字符串转换成JsonElement
-						JsonArray jsonArray;
-						try {
-						jsonArray=jsonElement.getAsJsonArray();//获得JsonArray对象
-						Iterator it =jsonArray.iterator();//循环
-						while(it.hasNext()){
-							jsonElement=(JsonElement) it.next();// 提取JsonElement
-							String json=jsonElement.toString();// JsonElement转换成String
-							ItQuanBeen  itQuanInformation=gson.fromJson(json, ItQuanBeen.class);// String转化成JavaBean
-							listdata.add(itQuanInformation);// 加入List
-						}
-						Toast.makeText(KejiChatActivity.this,listdata.size(), 100).show();
-						myList.setAdapter(adapterList);
-						} catch (Exception e) {
-							System.out.println("获得数据为空");
-							e.printStackTrace();
-						}
+//System.out.println("-------进入-getListViewDatas()-从网络解析json填充到数据源");
+httpUtils = new HttpUtils();
+httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
+		new RequestCallBack<String>() {
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				String info = responseInfo.result;
+//				 System.out.println(info+"--------");
+				gson= new Gson();
+				if(listdata==null){
+					listdata=new ArrayList<ItQuanBeen>();
+					adapterList = new ItQuan_listAdapter(KejiChatActivity.this,listdata);
+					
+					getJsonData(info);
+					init();
+					myList.setAdapter(adapterList);
+//					JsonParser jsonParser=new JsonParser();
+//					JsonElement jsonElement=jsonParser.parse(info);// 将json字符串转换成JsonElement
+//					JsonArray jsonArray;
+//					try {
+//					jsonArray=jsonElement.getAsJsonArray();//获得JsonArray对象
+//					Iterator it =jsonArray.iterator();//循环
+//					while(it.hasNext()){
+//						jsonElement=(JsonElement) it.next();// 提取JsonElement
+//						String json=jsonElement.toString();// JsonElement转换成String
+//						ItQuanBeen  itQuanInformation=gson.fromJson(json, ItQuanBeen.class);// String转化成JavaBean
+//						listdata.add(itQuanInformation);// 加入Listdata
+//					}
+//					init();
+//					myList.setAdapter(adapterList);
+////					System.out.println("----------listdata:"+listdata.size());
+//					} catch (Exception e) {
+//						System.out.println("获得数据为空");
+//						e.printStackTrace();
+//					}
 
-					}
+					
+				}else{
+					getJsonData(info);
+					adapterList.notifyDataSetChanged();
+				}
+//				JsonParser jsonParser=new JsonParser();
+//				JsonElement jsonElement=jsonParser.parse(info);// 将json字符串转换成JsonElement
+//				JsonArray jsonArray;
+//				try {
+//				jsonArray=jsonElement.getAsJsonArray();//获得JsonArray对象
+//				Iterator it =jsonArray.iterator();//循环
+//				while(it.hasNext()){
+//					jsonElement=(JsonElement) it.next();// 提取JsonElement
+//					String json=jsonElement.toString();// JsonElement转换成String
+//					ItQuanBeen  itQuanInformation=gson.fromJson(json, ItQuanBeen.class);// String转化成JavaBean
+//					listdata.add(itQuanInformation);// 加入Listdata
+//				}
+////				init();
+//				adapterList.notifyDataSetChanged();
+//				System.out.println("----------listdata:"+listdata.size());
+//				} catch (Exception e) {
+//					System.out.println("获得数据为空");
+//					e.printStackTrace();
+//				}
 
-					@Override
-					public void onFailure(HttpException error, String msg) {
-						System.out.println("-----获取网络数据失败");
+			}
 
-					}
-				});
+			private void getJsonData(String info) {
+				// TODO Auto-generated method stub
+				JsonParser jsonParser=new JsonParser();
+				JsonElement jsonElement=jsonParser.parse(info);// 将json字符串转换成JsonElement
+				JsonArray jsonArray;
+				try {
+				jsonArray=jsonElement.getAsJsonArray();//获得JsonArray对象
+				Iterator it =jsonArray.iterator();//循环
+				while(it.hasNext()){
+					jsonElement=(JsonElement) it.next();// 提取JsonElement
+					String json=jsonElement.toString();// JsonElement转换成String
+					ItQuanBeen  itQuanInformation=gson.fromJson(json, ItQuanBeen.class);// String转化成JavaBean
+					listdata.add(itQuanInformation);// 加入Listdata
+				}
+				
+//				System.out.println("----------listdata:"+listdata.size());
+				} catch (Exception e) {
+					System.out.println("获得数据为空");
+					e.printStackTrace();
+				}
+				
+			}
 
-	}
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				System.out.println("-----获取网络数据失败");
+
+			}
+		});
+
+}
 @Override
 public void onRefresh() {
 	// TODO Auto-generated method stub
@@ -197,6 +231,30 @@ public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 	startActivity(intent);
 	
 }
+@Override
+public void onCheckedChanged(RadioGroup arg0, int arg1) {
+			// TODO Auto-generated method stub
+			switch (arg1) {
+			case R.id.kejichangtan_listHead_rb_hotTie:
+				Toast.makeText(KejiChatActivity.this, "热帖", Toast.LENGTH_SHORT).show();
+				getListViewDatas();
+				break;
+			case R.id.kejichangtan_listHead_rb_newRespon:
+				Toast.makeText(KejiChatActivity.this, "最新回复", Toast.LENGTH_SHORT).show();
+				getListViewDatas();
+				break;
+			case R.id.kejichangtan_listHead_rb_newFaBiao:
+				Toast.makeText(KejiChatActivity.this, "最新发表", Toast.LENGTH_SHORT).show();
+				getListViewDatas();
+				break;
+
+			default:
+				break;
+			}
+		}
+	
+	
+
 	
    
 }

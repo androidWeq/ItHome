@@ -55,8 +55,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	HttpUtils httpUtils;//网络获取数据
 	@ViewInject(R.id.itquan_listView)
 	XListView myList;
-//	ImageView img_animation;
-//	AnimationDrawable animation;
+	Gson gson;
 	private Handler handler;
 	Date date;
 	ItQuan_Adapter adapter;
@@ -77,8 +76,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		View v = inflater.inflate(R.layout.fragment_itcircle, null);
 		ViewUtils.inject(this, v);
 		getListViewDatas();
-//		init();
-		
+		myList.setOnItemClickListener(this);
 //		myList.setOnItemClickListener(new OnItemClickListener() {
 //
 //			@Override
@@ -110,13 +108,8 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		getGridItem();
 		gridView.setOnItemClickListener(this);
 		
-//		headerViewLayout.setFocusable(true);
-		
-		
-		//gridView监听事件
-		
 	}
-	
+	//碎片的显示与隐藏
 	public void setMenuVisibility(boolean menuVisible) {
 		// TODO Auto-generated method stub
 		super.setMenuVisibility(menuVisible);
@@ -190,85 +183,79 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	@Override               
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-		switch (arg2) {
-		case 0://科技畅谈
-			System.out.println("-------------进入case 0");
-			Intent intent=new Intent(getActivity(), KejiChatActivity.class);
+		switch (arg0.getId()) {
+		case R.id.itquan_listView://XlistView点击事件
+			Intent intent=new Intent(getActivity(),ItQuan_ListItemClickActivity.class);
+			intent.putExtra("Img", listdata.get(arg2).getImgPath());//头像
+			intent.putExtra("title", listdata.get(arg2).getTitle());//标题
+			intent.putExtra("scanner", listdata.get(arg2).getScanner());//浏览量
+			intent.putExtra("response", listdata.get(arg2).getResponse());//回复量
 			startActivity(intent);
 			break;
-//		case 1://科技畅谈
-//			Intent intent1=new Intent(getActivity(), KejiChatActivity.class);
-//			startActivity(intent1);
-//			break;
-//		case 2://科技畅谈
-//			Intent intent2=new Intent(getActivity(), KejiChatActivity.class);
-//			startActivity(intent2);
-//			break;
-//		case 3://科技畅谈
-//			Intent intent3=new Intent(getActivity(), KejiChatActivity.class);
-//			startActivity(intent3);
-//			break;
-//		case 4://科技畅谈
-//			Intent intent4=new Intent(getActivity(), KejiChatActivity.class);
-//			startActivity(intent4);
-//			break;
-//		case 5://科技畅谈
-//			Intent intent5=new Intent(getActivity(), KejiChatActivity.class);
-//			startActivity(intent5);
-//			break;
-//		case 6://科技畅谈
-//			Intent intent6=new Intent(getActivity(), KejiChatActivity.class);
-//			startActivity(intent6);
-//			break;
-//		case 7://科技畅谈
-//			Intent intent7=new Intent(getActivity(), KejiChatActivity.class);
-//			startActivity(intent7);
-//			break;
+		case R.id.itquan_gridView://GridView点击事件
+			Intent inten=new Intent(getActivity(),KejiChatActivity.class);
+			startActivity(inten);
+//            switch (arg2) {
+//			case 0:
+//				Intent intent0=new Intent(getActivity(),KejiChatActivity.class);
+//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
+//				startActivity(intent0);
+//				break;
+//			case 1:
+//				Intent intent1=new Intent(getActivity(),KejiChatActivity.class);
+//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
+//				startActivity(intent1);
+//				break;
+//			case 2:
+//				Intent intent2=new Intent(getActivity(),KejiChatActivity.class);
+//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
+//				startActivity(intent2);
+//				break;
+//			case 3:
+//				Intent intent3=new Intent(getActivity(),KejiChatActivity.class);
+//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
+//				startActivity(intent3);
+//				break;
+//			case 4:
+//				Intent intent4=new Intent(getActivity(),KejiChatActivity.class);
+//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
+//				startActivity(intent4);
+//				break;
 //
-//		default:
-//			break;
+//			default:
+//				break;
+//			}
+			break;
+		default:
+			break;
+		}
+	
 		}
 		
-	}
+	
 	/**
 	 * 从网络解析json填充到数据源
 	 * @param index  页码
 	 */
 	private void getListViewDatas() {
-//		System.out.println("-------进入-getListViewDatas()-从网络解析json填充到数据源");
+		//System.out.println("-------进入-getListViewDatas()-从网络解析json填充到数据源");
 		httpUtils = new HttpUtils();
 		httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
 				new RequestCallBack<String>() {
 					public void onSuccess(ResponseInfo<String> responseInfo) {
 						String info = responseInfo.result;
 						 System.out.println(info+"--------");
-						Gson gson = new Gson();
+						 gson = new Gson();
 						if(listdata==null){
 							listdata=new ArrayList<ItQuanBeen>();
-							adapterList = new ItQuan_listAdapter(getActivity(), listdata);
+							adapterList = new ItQuan_listAdapter(getActivity(),listdata);
+							getJsonData(info);
+							init();
 							myList.setAdapter(adapterList);
+						}else{
+							getJsonData(info);
+							adapterList.notifyDataSetChanged();
 						}
-//						List<ItQuanBeen> list=new ArrayList<ItQuanBeen>();
-						JsonParser jsonParser=new JsonParser();
-						JsonElement jsonElement=jsonParser.parse(info);// 将json字符串转换成JsonElement
-						JsonArray jsonArray;
-						try {
-						jsonArray=jsonElement.getAsJsonArray();//获得JsonArray对象
-						Iterator it =jsonArray.iterator();//循环
-						while(it.hasNext()){
-							jsonElement=(JsonElement) it.next();// 提取JsonElement
-							String json=jsonElement.toString();// JsonElement转换成String
-							ItQuanBeen  itQuanInformation=gson.fromJson(json, ItQuanBeen.class);// String转化成JavaBean
-							listdata.add(itQuanInformation);// 加入Listdata
-						}
-						init();
-						adapterList.notifyDataSetChanged();
-						System.out.println("----------listdata:"+listdata.size());
-						} catch (Exception e) {
-							System.out.println("获得数据为空");
-							e.printStackTrace();
-						}
-
 					}
 
 					@Override
@@ -278,8 +265,30 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 					}
 				});
 
+		}
+	//获得HttpUtil json数据
+	private void getJsonData(String info) {
+		// TODO Auto-generated method stub
+		JsonParser jsonParser=new JsonParser();
+		JsonElement jsonElement=jsonParser.parse(info);// 将json字符串转换成JsonElement
+		JsonArray jsonArray;
+		try {
+		jsonArray=jsonElement.getAsJsonArray();//获得JsonArray对象
+		Iterator it =jsonArray.iterator();//循环
+		while(it.hasNext()){
+			jsonElement=(JsonElement) it.next();// 提取JsonElement
+			String json=jsonElement.toString();// JsonElement转换成String
+			ItQuanBeen  itQuanInformation=gson.fromJson(json, ItQuanBeen.class);// String转化成JavaBean
+			listdata.add(itQuanInformation);// 加入Listdata
+		}
+		
+//		System.out.println("----------listdata:"+listdata.size());
+		} catch (Exception e) {
+			System.out.println("获得数据为空");
+			e.printStackTrace();
+		}
+		
 	}
-
 	
 
 }
