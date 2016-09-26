@@ -57,8 +57,8 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	XListView myList;
 //	ImageView img_animation;
 //	AnimationDrawable animation;
-//	private Handler handler;
-//	Date date;
+	private Handler handler;
+	Date date;
 	ItQuan_Adapter adapter;
 	ItQuan_listAdapter adapterList;
 	
@@ -117,12 +117,12 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		
 	}
 	
-//	public void setMenuVisibility(boolean menuVisible) {
-//		// TODO Auto-generated method stub
-//		super.setMenuVisibility(menuVisible);
-//		if(this.getView()!=null)
-//			this.getView().setVisibility(menuVisible ? View.VISIBLE :View.GONE);
-//	}
+	public void setMenuVisibility(boolean menuVisible) {
+		// TODO Auto-generated method stub
+		super.setMenuVisibility(menuVisible);
+		if(this.getView()!=null)
+			this.getView().setVisibility(menuVisible ? View.VISIBLE :View.GONE);
+	}
 	
 	private void getGridItem() {
 		// TODO Auto-generated method stub
@@ -147,39 +147,39 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 
 	@Override
 	public void onRefresh() {
-//		// TODO Auto-generated method stub
-//		handler=new Handler();
-//		handler.postDelayed(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				// myList.add(listdata.size() + "下拉刷新,头部");
-//				if (listdata == null) {
-//					listdata = new ArrayList<ItQuanBeen>();
-//
-//				} else {
-//
-//				}
-//				// listdata.add(object)
-////				Toast.makeText(getActivity(), "进入", Toast.LENGTH_LONG).show();
-//				adapter.notifyDataSetChanged();
-//				onLoad();
-//			}
-//
-//		}, 2000);
-//
+		// TODO Auto-generated method stub
+		handler=new Handler();
+		handler.postDelayed(new Runnable() {
+
+			@Override
+			public void run() {
+				// myList.add(listdata.size() + "下拉刷新,头部");
+				if (listdata == null) {
+					listdata = new ArrayList<ItQuanBeen>();
+
+				} else {
+
+				}
+				// listdata.add(object)
+				Toast.makeText(getActivity(), "进入", Toast.LENGTH_LONG).show();
+				adapter.notifyDataSetChanged();
+				onLoad();
+			}
+
+		}, 2000);
+
 	}
 
-//	private void onLoad() {
-//		// TODO Auto-generated method stub
-//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-//		//System.out.println());// new Date()为获取当前系统时间
-//		myList.stopRefresh();
-//		myList.stopLoadMore();
-//		myList.setRefreshTime(df.format(new Date()));
-//		//
-//		
-//	}
+	private void onLoad() {
+		// TODO Auto-generated method stub
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		//System.out.println());// new Date()为获取当前系统时间
+		myList.stopRefresh();
+		myList.stopLoadMore();
+		myList.setRefreshTime(df.format(new Date()));
+		//
+		
+	}
 
 	@Override
 	public void onLoadMore() {
@@ -190,12 +190,12 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	@Override               
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-//		switch (arg2) {
-//		case 0://科技畅谈
-//			System.out.println("-------------进入case 0");
-//			Intent intent=new Intent(getActivity(), KejiChatActivity.class);
-//			startActivity(intent);
-//			break;
+		switch (arg2) {
+		case 0://科技畅谈
+			System.out.println("-------------进入case 0");
+			Intent intent=new Intent(getActivity(), KejiChatActivity.class);
+			startActivity(intent);
+			break;
 //		case 1://科技畅谈
 //			Intent intent1=new Intent(getActivity(), KejiChatActivity.class);
 //			startActivity(intent1);
@@ -227,7 +227,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 //
 //		default:
 //			break;
-//		}
+		}
 		
 	}
 	/**
