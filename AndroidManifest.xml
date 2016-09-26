@@ -8,7 +8,24 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
 
+    <!-- 允许读取手机状态相关数据 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 允许访问SD卡 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 允许获得audio session ID -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 允许获得当前或最近运行的任务 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- 允许获得电话状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 允许读取SD卡 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- 在SDCard中创建与删除文件权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 往SDCard写入数据权限 -->
@@ -52,7 +69,11 @@
         </activity>
 
         <activity android:name="com.hkd.ithome.activities.KejiChatActivity"></activity>
-
+        <activity android:name="com.hkd.ithome.activities.ItQuan_ListItemClickActivity"></activity>
+        
+        <!-- 辣品界面__详情__确认订单 -->
+		<activity android:name="com.hkd.ithome.activities.LaPinDetial"></activity>
+		<activity android:name="com.hkd.ithome.activities.LaPinOrder"></activity>
     </application>
 
 </manifest>

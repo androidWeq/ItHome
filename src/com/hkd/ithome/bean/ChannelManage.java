@@ -28,23 +28,23 @@ public class ChannelManage {
 		defaultUserChannels = new ArrayList<ChannelItem>();
 		defaultOtherChannels = new ArrayList<ChannelItem>();
 		defaultUserChannels.add(new ChannelItem(1, "最新", 1, 1));
-		defaultUserChannels.add(new ChannelItem(2, "排行榜", 2, 1));
+		defaultUserChannels.add(new ChannelItem(2, "排行", 2, 1));
 		defaultUserChannels.add(new ChannelItem(3, "手机", 3, 1));
 		defaultUserChannels.add(new ChannelItem(4, "数码", 4, 1));
 		defaultUserChannels.add(new ChannelItem(5, "苹果", 5, 1));
-		defaultUserChannels.add(new ChannelItem(6, "评测室", 6, 1));
+		defaultUserChannels.add(new ChannelItem(6, "评测", 6, 1));
 		defaultUserChannels.add(new ChannelItem(7, "VR", 7, 1));
 		defaultOtherChannels.add(new ChannelItem(8, "电脑", 1, 0));
-		defaultOtherChannels.add(new ChannelItem(9, "智能汽车", 2, 0));
+		defaultOtherChannels.add(new ChannelItem(9, "汽车", 2, 0));
 		defaultOtherChannels.add(new ChannelItem(10, "安卓", 3, 0));
 		defaultOtherChannels.add(new ChannelItem(11, "科普", 4, 0));
-		defaultOtherChannels.add(new ChannelItem(12, "游戏电竞", 5, 0));
-		defaultOtherChannels.add(new ChannelItem(13, "Windows", 6, 0));
+		defaultOtherChannels.add(new ChannelItem(12, "电竞", 5, 0));
+		defaultOtherChannels.add(new ChannelItem(13, "微软", 6, 0));
 		defaultOtherChannels.add(new ChannelItem(14, "OS X", 7, 0));
-		defaultOtherChannels.add(new ChannelItem(15, "网络焦点", 8, 0));
-		defaultOtherChannels.add(new ChannelItem(16, "行业前沿", 9, 0));
+		defaultOtherChannels.add(new ChannelItem(15, "焦点", 8, 0));
+		defaultOtherChannels.add(new ChannelItem(16, "前沿", 9, 0));
 		defaultOtherChannels.add(new ChannelItem(17, "IOS", 10, 0));
-		defaultOtherChannels.add(new ChannelItem(18, "上热评", 11, 0));
+		defaultOtherChannels.add(new ChannelItem(18, "热评", 11, 0));
 	}
 
 	private ChannelManage(SQLHelper paramDBHelper) throws SQLException {

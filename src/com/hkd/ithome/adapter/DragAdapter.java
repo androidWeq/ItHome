@@ -24,6 +24,8 @@ public class DragAdapter extends BaseAdapter {
 	private int holdPosition;
 	/** 是否改变 */
 	private boolean isChanged = false;
+	/** 列表数据是否改变 */
+	private boolean isListChanged = false;
 	/** 是否可见 */
 	boolean isVisible = true;
 	/** 可以拖动的列表（即用户选择的频道列表） */
@@ -89,6 +91,7 @@ public class DragAdapter extends BaseAdapter {
 	/** 添加频道列表 */
 	public void addItem(ChannelItem channel) {
 		channelList.add(channel);
+		isListChanged = true;
 		notifyDataSetChanged();
 	}
 
@@ -105,6 +108,7 @@ public class DragAdapter extends BaseAdapter {
 			channelList.remove(dragPostion + 1);
 		}
 		isChanged = true;
+		isListChanged = true;
 		notifyDataSetChanged();
 	}
 	
@@ -123,6 +127,7 @@ public class DragAdapter extends BaseAdapter {
 	public void remove() {
 		channelList.remove(remove_position);
 		remove_position = -1;
+		isListChanged = true;
 		notifyDataSetChanged();
 	}
 	
@@ -134,6 +139,11 @@ public class DragAdapter extends BaseAdapter {
 	/** 获取是否可见 */
 	public boolean isVisible() {
 		return isVisible;
+	}
+	
+	/** 排序是否发生改变 */
+	public boolean isListChanged() {
+		return isListChanged;
 	}
 	
 	/** 设置是否可见 */

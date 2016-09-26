@@ -16,29 +16,21 @@
             android:src="@drawable/quan_zhanwu"
             android:layout_margin="@dimen/jianju_stytle1"/>
         <TextView 
-            android:id="@+id/itquan_listitem_tvType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[讨论]"
-            android:textSize="@dimen/wenzi_Style_1"
-            android:layout_toRightOf="@id/itquan_listitem_img"
-            android:layout_alignTop="@id/itquan_listitem_img"/>
-        <TextView 
             android:id="@+id/itquan_listitem_tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UWP微信"
+            android:text="[讨论]UWP微信"
             android:textSize="@dimen/wenzi_Style_1"
             android:layout_marginLeft="@dimen/jianju_stytle2"
-            android:layout_toRightOf="@id/itquan_listitem_tvType"
+            android:layout_toRightOf="@id/itquan_listitem_img"
             android:layout_alignTop="@id/itquan_listitem_img"/>
 
         <TextView
             android:id="@+id/itquan_listitem_tvAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/itquan_listitem_tvType"
-            android:layout_below="@+id/itquan_listitem_tvType"
+            android:layout_alignLeft="@id/itquan_listitem_tvTitle"
+            android:layout_below="@+id/itquan_listitem_tvTitle"
             android:layout_toRightOf="@id/itquan_listitem_img"
             android:text="shuai11055"
             android:layout_marginTop="@dimen/jianju_stytle2"
@@ -53,7 +45,7 @@
             android:textColor="#ccc"
             android:layout_marginLeft="@dimen/jianju_stytle2"
             android:layout_toRightOf="@id/itquan_listitem_tvAuthor"
-            android:layout_below="@id/itquan_listitem_tvType"
+            android:layout_below="@id/itquan_listitem_tvTitle"
             android:layout_alignTop="@id/itquan_listitem_tvAuthor"/>
         <TextView 
             android:id="@+id/itquan_listitem_tvAuthor2"
@@ -63,7 +55,7 @@
             android:textSize="@dimen/wenzi_Style_4"
             android:layout_marginLeft="@dimen/jianju_stytle1"
             android:layout_toRightOf="@id/itquan_listitem_tvDate"
-            android:layout_below="@id/itquan_listitem_tvType"
+            android:layout_below="@id/itquan_listitem_tvTitle"
             android:layout_alignTop="@id/itquan_listitem_tvAuthor"/>
         <TextView 
             android:id="@+id/itquan_listitem_tvDate2"
@@ -74,7 +66,7 @@
             android:textColor="#ccc"
             android:layout_marginLeft="@dimen/jianju_stytle2"
             android:layout_toRightOf="@id/itquan_listitem_tvAuthor2"
-            android:layout_below="@id/itquan_listitem_tvType"
+            android:layout_below="@id/itquan_listitem_tvTitle"
             android:layout_alignTop="@id/itquan_listitem_tvAuthor"/>
         <TextView
             android:id="@+id/itquan_listitem_tvphone"

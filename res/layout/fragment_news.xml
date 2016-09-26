@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/head_titlebar_height"
         android:background="@color/red"
         android:orientation="horizontal" >
 
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="@dimen/coin_titlebar_margin_left"
             android:background="@drawable/main_coin" />
 
         <TextView
@@ -35,141 +35,70 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="@dimen/search_titlebar_margin_right"
             android:background="@drawable/main_search" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@color/gray"
+        android:layout_height="40.0dip"
+        android:background="#fff3f3f3"
         android:orientation="horizontal" >
 
-        <HorizontalScrollView
-            android:layout_width="321dp"
-            android:layout_height="match_parent"
-            android:paddingRight="15dp"
-            android:scrollbars="none" >
+        <RelativeLayout
+            android:id="@+id/rl_column"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/channel_scrollview_height"
+            android:layout_weight="1.0" >
 
-            <RadioGroup
-                android:id="@+id/rgNews"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" >
+            <com.hkd.ithome.view.ColumnHorizontalScrollView
+                android:id="@+id/mColumnHorizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/channel_scrollview_height"
+                android:scrollbars="none" >
 
-                <RadioButton
-                    android:id="@+id/lasteast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:checked="true"
-                    android:gravity="center"
-                    android:text="最新"
-                    android:textColor="@color/selector_rb_news"
-                    android:textSize="18sp" />
+                <LinearLayout
+                    android:id="@+id/mRadioGroup_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/channel_scrollview_height"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/radiogroup_scrollview_padding_left"
+                    android:paddingRight="@dimen/radiogroup_scrollview_padding_right" />
+            </com.hkd.ithome.view.ColumnHorizontalScrollView>
 
-                <RadioButton
-                    android:id="@+id/toplist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="排行榜"
-                    android:textColor="@color/selector_rb_news"
-                    android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/shade_left"
+                android:layout_width="@dimen/shadeleft_scrollview_width"
+                android:layout_height="@dimen/shadeleft_scrollview_height"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/channel_leftblock"
+                android:visibility="gone" />
 
-                <RadioButton
-                    android:id="@+id/apple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="苹果"
-                    android:textColor="@color/selector_rb_news"
-                    android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/shade_right"
+                android:layout_width="@dimen/shaderight_scrollview_width"
+                android:layout_height="@dimen/shaderight_scrollview_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/channel_rightblock"
+                android:visibility="visible" />
+        </RelativeLayout>
 
-                <RadioButton
-                    android:id="@+id/phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="手机"
-                    android:textColor="@color/selector_rb_news"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/digit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="数码"
-                    android:textColor="@color/selector_rb_news"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/testRoom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="评测室"
-                    android:textColor="@color/selector_rb_news"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/VR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="VR"
-                    android:textColor="@color/selector_rb_news"
-                    android:textSize="18sp" />
-
-                <RadioButton
-                    android:id="@+id/computer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="电脑"
-                    android:textColor="@color/selector_rb_news"
-                    android:textSize="18sp" />
-            </RadioGroup>
-        </HorizontalScrollView>
-
-        <ImageView
-            android:id="@+id/more"
+        <LinearLayout
+            android:id="@+id/ll_more_columns"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/more" />
+            android:layout_height="@dimen/channel_scrollview_height" >
+
+            <ImageView
+                android:id="@+id/button_more_columns"
+                android:layout_width="@dimen/more_button_size"
+                android:layout_height="@dimen/more_button_size"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/channel_glide_day_bg" />
+        </LinearLayout>
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
