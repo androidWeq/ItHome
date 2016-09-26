@@ -117,12 +117,12 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		
 	}
 	
-//	public void setMenuVisibility(boolean menuVisible) {
-//		// TODO Auto-generated method stub
-//		super.setMenuVisibility(menuVisible);
-//		if(this.getView()!=null)
-//			this.getView().setVisibility(menuVisible ? View.VISIBLE :View.GONE);
-//	}
+	public void setMenuVisibility(boolean menuVisible) {
+		// TODO Auto-generated method stub
+		super.setMenuVisibility(menuVisible);
+		if(this.getView()!=null)
+			this.getView().setVisibility(menuVisible ? View.VISIBLE :View.GONE);
+	}
 	
 	private void getGridItem() {
 		// TODO Auto-generated method stub
