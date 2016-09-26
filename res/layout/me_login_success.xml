@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/Head_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/avatar_default_cir" />
+
+        <TextView
+            android:id="@+id/username_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="用户名"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/change_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/success_padding"
+        android:background="@drawable/login_success_bg"
+        android:gravity="center"
+        android:paddingBottom="@dimen/success_padding"
+        android:paddingTop="@dimen/success_padding"
+        android:text="@string/change_pwd"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/exit_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/success_padding"
+        android:background="@drawable/login_success_bg"
+        android:gravity="center"
+        android:paddingBottom="@dimen/success_padding"
+        android:paddingTop="@dimen/success_padding"
+        android:text="@string/exit_account"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+</LinearLayout>

@@ -75,7 +75,10 @@
     <string name="my_post">我的帖子</string>
     <string name="my_Repost">我的回帖</string>
     <string name="reply_my">回复我的</string>
-    
+    <string name="change_pwd">修改密码</string>
+    <string name="exit_account">退出账户</string>
+    <string name="password_repet">重复密码</string>
+    <string name="register">注册</string>
     
     
 
