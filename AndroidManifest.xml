@@ -46,6 +46,10 @@
         </activity>
         <activity android:name="com.hkd.ithome.activities.Me_Post" >
         </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_login_success" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_Register" >
+        </activity>
 
         <activity android:name="com.hkd.ithome.activities.KejiChatActivity"></activity>
 

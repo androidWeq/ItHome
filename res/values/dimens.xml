@@ -59,7 +59,8 @@
     <dimen name="setting_marginLeft_r">10dp</dimen>
     <dimen name="setting_marginRight_r">10dp</dimen>
     <dimen name="setting_height">48dp</dimen>
-    
+    <!-- 登陆成功页面dimens -->
+    <dimen name="success_padding">10dp</dimen>
     
     <dimen name="lapin_topTxt_normal_size">16sp</dimen>
     <dimen name="lapin_toptxt_check_size">20sp</dimen>
