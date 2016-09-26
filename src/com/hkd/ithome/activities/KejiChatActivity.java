@@ -126,6 +126,7 @@ rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 							ItQuanBeen  itQuanInformation=gson.fromJson(json, ItQuanBeen.class);// String转化成JavaBean
 							listdata.add(itQuanInformation);// 加入List
 						}
+						Toast.makeText(KejiChatActivity.this,listdata.size(), 100).show();
 						myList.setAdapter(adapterList);
 						} catch (Exception e) {
 							System.out.println("获得数据为空");
@@ -151,7 +152,7 @@ public void onRefresh() {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			adapterList.notifyDataSetChanged();
+//			adapterList.notifyDataSetChanged();
 			load();
 			
 		}

@@ -89,7 +89,8 @@
     <dimen name="setting_marginLeft_r">10dp</dimen>
     <dimen name="setting_marginRight_r">10dp</dimen>
     <dimen name="setting_height">48dp</dimen>
-    
+    <!-- 登陆成功页面dimens -->
+    <dimen name="success_padding">10dp</dimen>
     
     <!-- 辣品详情界面dimens -->
     <dimen name="detial_padding_left">20dp</dimen>
