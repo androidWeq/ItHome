@@ -16,7 +16,7 @@
     <dimen name="shaderight_scrollview_width">10dp</dimen>
     <dimen name="shaderight_scrollview_height">40dp</dimen>
     <dimen name="more_button_size">40dp</dimen>
-    <dimen name="viewpager_head_height">180dp</dimen>
+    <dimen name="viewpager_head_height">230dp</dimen>
     <dimen name="item_list_height">80dp</dimen>
     <dimen name="pic_item_list_width">85dp</dimen>
     <dimen name="pic_item_list_height">60dp</dimen>
@@ -89,11 +89,21 @@
     <dimen name="setting_marginLeft_r">10dp</dimen>
     <dimen name="setting_marginRight_r">10dp</dimen>
     <dimen name="setting_height">48dp</dimen>
+    <!-- 登陆成功页面dimens -->
+    <dimen name="success_padding">10dp</dimen>
     
-    
-    
-    
-    
+    <!-- 辣品详情界面dimens -->
+    <dimen name="detial_padding_left">20dp</dimen>
+    <dimen name="detial_padding_right">20dp</dimen>
+    <dimen name="detial_magin_top">10dp</dimen>
+    <dimen name="detial_title_size">22sp</dimen>
+    <dimen name="detial_youhui_size">15sp</dimen>
+    <dimen name="detial_time_size">15sp</dimen>
+    <dimen name="detial_describe_size">18sp</dimen>
+    <dimen name="detial_img_width">410dp</dimen>
+    <dimen name="detial_img_heigh">410dp</dimen>
+    <dimen name="detial_bottom_heigh">50dp</dimen>
+    <dimen name="detial_bottom_buy_size">17sp</dimen>
  
 
 </resources>

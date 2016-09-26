@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/User_Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/login_margin_e"
+        android:background="@null"
+        android:drawableLeft="@drawable/login_icon"
+        android:drawablePadding="@dimen/login_drawablePadding_e"
+        android:gravity="center_vertical"
+        android:hint="@string/user_hint"
+        android:maxLength="20"
+        android:singleLine="true"
+        android:textColorHint="#ccc" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/login_marginLeft_v"
+        android:layout_marginRight="@dimen/login_marginRight_v"
+        android:background="#e1e1e1" />
+
+    <EditText
+        android:id="@+id/Password_Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/login_margin_e"
+        android:background="@null"
+        android:drawableLeft="@drawable/login_pass"
+        android:drawablePadding="@dimen/login_drawablePadding_e"
+        android:gravity="center_vertical"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:singleLine="true"
+        android:textColorHint="#ccc" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/login_marginLeft_v"
+        android:layout_marginRight="@dimen/login_marginRight_v"
+        android:background="#e1e1e1" />
+
+    <EditText
+        android:id="@+id/Password_Repet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/login_margin_e"
+        android:background="@null"
+        android:drawableLeft="@drawable/login_pass"
+        android:drawablePadding="@dimen/login_drawablePadding_e"
+        android:gravity="center_vertical"
+        android:hint="@string/password_repet"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:singleLine="true"
+        android:textColorHint="#ccc" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/login_marginLeft_v"
+        android:layout_marginRight="@dimen/login_marginRight_v"
+        android:background="#e1e1e1" />
+    
+     <Button
+        android:id="@+id/Register_Me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/login_margin_e"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:enabled="false"
+        android:padding="@dimen/login_Padding_b"
+        android:text="@string/register"
+        android:textColor="#ccc" />
+
+</LinearLayout>

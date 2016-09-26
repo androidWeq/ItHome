@@ -80,6 +80,16 @@
         </activity>
         <activity android:name="com.hkd.ithome.activities.WebviewActivity" >
         </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_login_success" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_Register" >
+        </activity>
+
+        <!-- 辣品界面__详情__确认订单 -->
+        <activity android:name="com.hkd.ithome.activities.LaPinDetial" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.LaPinOrder" >
+        </activity>
     </application>
 
 </manifest>

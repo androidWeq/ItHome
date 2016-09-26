@@ -6,6 +6,7 @@ import android.app.Application;
 public class AppApplication extends Application {
 	private static AppApplication mAppApplication;
 	private SQLHelper sqlHelper;
+	String username;
 
 	@Override
 	public void onCreate() {
@@ -16,6 +17,9 @@ public class AppApplication extends Application {
 
 	/** 获取Application */
 	public static AppApplication getApp() {
+//		if(mAppApplication==null){
+//			mAppApplication=new AppApplication();
+//		}
 		return mAppApplication;
 	}
 	
@@ -31,6 +35,17 @@ public class AppApplication extends Application {
 		if (sqlHelper != null)
 			sqlHelper.close();
 		super.onTerminate();
+	}
+	
+	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+		
 	}
 
 	public void clearAppCache() {
