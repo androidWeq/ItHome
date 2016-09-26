@@ -4,13 +4,26 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 import me.maxwin.view.XListView;
 import me.maxwin.view.XListView.IXListViewListener;
 
 import com.example.ithome.R;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.hkd.ithome.adapter.ItQuan_listAdapter;
+import com.hkd.ithome.bean.ItQuanBeen;
+import com.hkd.ithome.tools.ItQuanTools;
+import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import android.app.Activity;
@@ -29,7 +42,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 
 public class KejiChatActivity extends Activity implements IXListViewListener,OnClickListener,OnItemClickListener{//implements 
-	ArrayList<HashMap<String, Object>> listdata;
+	List<ItQuanBeen> listdata;
 	HashMap<String, Object> map;
 	ItQuan_listAdapter adapterList;
 	@ViewInject(R.id.kejichangtan_top_img)
@@ -37,6 +50,7 @@ public class KejiChatActivity extends Activity implements IXListViewListener,OnC
 	@ViewInject(R.id.kejichangtan_xListView)
 	XListView myList;
 	RadioGroup rg;
+	HttpUtils httpUtils;
 	
 	Handler handler;
    @Override
@@ -53,9 +67,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	myList.addHeaderView(headerViewLayout);
 	rg=(RadioGroup) headerViewLayout.findViewById(R.id.kejichangtan_listHead_rg);
 	init();
-	getListItem();
-	adapterList=new ItQuan_listAdapter(this, listdata);
-	myList.setAdapter(adapterList);
+	getListViewDatas();
 	
 rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 		
@@ -89,25 +101,45 @@ rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
    }
    
    
-   public void getListItem() {
+   /**
+	 * 从网络解析json填充到数据源
+	 * @param index  页码
+	 */
+	private void getListViewDatas() {
+		httpUtils = new HttpUtils();
+		httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
+				new RequestCallBack<String>() {
+					public void onSuccess(ResponseInfo<String> responseInfo) {
+						String info = responseInfo.result;
+						// System.out.println(info+"--------");
+						Gson gson = new Gson();
+						 listdata=new ArrayList<ItQuanBeen>();
+						JsonParser jsonParser=new JsonParser();
+						JsonElement jsonElement=jsonParser.parse(info);// 将json字符串转换成JsonElement
+						JsonArray jsonArray;
+						try {
+						jsonArray=jsonElement.getAsJsonArray();//获得JsonArray对象
+						Iterator it =jsonArray.iterator();//循环
+						while(it.hasNext()){
+							jsonElement=(JsonElement) it.next();// 提取JsonElement
+							String json=jsonElement.toString();// JsonElement转换成String
+							ItQuanBeen  itQuanInformation=gson.fromJson(json, ItQuanBeen.class);// String转化成JavaBean
+							listdata.add(itQuanInformation);// 加入List
+						}
+						myList.setAdapter(adapterList);
+						} catch (Exception e) {
+							System.out.println("获得数据为空");
+							e.printStackTrace();
+						}
 
-		listdata = new ArrayList<HashMap<String, Object>>();
-		for (int i = 0; i < 10; i++) {
-			map = new HashMap<String, Object>();
-			map.put("img", R.drawable.quan_zhanwu);
-			map.put("title", "[总置顶]֧地铁上两个百合");
-			map.put("author", "独悠");
-			map.put("date", "一周前");
-			map.put("author1", "每次都为改昵称烦恼");
-			map.put("date1", "5天前");
-			map.put("phone", "iOS圈");
-			// map.put("img_scan",R.drawable.quan_hit);//���
-			map.put("scan", "1266");
-			// map.put("img_response",R.drawable.quan_comment);//�ظ�
-			map.put("response", "126");
-			listdata.add(map);
+					}
 
-		}
+					@Override
+					public void onFailure(HttpException error, String msg) {
+						System.out.println("-----获取网络数据失败");
+
+					}
+				});
 
 	}
 @Override
