@@ -208,11 +208,8 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(this, ItQuan_ListItemClickActivity.class);
-		// intent.putExtra("title", listdata.get(arg2).get(title));
-		intent.putExtra("title", "昨天买了一个包");
-		intent.putExtra("scanner", 234);
-		intent.putExtra("response", 23);
+		Intent intent = new Intent(this, WebviewActivity.class);//打开一个webView
+		intent.putExtra("link","http://quan.ithome.com/0/075/657.html");
 		startActivity(intent);
 
 	}

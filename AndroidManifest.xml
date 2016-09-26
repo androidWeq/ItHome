@@ -31,7 +31,19 @@
     <!-- 往SDCard写入数据权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 震动权限 -->
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 短信验证 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 短信验证end -->
 
     <application
         android:name="com.hkd.ithome.app.AppApplication"
@@ -48,7 +60,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		
         <activity android:name="com.hkd.ithome.activities.Me_Ithome" >
         </activity>
         <activity android:name="com.hkd.ithome.activities.ChannelActivity" >
@@ -63,17 +74,23 @@
         </activity>
         <activity android:name="com.hkd.ithome.activities.Me_Post" >
         </activity>
+        <activity android:name="com.hkd.ithome.activities.KejiChatActivity" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.ItQuan_ListItemClickActivity" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.WebviewActivity" >
+        </activity>
         <activity android:name="com.hkd.ithome.activities.Me_login_success" >
         </activity>
         <activity android:name="com.hkd.ithome.activities.Me_Register" >
         </activity>
-        <activity android:name="com.hkd.ithome.activities.ItQuan_KeJiChat_ClickImgEdit"></activity>
-        <activity android:name="com.hkd.ithome.activities.KejiChatActivity"></activity>
-        <activity android:name="com.hkd.ithome.activities.ItQuan_ListItemClickActivity"></activity>
-        
         <!-- 辣品界面__详情__确认订单 -->
-		<activity android:name="com.hkd.ithome.activities.LaPinDetial"></activity>
-		<activity android:name="com.hkd.ithome.activities.LaPinOrder"></activity>
+        <activity android:name="com.hkd.ithome.activities.LaPinDetial" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.LaPinOrder" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.ItQuan_KeJiChat_ClickImgEdit">
+        </activity>
     </application>
 
 </manifest>
