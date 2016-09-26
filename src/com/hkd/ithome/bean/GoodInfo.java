@@ -1,11 +1,13 @@
 package com.hkd.ithome.bean;
 
+import java.io.Serializable;
+
 /**
  * 商品信息
  * @author Administrator
  *
  */
-public class GoodInfo {
+public class GoodInfo implements Serializable{
 	
 	int id;
 	int pageIndex;
