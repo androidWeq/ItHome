@@ -66,7 +66,10 @@
 
         <activity android:name="com.hkd.ithome.activities.KejiChatActivity"></activity>
         <activity android:name="com.hkd.ithome.activities.ItQuan_ListItemClickActivity"></activity>
+        
+        <!-- 辣品界面__详情__确认订单 -->
 		<activity android:name="com.hkd.ithome.activities.LaPinDetial"></activity>
+		<activity android:name="com.hkd.ithome.activities.LaPinOrder"></activity>
     </application>
 
 </manifest>

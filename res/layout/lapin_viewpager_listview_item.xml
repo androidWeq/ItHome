@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="1"
-        android:layout_marginLeft="5dp">
+        android:layout_marginLeft="15dp">
         
         <TextView
             android:id="@+id/lapin_listview_item_title" 

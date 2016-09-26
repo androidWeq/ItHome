@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp" >
 
         <ImageView
             android:layout_width="10dp"
@@ -24,7 +25,7 @@
             android:gravity="center_vertical"
             android:text="运动无线自由,紫普H2蓝牙4.1无线运动耳机24.8元包邮"
             android:textColor="@color/black"
-            android:textSize="17sp"
+            android:textSize="@dimen/detial_title_size"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -32,8 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp" >
+        android:paddingLeft="@dimen/detial_padding_left"
+        android:paddingRight="@dimen/detial_padding_right" >
 
         <TextView
             android:id="@+id/lapin_detial_youhui"
@@ -41,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="下单立减30元"
             android:textColor="@color/red"
-            android:textSize="15sp" />
+            android:textSize="@dimen/detial_youhui_size" />
 
         <TextView
             android:id="@+id/lapin_detial_time"
@@ -50,7 +51,7 @@
             android:layout_marginTop="10dp"
             android:text="天猫精选 | 11:40"
             android:textColor="@color/gray_heavy"
-            android:textSize="15sp" />
+            android:textSize="@dimen/detial_time_size" />
 
         <View
             android:layout_width="match_parent"
@@ -64,21 +65,64 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp" >
+        android:paddingLeft="@dimen/detial_padding_left"
+        android:paddingRight="@dimen/detial_padding_right" >
 
         <TextView
             android:id="@+id/lapin_detial_describe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:lineSpacingExtra="3dp"
             android:text="讯台邪灵斩专业游戏鼠标日常收件78,现参加店铺活动满78减20元,下单实付仅需58元,安华高处理器,炫酷呼吸背光,电镀双翼加重,6键自定义宏,64k记忆内存,高达4000DPI,左右对称."
-            android:textSize="18sp" />
+            android:textSize="@dimen/detial_describe_size" />
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/lapin3"
-            android:layout_marginTop="10dp" />
+            android:id="@+id/lapin_detaia_img"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="@dimen/detial_img_width"
+            android:layout_height="@dimen/detial_img_heigh"
+            android:layout_marginTop="10dp"
+            android:layout_weight="2.68"
+            android:background="@color/white" />
     </LinearLayout>
+    
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="@dimen/detial_bottom_heigh"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical"
+        android:background="@color/gray_light">
+        
+        <ImageView android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_refresh"/>
+        
+        <ImageView android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_share"/>
+        
+        <ImageView android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_daymode"/>
+        
+        <TextView 
+            android:id="@+id/lapin_detial_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/detial_bottom_heigh"
+            android:text="立即购买"
+            android:paddingLeft="30dp"
+            android:textSize="@dimen/detial_bottom_buy_size"
+            android:paddingRight="30dp"
+            android:textColor="@color/white"
+            android:background="@color/red"
+            android:gravity="center"/>
+        
+        </LinearLayout>
 
 </LinearLayout>
