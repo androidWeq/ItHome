@@ -196,6 +196,7 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 		case R.id.kejichangtan_imgEdit:
 			Intent intent_imgEdit=new Intent(this, ItQuan_KeJiChat_ClickImgEdit.class);
 			startActivity(intent_imgEdit);
+			finish();
 			break;
 		
 		default:
