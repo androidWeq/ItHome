@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-   
+    <!-- 加载失败开始 -->
     <RelativeLayout
         android:id="@+id/itquan_listitem_click_loadFailu"
         android:layout_width="match_parent"
@@ -39,6 +39,8 @@
             android:layout_centerInParent="true"
             android:src="@drawable/refresh_btn_active" />
     </RelativeLayout>
+    <!-- 加载失败结束 -->
+    
     <RelativeLayout 
        android:id="@+id/itquan_listitem_click_Visibile"
        android:layout_width="match_parent"
@@ -49,48 +51,11 @@
         android:layout_height="match_parent"
         android:visibility="visible"
         android:orientation="vertical">
-         <RelativeLayout 
+       
+    <WebView 
+        android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="75dp">
-        <TextView 
-            android:id="@+id/itquan_listitem_click_Visibile_tvTop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[讨论]我火星了，通知中心可以这样啊？"
-            android:lines="2"
-            android:textSize="@dimen/wenzi_Style_3"
-            android:paddingTop="@dimen/jianju_stytle1"
-            android:layout_marginRight="@dimen/jianju_stytle3"
-            android:layout_marginLeft="@dimen/jianju_stytle3"/>
-        <TextView
-            android:id="@+id/itquan_listitem_click_Visibile_tvScan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/itquan_listitem_click_Visibile_tvTop"
-            android:layout_alignLeft="@id/itquan_listitem_click_Visibile_tvTop"
-            android:drawableLeft="@drawable/quan_hit"
-            android:drawablePadding="@dimen/jianju_stytle2"
-            android:text="3149" />
-        <TextView
-            android:id="@+id/itquan_listitem_click_Visibile_tvResponse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/itquan_listitem_click_Visibile_tvScan"
-            android:layout_below="@id/itquan_listitem_click_Visibile_tvTop"
-            android:drawableLeft="@drawable/quan_comment"
-            android:drawablePadding="@dimen/jianju_stytle2"
-            android:text="53" 
-            android:layout_marginLeft="@dimen/jianju_stytle3"/> 
-            
-    </RelativeLayout>
-    <TextView 
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/jianju_stytleLine"
-        android:background="@color/gray"/>
-    <ImageView 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/splash_night"/>
+        android:layout_height="match_parent"/>
      
     </LinearLayout>
    </RelativeLayout>

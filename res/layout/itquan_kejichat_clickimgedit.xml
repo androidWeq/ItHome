@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 头部开始 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/red"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/Img_backward_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/backward_btn" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/faxintie"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_fabiao"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/fabiao"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <!-- 头部结束 -->
+    <!-- 标题开始 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topHeight"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/jianju_stytle1"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/edit_title"
+            android:lines="1"
+            android:gravity="left"
+            android:textSize="@dimen/wenzi_Style_1" />
+
+        <TextView
+            android:id="@+id/tv_help"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/jianju_stytle1"
+            android:drawableRight="@drawable/quan_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/edit_help"
+            android:textColor="@color/red"
+            android:textSize="@dimen/wenzi_Style_1" />
+    </LinearLayout>
+    
+    <!-- 标题结束 -->
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/jianju_stytleLine"
+        android:background="@color/gray_heavy"
+        android:layout_marginLeft="@dimen/jianju_stytle1"
+        android:layout_marginRight="@dimen/jianju_stytle1"/>
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+         <EditText 
+        android:id="@+id/editext_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_input"
+        android:ems="10"
+        android:paddingBottom="@dimen/jianju_stytle3"
+        android:inputType="textMultiLine"
+        android:layout_margin="@dimen/jianju_stytle1">
+        </EditText>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/topHeight"
+             android:layout_alignParentBottom="true"
+             android:orientation="horizontal" >
+             <ImageView 
+                 android:id="@+id/img_camera"
+                 android:layout_width="@dimen/topHeight"
+                 android:layout_height="@dimen/topHeight"
+                 android:src="@drawable/quan_cap"
+                 android:layout_gravity="center_vertical"
+                 android:layout_margin="@dimen/jianju_stytle3"/>
+              <ImageView 
+                 android:id="@+id/img_photo"
+                 android:layout_width="@dimen/topHeight"
+                 android:layout_height="@dimen/topHeight"
+                 android:src="@drawable/quan_pic"
+                 android:layout_gravity="center_vertical"
+                 android:layout_margin="@dimen/jianju_stytle3"/>
+         </LinearLayout>
+
+    </RelativeLayout>
+   
+
+
+</LinearLayout>

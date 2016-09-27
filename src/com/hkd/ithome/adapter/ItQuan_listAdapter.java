@@ -45,7 +45,7 @@ public class ItQuan_listAdapter extends BaseAdapter{
 
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
-		System.out.println("-------进入adapter()");
+//		System.out.println("-------进入adapter()");
 		// TODO Auto-generated method stub
 		Holder holder;
 		if(arg1==null){
