@@ -124,6 +124,22 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
                 AlertDialog dialog_yanZheng = new AlertDialog.Builder
                 		(this).create();
                 View view_dialog=LayoutInflater.from(ItQuan_KeJiChat_ClickImgEdit.this).inflate(R.layout.message_yanzheng, null);
+                bt_getNum=(Button) view_dialog.findViewById(R.id.button_getYanZhengNum);//点击获取验证码
+                 phoneNum=(EditText) view_dialog.findViewById(R.id.edit_phoneNum);//输入手机号
+                 yanZhengNum=(EditText) view_dialog.findViewById(R.id.editText_yanZhengNum);//输入验证码
+            	 UserHaiWai=(TextView) view_dialog.findViewById(R.id.tv_userHaiWai);//海外用户
+            	bt_yanZheng=(Button) view_dialog.findViewById(R.id.button_yanZhengNum);//点击提交验证码
+                /*
+                 * 验证码的获取
+                 * 权限注册：
+                 * <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+                 * <uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission> 
+                 * <uses-permission android:name="android.permission.READ_SMS"></uses-permission>
+                 * 1.输入手机号后，点击获取验证码，将手机号在数据库中查询  是否已存在
+                 * 2.若存在  提示 手机号已注册 清空手机输入框  并重新输入
+                 * 3.若不存在  通过服务器将数据库中的   随机验证码 发送给该手机
+                 */
+                
                 dialog_yanZheng.setView(view_dialog);
                 dialog_yanZheng.show();
                 WindowManager.LayoutParams params = 
