@@ -1,15 +1,11 @@
 package com.hkd.ithome.activities;
 
-import java.io.File;
-
 import com.example.ithome.R;
+import com.hkd.ithome.app.AppApplication;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,14 +13,16 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickListener{
@@ -42,6 +40,16 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 	ImageView img_photo;
 	@ViewInject(R.id.Img_backward_btn)//返回键
 	ImageView Img_backward_btn;
+	@ViewInject(R.id.relativeLayout_showHidden)//选择图片的显示与隐藏布局
+	RelativeLayout relativeLayout_showHidden;
+	@ViewInject(R.id.contentSelectImg)//将选中的图片放到该ImageView里面
+	ImageView contentSelectImg;
+	@ViewInject(R.id.Img_del)//删除已选中的图片
+	ImageView Img_del;
+	EditText phoneNum,yanZhengNum;
+	TextView UserHaiWai;
+	Button bt_getNum,bt_yanZheng;
+	
 	private static final int  PHOTO=101;
 	private static final int CAMERA=100;
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +67,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 		img_photo.setOnClickListener(this);//打开照片监听
 		tv_help.setOnClickListener(this);//点击帮助监听
 		tv_fabiao.setOnClickListener(this);//点击发表监听
+		Img_del.setOnClickListener(this);//删除已选中的图片
 	}
 	/*
 	 * 单击事件
@@ -100,16 +109,47 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 			Intent intent_photo=new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 			startActivityForResult(intent_photo, PHOTO);
 			break;
+		case R.id.Img_del://隐藏布局
+		    relativeLayout_showHidden.setVisibility(View.GONE);
+		    break;
+		case R.id.tv_fabiao://发表 判断是否已登录   1没登录 先登录2 已登录就发表
+			/*
+			 * 判断是否已登录  
+			 *  1没登录 先登录
+			 *  2 已登录就发表     弹出一个提示框 短信验证
+			 *  !!!!3.把将要发表的内容添加到listView中 并第一个显示（未做）
+			 */
+			if(AppApplication.getApp().getUsername()!=null){            
+                AlertDialog dialog_yanZheng = new AlertDialog.Builder
+                		(this).create();
+                View view_dialog=LayoutInflater.from(ItQuan_KeJiChat_ClickImgEdit.this).inflate(R.layout.message_yanzheng, null);
+                dialog_yanZheng.setView(view_dialog);
+                dialog_yanZheng.show();
+                WindowManager.LayoutParams params = 
+                		dialog_yanZheng.getWindow().getAttributes();
+                //获得屏幕的宽高
+                DisplayMetrics dm = new DisplayMetrics();
+                 //获取屏幕信息
+                        getWindowManager().getDefaultDisplay().getMetrics(dm);
+                        int screenWidth = dm.widthPixels;
+                        int screenHeigh = dm.heightPixels;
+                		params.width = screenWidth;
+                		params.height = (int) (screenHeigh*0.7);
+                		dialog_yanZheng.getWindow().setAttributes(params);
+               
+			
+			
+			}else{
+				Intent intent=new Intent(ItQuan_KeJiChat_ClickImgEdit.this,Me_Login.class);
+				startActivity(intent);
+			}
+//			
+			break;
 
 		default:
 			break;
 		}
 		
-	}
-	private android.content.DialogInterface.OnClickListener ok() {
-		Intent intent=new Intent(this, KejiChatActivity.class);
-		startActivity(intent);
-		return null;
 	}
 	/*
 	 * 相机返回数据通过下面的回调方法取得，并处理(non-Javadoc)
@@ -125,25 +165,32 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 				Bundle bundle=data.getExtras();
 				//获取相机返回的数据，并转换为图片格式
 				Bitmap bitmap=(Bitmap) bundle.get("data");
+//				System.out.println("-------进入");
+//				System.out.println("--------bitmap"+bitmap);
+				/*
+				 * 1将拍下的照片放到容器里面
+				 * 2.显示布局
+				 */
+				contentSelectImg.setImageBitmap(bitmap);
+				relativeLayout_showHidden.setVisibility(View.VISIBLE);
 				break;
 			case PHOTO:
-//				Uri selectedImg=data.getData();
-//				String[] filePathColumns={MediaStore.Images.Media.DATA};
-//				Cursor cs=this.getContentResolver().query(selectedImg, filePathColumns, null, null, null);
-//				cs.moveToFirst();
-//				int columnIndex=cs.getColumnIndex(filePathColumns[0]);
-//				String photoPath=cs.getString(columnIndex);
-//				cs.close();
 				 Uri uri = data.getData();
 	                Cursor cursor = this.getContentResolver().query(uri, null,
 	                        null, null, null);
 	                cursor.moveToFirst();
-	                  String imgNo = cursor.getString(0); // 图片编号 
+//	                  String imgNo = cursor.getString(0); // 图片编号 
 	                  String imgPath = cursor.getString(1); // 图片文件路径 
-	                  String imgSize = cursor.getString(2); // 图片大小 
-	                  String imgName = cursor.getString(3); // 图片文件名
+//	                  String imgSize = cursor.getString(2); // 图片大小 
+//	                  String imgName = cursor.getString(3); // 图片文件名
 	                  cursor.close();
 	                Bitmap bitmap2 = BitmapFactory.decodeFile(imgPath);
+	                /*
+					 * 1将拍下的照片放到容器里面
+					 * 2.显示布局
+					 */
+	                contentSelectImg.setImageBitmap(bitmap2);
+					relativeLayout_showHidden.setVisibility(View.VISIBLE);
 				break;
 			default:
 				break;
