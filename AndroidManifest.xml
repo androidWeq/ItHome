@@ -91,6 +91,7 @@
         </activity>
         <activity android:name="com.hkd.ithome.activities.ItQuan_KeJiChat_ClickImgEdit">
         </activity>
+
     </application>
 
 </manifest>

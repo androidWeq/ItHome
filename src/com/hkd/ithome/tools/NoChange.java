@@ -5,13 +5,20 @@ public class NoChange {
 	/**
 	 * 服务器地址
 	 */
-	public final static String WEB_SERVERS_ADDRESS="http://192.168.56.1:8080/ITHome_DB";
+	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.112:8080/ITHome_DB";
 	
 	/**
 	 * 查询辣品信息的接口
 	 */
 	public final static String SELECT_GOODS=WEB_SERVERS_ADDRESS+"/lapin_seletGoodsInfo?";
 	
-	
-
+	/**
+	 * 查询当前用户默认地址信息的接口
+	 */
+	public final static String SELECT_DEFAULT_ADDRESS=WEB_SERVERS_ADDRESS+"/lapin_getdefaultAddressInfo?";
+    
+	/**
+	 * 添加当前用户的收货地址
+	 */
+	public final static String ADD_ADDRESSINFO=WEB_SERVERS_ADDRESS+"/lapin_addAddressInfo?";
 }
