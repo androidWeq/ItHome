@@ -74,6 +74,8 @@
         <!-- 辣品界面__详情__确认订单 -->
 		<activity android:name="com.hkd.ithome.activities.LaPinDetial"></activity>
 		<activity android:name="com.hkd.ithome.activities.LaPinOrder"></activity>
+		<!-- 用户购买地址添加 -->
+		<activity android:name="com.hkd.ithome.activities.LaPinAddressAdd"></activity>
     </application>
 
 </manifest>
