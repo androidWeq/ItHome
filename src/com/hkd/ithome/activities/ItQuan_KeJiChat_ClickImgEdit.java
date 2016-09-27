@@ -95,6 +95,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 					// TODO Auto-generated method stub
 					Intent intent=new Intent(ItQuan_KeJiChat_ClickImgEdit.this, KejiChatActivity.class);
 					 startActivity(intent);
+					 finish();
 				}
 			});
 			dialog.show();

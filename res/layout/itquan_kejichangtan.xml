@@ -24,6 +24,8 @@
             android:textSize="@dimen/wenzi_Style_1" />
 
     </RelativeLayout>
+    
+    
     <FrameLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
