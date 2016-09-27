@@ -7,7 +7,7 @@
 	<ImageView 
 	    android:id="@+id/iv_listtwo"
 	    android:layout_width="match_parent"
-	    android:layout_height="200dp"
+	    android:layout_height="230dp"
 	    android:background="@drawable/banner_header2"
 	    />
 </LinearLayout>
