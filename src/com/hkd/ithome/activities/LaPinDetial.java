@@ -1,6 +1,7 @@
 package com.hkd.ithome.activities;
 
 import com.example.ithome.R;
+import com.hkd.ithome.app.AppApplication;
 import com.hkd.ithome.bean.GoodInfo;
 import com.hkd.ithome.tools.NoChange;
 import com.lidroid.xutils.BitmapUtils;
@@ -17,6 +18,7 @@ public class LaPinDetial extends Activity implements OnClickListener {
 	TextView title, time, youhui, describe, toBuy;
 	ImageView img;
 	BitmapUtils bitmapUtils;
+	GoodInfo info;
 
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,7 +34,7 @@ public class LaPinDetial extends Activity implements OnClickListener {
 	 */
 	private void getGoodInfo() {
 		Intent intent = getIntent();
-		GoodInfo info = (GoodInfo) intent.getSerializableExtra("goodInfo");
+		info = (GoodInfo) intent.getSerializableExtra("goodInfo");
 		title.setText(info.getTitle());
 		time.setText(info.getTime());
 		youhui.setText("下单立减" + info.getYouhui() + "元");
@@ -55,9 +57,19 @@ public class LaPinDetial extends Activity implements OnClickListener {
         toBuy.setOnClickListener(this);
 	}
 
-	@Override
 	public void onClick(View v) {
-		Intent intent = new Intent(LaPinDetial.this, LaPinOrder.class);
+		Intent intent;
+		if(AppApplication.getApp().getUsername()==null){
+			//未登录跳转到登录界面
+			intent = new Intent(LaPinDetial.this, Me_Login.class);
+		}else{
+			//已经登录直接跳转到详情页面
+			intent = new Intent(LaPinDetial.this, LaPinOrder.class);
+			Bundle bundle=new Bundle();
+			bundle.putSerializable("goodInfo", info);
+			intent.putExtras(bundle);
+			
+		}
 		startActivity(intent);
 
 	}

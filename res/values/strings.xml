@@ -104,6 +104,23 @@
     <string name="clickRefresh">点击刷新按钮重新加载</string>
     <string name="loadFail">加载失败</string>
     <string name="remark">写评论</string>
+
     <!-- 刘双杰 -->
+
+    <string name="faxintie">发新帖</string>
+    <string name="fabiao">发表</string>
+    <string name="edit_title">标题</string>
+    <string name="edit_help">求助</string>
+    <string name="edit_input">输入内容...</string>
+    <string name="edit_phNum">手机号码</string>
+    <string name="text_userHaiWai">海外用户？</string>
+    <string name="edit_yanZhengNum">验证码</string>
+    <string name="button_getYanZhengNum">获取验证码</string>
+    <string name="yanZheng">验证</string>
+    
+    
+    <!--刘双杰  -->
+
+
 
 </resources>
