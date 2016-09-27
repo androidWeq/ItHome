@@ -7,7 +7,12 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
-
+    <!-- 相机,SD卡权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />  
+    <uses-feature android:name="android.hardware.camera"/>  
+    <uses-feature android:name="android.hardware.camera.autofocus"/>  
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />  
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />  
     <!-- 允许读取手机状态相关数据 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 允许访问SD卡 -->
@@ -66,6 +71,8 @@
         <activity android:name="com.hkd.ithome.activities.Me_login_success" >
         </activity>
         <activity android:name="com.hkd.ithome.activities.Me_Register" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Me_Gold_Shop" >
         </activity>
 
         <activity android:name="com.hkd.ithome.activities.KejiChatActivity"></activity>

@@ -110,4 +110,10 @@
     
     <!-- 陈雅博 频道管理end -->
     
+    <!-- popupwindow的进入消失样式 -->
+    <style name="popupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_in</item>
+        <item name="android:windowExitAnimation">@anim/popup_out</item>
+        
+    </style>
 </resources>
