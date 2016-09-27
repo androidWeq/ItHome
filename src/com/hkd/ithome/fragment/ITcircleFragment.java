@@ -17,6 +17,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.hkd.ithome.activities.ItQuan_ListItemClickActivity;
 import com.hkd.ithome.activities.KejiChatActivity;
+import com.hkd.ithome.activities.WebviewActivity;
 import com.hkd.ithome.adapter.ItQuan_Adapter;
 import com.hkd.ithome.adapter.ItQuan_listAdapter;
 import com.hkd.ithome.bean.GoodInfo;
@@ -34,6 +35,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -77,18 +79,6 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		ViewUtils.inject(this, v);
 		getListViewDatas();
 		myList.setOnItemClickListener(this);
-//		myList.setOnItemClickListener(new OnItemClickListener() {
-//
-//			@Override
-//			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-//					long arg3) {
-//				// TODO Auto-generated method stub
-//				Intent intent=new Intent(getActivity(), ItQuan_ListItemClickActivity.class);
-//				intent.putExtra("path", "http://....");
-//				startActivity(intent);
-//			}
-//		});
-
 		return v;
 	}
 	
@@ -184,12 +174,10 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
-		case R.id.itquan_listView://XlistView点击事件
-			Intent intent=new Intent(getActivity(),ItQuan_ListItemClickActivity.class);
-			intent.putExtra("Img", listdata.get(arg2).getImgPath());//头像
-			intent.putExtra("title", listdata.get(arg2).getTitle());//标题
-			intent.putExtra("scanner", listdata.get(arg2).getScanner());//浏览量
-			intent.putExtra("response", listdata.get(arg2).getResponse());//回复量
+		case R.id.itquan_listView://XlistView点击事件 
+			
+			Intent intent=new Intent(getActivity(),WebviewActivity.class);
+			intent.putExtra("link","http://quan.ithome.com/0/075/657.html");//头像
 			startActivity(intent);
 			break;
 		case R.id.itquan_gridView://GridView点击事件

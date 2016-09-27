@@ -15,7 +15,6 @@
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
 
-
     <!-- 陈雅博频道管理 start -->
     <string name="drawer_btn_rss">频道管理</string>
     <string name="subscribe_my_category">我的频道</string>
@@ -23,7 +22,6 @@
     <string name="subscribe_manager_category_info">点击添加更多栏目</string>
     <string name="subscribe_manager_category_info_2">长按栏目排序或单击删除</string>
     <!-- 陈雅博频道管理 end -->
-
 
     <string name="login_im">立即登录</string>
     <string name="login_prompt">登录后体验更多精彩内容</string>
@@ -79,7 +77,14 @@
     <string name="exit_account">退出账户</string>
     <string name="password_repet">重复密码</string>
     <string name="register">注册</string>
-    
+    <string name="set_head">设置头像</string>
+    <string name="take_photo">拍照</string>
+    <string name="photos">相册</string>
+    <string name="cancel">取消</string>
+    <string name="old_pwd">旧密码:</string>
+    <string name="new_pwd">新密码:</string>
+    <string name="qd_pwd">确定新密码:</string>
+    <string name="qd">确定</string>
     
 
     <!-- 刘双杰 -->
@@ -99,7 +104,23 @@
     <string name="clickRefresh">点击刷新按钮重新加载</string>
     <string name="loadFail">加载失败</string>
     <string name="remark">写评论</string>
+
+    <!-- 刘双杰 -->
+
+    <string name="faxintie">发新帖</string>
+    <string name="fabiao">发表</string>
+    <string name="edit_title">标题</string>
+    <string name="edit_help">求助</string>
+    <string name="edit_input">输入内容...</string>
+    <string name="edit_phNum">手机号码</string>
+    <string name="text_userHaiWai">海外用户？</string>
+    <string name="edit_yanZhengNum">验证码</string>
+    <string name="button_getYanZhengNum">获取验证码</string>
+    <string name="yanZheng">验证</string>
+    
+    
     <!--刘双杰  -->
+
 
 
 </resources>

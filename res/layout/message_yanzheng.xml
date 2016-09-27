@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:layout_margin="@dimen/jianju_stytle1"
+    android:orientation="vertical"
+    android:background="@color/gray_light">
+    <TextView 
+        android:id="@+id/tv_message_yanzheng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="短信验证"
+        android:textColor="@color/black"
+        android:textSize="@dimen/wenzi_Style_1"
+        />
+   <LinearLayout
+       android:layout_below="@id/tv_message_yanzheng"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topHeight"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_phoneNum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/jianju_stytle1"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/edit_phNum"
+            android:lines="1"
+            android:gravity="left"
+            android:textSize="@dimen/wenzi_Style_1" />
+
+        <TextView
+            android:id="@+id/tv_userHaiWai"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/jianju_stytle1"
+            android:gravity="center_vertical"
+            android:text="@string/text_userHaiWai"
+            android:textColor="@color/gray_heavy"
+            android:textSize="@dimen/wenzi_Style_2" />
+    </LinearLayout>
+     <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/jianju_stytleLine"
+        android:background="@color/red"
+        android:layout_marginLeft="@dimen/jianju_stytle1"
+        android:layout_marginRight="@dimen/jianju_stytle1"/>
+     
+<!-- 横线结束 -->
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="@dimen/jianju_stytle1">
+        <LinearLayout 
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+            <EditText 
+         android:id="@+id/editText_yanZhengNum"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:hint="@string/edit_yanZhengNum"
+         android:background="@null"
+         android:textSize="@dimen/wenzi_Style_1"/>
+            <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/jianju_stytleLine"
+        android:background="@color/gray_heavy"
+        android:layout_marginRight="@dimen/jianju_stytle1"/>
+        </LinearLayout>
+     
+     
+     <Button 
+         android:id="@+id/button_getYanZhengNum"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/button_getYanZhengNum"
+         android:textSize="@dimen/wenzi_Style_1"/>
+</LinearLayout>
+   
+<Button 
+    android:id="@+id/button_yanZhengNum"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/topHeight"
+    android:text="@string/yanZheng"
+    android:textSize="@dimen/wenzi_Style_1"
+    android:background="@color/white"
+    android:layout_margin="@dimen/jianju_stytle1"/>
+    
+
+
+
+
+
+</LinearLayout>

@@ -121,8 +121,7 @@
             android:paddingRight="30dp"
             android:textColor="@color/white"
             android:background="@color/red"
-            android:gravity="center"/>
-        
+            android:gravity="center"/>       
         </LinearLayout>
 
 </LinearLayout>
