@@ -181,7 +181,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		case R.id.itquan_listView://XlistView点击事件 
 			
 			Intent intent=new Intent(getActivity(),WebviewActivity.class);
-			intent.putExtra("link","http://quan.ithome.com/0/075/657.html");//头像
+			intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);//头像
 			startActivity(intent);
 			break;
 		case R.id.itquan_gridView://GridView点击事件
