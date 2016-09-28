@@ -47,10 +47,8 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 		setContentView(R.layout.lapin_detial_order);
 		ViewUtils.inject(this);
 		init();
-		
 	}
 	
-
 	
 	protected void onStart() {
 		

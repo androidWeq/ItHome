@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
+
     <android.support.v4.view.ViewPager
         android:id="@+id/vpHeader"
-        android:background="#0f0"
         android:layout_width="match_parent"
         android:layout_height="@dimen/viewpager_head_height"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:background="@color/black" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/vpHeader"
+        android:background="#80000000"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="iPhone 7正式发布，7，在此。"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:orientation="horizontal" >
+        <RadioButton 
+            android:id="@+id/popOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            />
+        <RadioButton 
+            android:id="@+id/popTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            />
+    </RadioGroup>
+
+</RelativeLayout>
