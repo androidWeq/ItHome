@@ -45,6 +45,7 @@
     <dimen name="jianju_stytle">2dp</dimen>
     <dimen name="jianju_stytleLine">0.5dp</dimen>
     <dimen name="jianju_stytle3">15dp</dimen>
+    <dimen name="img_Hwidth">40dp</dimen>
     <!-- 高度(刘双杰)end -->
 
 

@@ -35,11 +35,11 @@
                 android:textSize="20sp" />
 
             <ImageView
-                android:id="@+id/ImageView02"
+                android:id="@+id/Frg_Image_sousuo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="@dimen/jianju_stytle3"
                 android:background="@drawable/main_search" />
         </LinearLayout>
 
