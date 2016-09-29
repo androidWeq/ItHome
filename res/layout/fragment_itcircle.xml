@@ -73,9 +73,15 @@
             android:background="@drawable/main_search" />
     </LinearLayout>
 <!-- top结束 -->
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/lapin_loading" />
        <FrameLayout 
+           android:id="@+id/Frame"
            android:layout_width="match_parent"
-           android:layout_height="match_parent">
+           android:layout_height="match_parent"
+           android:visibility="gone">
             <!-- ListView开始 -->
         <me.maxwin.view.XListView 
             android:id="@+id/itquan_listView"
@@ -84,12 +90,8 @@
             android:divider="@null">
         </me.maxwin.view.XListView>
         <!-- ListView结束 -->
-      <!--   <ImageView 
-    android:id="@+id/img_animation"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:visibility="gone"/> -->
        </FrameLayout>
+</RelativeLayout>
+
        
 </LinearLayout>

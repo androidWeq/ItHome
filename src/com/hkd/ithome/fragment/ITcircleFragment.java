@@ -43,11 +43,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class ITcircleFragment extends Fragment implements IXListViewListener,OnItemClickListener ,OnClickListener{
@@ -74,16 +80,44 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 			"iOS圈", "软媒产品", "站务处理" };
 	String[] tvBelow = { "+312", "+34", "+203", "+96", "+561", "+150", "+40",
 			"+20" };
+	
+//	//旋转动画显示与隐藏
+//	AnimationDrawable animationDrawable;
+//	@ViewInject(R.id.Img_rota)
+//	ImageView Img_rota;
+	@ViewInject(R.id.Frame)
+	FrameLayout Frame;
+	View v;
+	RelativeLayout lapinLoadingContent;// 加载动画页面
+	ImageView lapinLoadingImg;// 加载旋转动画图片
+//	
+	
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_itcircle, null);
+		 v = inflater.inflate(R.layout.fragment_itcircle, null);
 		ViewUtils.inject(this, v);
+		initRotateAnimation();//动画
 		getListViewDatas();
 		Image_sousuo.setOnClickListener(this);
 		myList.setOnItemClickListener(this);
 		return v;
+	}
+	/**
+	 * 加载动画的初始化
+	 */
+	public void initRotateAnimation() {
+		lapinLoadingContent = (RelativeLayout) v
+				.findViewById(R.id.lapin_loadingContent);
+		lapinLoadingImg = (ImageView) v
+				.findViewById(R.id.lapin_loadingContent_rotatingImg);
+		RotateAnimation rotateAnimation = (RotateAnimation) AnimationUtils
+				.loadAnimation(getActivity(), R.anim.rotating);
+		LinearInterpolator lin = new LinearInterpolator();// 设置为匀速转动
+		rotateAnimation.setInterpolator(lin);
+		lapinLoadingImg.startAnimation(rotateAnimation);
+
 	}
 	
 	
@@ -248,8 +282,11 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 							getJsonData(info);
 							adapterList.notifyDataSetChanged();
 						}
+						// 取消动画
+						lapinLoadingImg.clearAnimation();
+						lapinLoadingContent.setVisibility(View.INVISIBLE);
+						Frame.setVisibility(View.VISIBLE);
 					}
-
 					@Override
 					public void onFailure(HttpException error, String msg) {
 						System.out.println("-----获取网络数据失败");
