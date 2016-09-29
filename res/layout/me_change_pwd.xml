@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/popup_lin_change"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:alpha="0.6"
+        android:background="@color/gray_heavy"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_pwd"
+        android:textSize="20sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="@dimen/pupup_marginBottom"
+        android:layout_marginTop="@dimen/pupup_marginTop"
+        android:background="@color/gray_heavy" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/change_marginLeft"
+        android:layout_marginRight="@dimen/change_marginRight"
+        android:layout_marginTop="@dimen/change_marginTop"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/old_pwd"
+            android:textColor="@color/gray_heavy"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/old_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:maxLength="20"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="@dimen/pupup_marginBottom"
+        android:layout_marginLeft="@dimen/change_marginLeft"
+        android:layout_marginRight="@dimen/change_marginRight"
+        android:layout_marginTop="@dimen/change_marginTop"
+        android:background="@color/gray_heavy" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/change_marginLeft"
+        android:layout_marginRight="@dimen/change_marginRight"
+        android:layout_marginTop="@dimen/change_marginTop"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/new_pwd"
+            android:textColor="@color/gray_heavy"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/new_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:maxLength="20"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="@dimen/pupup_marginBottom"
+        android:layout_marginLeft="@dimen/change_marginLeft"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/pupup_marginTop"
+        android:background="@color/gray_heavy" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/change_marginLeft"
+        android:layout_marginRight="@dimen/change_marginRight"
+        android:layout_marginTop="@dimen/change_marginTop"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/qd_pwd"
+            android:textColor="@color/gray_heavy"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/qd_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:maxLength="20"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="@dimen/pupup_marginBottom"
+        android:layout_marginLeft="@dimen/change_marginLeft"
+        android:layout_marginRight="@dimen/change_marginRight"
+        android:layout_marginTop="@dimen/pupup_marginTop"
+        android:background="@color/gray_heavy" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/change_marginLeft"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/cancel_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:paddingBottom="@dimen/change_PaddingBottom"
+            android:paddingLeft="@dimen/change_PaddingLeft"
+            android:paddingRight="@dimen/change_PaddingRight"
+            android:paddingTop="@dimen/change_PaddingTop"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/qd_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:paddingBottom="@dimen/change_PaddingBottom"
+            android:paddingLeft="@dimen/change_PaddingLeft"
+            android:paddingRight="@dimen/change_PaddingRight"
+            android:paddingTop="@dimen/change_PaddingTop"
+            android:text="@string/qd"
+            android:enabled="false"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

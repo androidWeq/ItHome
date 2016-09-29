@@ -3,7 +3,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    
+
     <!-- news页面布局start -->
     <dimen name="head_titlebar_height">48dp</dimen>
     <dimen name="coin_titlebar_margin_left">15dp</dimen>
@@ -27,20 +27,15 @@
     <dimen name="comment_item_list_width">40dp</dimen>
     <dimen name="comment_item_list_margin_left">5dp</dimen>
     <dimen name="comment_item_list_margin_right">10dp</dimen>
-    
-    
-    
+
     <!-- news页面布局end -->
-    
-    
-    
+
     <dimen name="lapin_topTxt_normal_size">16sp</dimen>
     <dimen name="lapin_toptxt_check_size">20sp</dimen>
     <dimen name="lapin_listview_item_titleTxtSize">16sp</dimen>
     <dimen name="lapin_listview_item_youhuiTxtSize">14sp</dimen>
     <dimen name="lapin_listview_item_timeTxtSize">13sp</dimen>
-    
-    
+
     <!-- 高度、宽度、间距(刘双杰)start -->
     <dimen name="gridViewHeight">350dp</dimen>
     <dimen name="columnWidth">50dp</dimen>
@@ -50,20 +45,20 @@
     <dimen name="jianju_stytle">2dp</dimen>
     <dimen name="jianju_stytleLine">0.5dp</dimen>
     <dimen name="jianju_stytle3">15dp</dimen>
+    <dimen name="img_Hwidth">40dp</dimen>
     <!-- 高度(刘双杰)end -->
-    
-    
-    
-    <!-- 文字大小 (刘双杰)start-->
+
+
+    <!-- 文字大小 (刘双杰)start -->
     <dimen name="wenzi_Style_1">20sp</dimen>
     <dimen name="wenzi_Style_2">18sp</dimen>
     <dimen name="wenzi_Style_3">16sp</dimen>
     <dimen name="wenzi_Style_4">14sp</dimen>
     <dimen name="wenzi_Style_5">12sp</dimen>
     <dimen name="wenzi_Style_6">10sp</dimen>
-    <!-- 文字大小 (刘双杰)end-->
-    
-    
+    <!-- 文字大小 (刘双杰)end -->
+
+
     <!-- 我页面主要dimens -->
     <dimen name="ten">10dp</dimen>
     <dimen name="one">1dp</dimen>
@@ -91,7 +86,25 @@
     <dimen name="setting_height">48dp</dimen>
     <!-- 登陆成功页面dimens -->
     <dimen name="success_padding">10dp</dimen>
+    <!-- 选择头像页面dimens -->
+    <dimen name="pupup_marginRight">40dp</dimen>
+    <dimen name="pupup_marginBottom">10dp</dimen>
+    <dimen name="pupup_marginTop">5dp</dimen>
+    <dimen name="pupup_margin">20dp</dimen>
+    <dimen name="pupup_padding">10dp</dimen>
+    <!-- 修改密码dimens -->
+    <dimen name="change_marginLeft">10dp</dimen>
+    <dimen name="change_marginRight">10dp</dimen>
+    <dimen name="change_marginTop">10dp</dimen>
+    <dimen name="change_PaddingTop">10dp</dimen>
+    <dimen name="change_PaddingBottom">10dp</dimen>
+    <dimen name="change_PaddingLeft">20dp</dimen>
+    <dimen name="change_PaddingRight">20dp</dimen>
     
+    
+    
+    
+
     <!-- 辣品详情界面dimens -->
     <dimen name="detial_padding_left">20dp</dimen>
     <dimen name="detial_padding_right">20dp</dimen>
@@ -104,6 +117,7 @@
     <dimen name="detial_img_heigh">410dp</dimen>
     <dimen name="detial_bottom_heigh">50dp</dimen>
     <dimen name="detial_bottom_buy_size">17sp</dimen>
+
     
     <!-- 地址显示列表 -->
     <dimen name="address_item_nameAndphone">17sp</dimen>

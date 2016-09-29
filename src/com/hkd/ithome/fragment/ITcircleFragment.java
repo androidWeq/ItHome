@@ -15,8 +15,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.hkd.ithome.activities.ItQuan_ListItemClickActivity;
 import com.hkd.ithome.activities.KejiChatActivity;
+import com.hkd.ithome.activities.SouSuoActivity;
 import com.hkd.ithome.activities.WebviewActivity;
 import com.hkd.ithome.adapter.ItQuan_Adapter;
 import com.hkd.ithome.adapter.ItQuan_listAdapter;
@@ -41,6 +41,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -49,7 +50,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class ITcircleFragment extends Fragment implements IXListViewListener,OnItemClickListener {
+public class ITcircleFragment extends Fragment implements IXListViewListener,OnItemClickListener ,OnClickListener{
 	ArrayList<HashMap<String, Object>> gridViewdata;
 	List<ItQuanBeen> listdata;
 	HashMap<String, Object> map, mapList;
@@ -57,6 +58,8 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	HttpUtils httpUtils;//网络获取数据
 	@ViewInject(R.id.itquan_listView)
 	XListView myList;
+	@ViewInject(R.id.Frg_Image_sousuo)
+	ImageView Image_sousuo;//点击图片搜索
 	Gson gson;
 	private Handler handler;
 	Date date;
@@ -78,6 +81,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		View v = inflater.inflate(R.layout.fragment_itcircle, null);
 		ViewUtils.inject(this, v);
 		getListViewDatas();
+		Image_sousuo.setOnClickListener(this);
 		myList.setOnItemClickListener(this);
 		return v;
 	}
@@ -177,7 +181,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		case R.id.itquan_listView://XlistView点击事件 
 			
 			Intent intent=new Intent(getActivity(),WebviewActivity.class);
-			intent.putExtra("link","http://quan.ithome.com/0/075/657.html");//头像
+			intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);//头像
 			startActivity(intent);
 			break;
 		case R.id.itquan_gridView://GridView点击事件
@@ -274,6 +278,24 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		} catch (Exception e) {
 			System.out.println("获得数据为空");
 			e.printStackTrace();
+		}
+		
+	}
+
+
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		switch (arg0.getId()) {
+		case R.id.Frg_Image_sousuo://点击跳转 到搜页面 进行搜索
+			Intent intent=new Intent(getActivity(), SouSuoActivity.class);
+			intent.putExtra("name",3);
+			startActivity(intent);
+			
+			break;
+
+		default:
+			break;
 		}
 		
 	}

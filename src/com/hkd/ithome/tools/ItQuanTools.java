@@ -11,7 +11,10 @@ public class ItQuanTools {
 	 * 查询信息的接口
 	 */
 	public final static String SELECT_information=WEB_SERVERS_ADDRESS+"/itquan_selectItQuanInfo";
-	
+	/*
+	 * webView
+	 */
+	public final static String WEBVIEW_ADDRESS="http://quan.ithome.com";
 	
 
 }

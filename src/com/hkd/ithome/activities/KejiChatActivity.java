@@ -36,7 +36,6 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -197,6 +196,7 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 		case R.id.kejichangtan_imgEdit:
 			Intent intent_imgEdit=new Intent(this, ItQuan_KeJiChat_ClickImgEdit.class);
 			startActivity(intent_imgEdit);
+			finish();
 			break;
 		
 		default:
@@ -209,7 +209,7 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
 		Intent intent = new Intent(this, WebviewActivity.class);//打开一个webView
-		intent.putExtra("link","http://quan.ithome.com/0/075/657.html");
+		intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);
 		startActivity(intent);
 
 	}

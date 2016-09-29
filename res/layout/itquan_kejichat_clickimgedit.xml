@@ -80,10 +80,35 @@
         android:background="@color/gray_heavy"
         android:layout_marginLeft="@dimen/jianju_stytle1"
         android:layout_marginRight="@dimen/jianju_stytle1"/>
+    <!-- 横线结束 -->
     <RelativeLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-         <EditText 
+       <RelativeLayout
+           android:id="@+id/relativeLayout_showHidden" 
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+            android:background="@drawable/abc_list_selector_disabled_holo_light"
+            android:layout_margin="@dimen/jianju_stytle1"
+            android:visibility="gone">
+           <ImageView
+            android:id="@+id/contentSelectImg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/jianju_stytle1"/>
+           <ImageView 
+               android:id="@+id/Img_del"
+               android:layout_width="20dp"
+               android:layout_height="20dp"
+               android:src="@drawable/quan_del"
+               android:layout_alignParentRight="true"/>
+       </RelativeLayout>
+        <!-- 选择图片结束 -->
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/relativeLayout_showHidden">
+     <EditText 
         android:id="@+id/editext_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,8 +116,8 @@
         android:ems="10"
         android:paddingBottom="@dimen/jianju_stytle3"
         android:inputType="textMultiLine"
-        android:layout_margin="@dimen/jianju_stytle1">
-        </EditText>
+        android:layout_margin="@dimen/jianju_stytle1"/>
+       
 
          <LinearLayout
              android:layout_width="match_parent"
@@ -114,6 +139,9 @@
                  android:layout_gravity="center_vertical"
                  android:layout_margin="@dimen/jianju_stytle3"/>
          </LinearLayout>
+</RelativeLayout>
+        
+        
 
     </RelativeLayout>
    

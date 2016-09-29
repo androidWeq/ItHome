@@ -110,15 +110,15 @@ public class Me_Login extends Activity {
 			public void onSuccess(ResponseInfo<String> responseInfo) {
 			
 				
-				if(responseInfo.result.equals("1")){
+				if(responseInfo.result.equals("0")){
+					Toast.makeText(Me_Login.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
 					
+				}else{
 					Intent intent=new Intent(Me_Login.this,Me_login_success.class);
 					AppApplication.getApp().setUsername(value_user);
 //					intent.putExtra("username", value_user);
 					startActivity(intent);
 				    finish();
-				}else{
-					Toast.makeText(Me_Login.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
 				}
 				
 	    	}
