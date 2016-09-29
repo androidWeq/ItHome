@@ -5,7 +5,7 @@ public class NoChange {
 	/**
 	 * 服务器地址
 	 */
-	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.112:8080/ITHome_DB";
+	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.133:8080/ITHome";
 	
 	/**
 	 * 查询辣品信息的接口

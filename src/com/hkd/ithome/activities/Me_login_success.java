@@ -13,6 +13,7 @@ import com.hkd.ithome.bean.UserInfoModle;
 import com.hkd.ithome.fragment.MineFragment;
 import com.hkd.ithome.interfaces.OnUpdateText;
 import com.hkd.ithome.tools.MD5;
+import com.hkd.ithome.tools.MeTool;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -272,7 +273,7 @@ public class Me_login_success extends Activity {
 				Toast.makeText(Me_login_success.this, "两次密码输入不一致", Toast.LENGTH_SHORT).show();
 					return;
 				}
-				String url = "http://192.168.1.119:8080/ITHome/userInfo_selectUserInfoLogin?";
+				String url = MeTool.SELECTLogin;
 				RequestParams params = new RequestParams();
 				UserInfoModle modle = new UserInfoModle();
 				String md5pwd = MD5.toMD5(value_old);
@@ -288,7 +289,7 @@ public class Me_login_success extends Activity {
 					 Toast.makeText(Me_login_success.this,"原密码错误!", Toast.LENGTH_SHORT).show();   
                  
 				 } else {
-					 String url="http://192.168.1.119:8080/ITHome/userInfo_updateUserInfo?";
+					 String url=MeTool.UPDATE;
 					 RequestParams params = new RequestParams();
 					 UserInfoModle modle = new UserInfoModle();
 					 String md5pwd = MD5.toMD5(value_new);
