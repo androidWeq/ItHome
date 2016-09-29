@@ -7,6 +7,7 @@ public class AppApplication extends Application {
 	private static AppApplication mAppApplication;
 	private SQLHelper sqlHelper;
 	String username;
+	boolean addressIsDefault=true;//判断用户是不是没有收货地址而要重新添加,true代表没有,false代表有
 
 	@Override
 	public void onCreate() {
@@ -50,4 +51,14 @@ public class AppApplication extends Application {
 
 	public void clearAppCache() {
 	}
+
+	public boolean isAddressIsDefault() {
+		return addressIsDefault;
+	}
+
+	public void setAddressIsDefault(boolean addressIsDefault) {
+		this.addressIsDefault = addressIsDefault;
+	}
+	
+	
 }

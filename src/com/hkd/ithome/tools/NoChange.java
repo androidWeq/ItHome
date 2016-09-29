@@ -5,7 +5,7 @@ public class NoChange {
 	/**
 	 * 服务器地址
 	 */
-	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.112:8080/ITHome_DB";
+	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.118:8080/ITHome_DB";
 	
 	/**
 	 * 查询辣品信息的接口
@@ -21,4 +21,9 @@ public class NoChange {
 	 * 添加当前用户的收货地址
 	 */
 	public final static String ADD_ADDRESSINFO=WEB_SERVERS_ADDRESS+"/lapin_addAddressInfo?";
+	
+	/**
+	 * 查询当前用户所有的收货地址
+	 */
+	public final static String SELECT_ADDRESSLIST=WEB_SERVERS_ADDRESS+"/lapin_getAddressList?";
 }

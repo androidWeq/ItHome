@@ -104,6 +104,11 @@
     <dimen name="detial_img_heigh">410dp</dimen>
     <dimen name="detial_bottom_heigh">50dp</dimen>
     <dimen name="detial_bottom_buy_size">17sp</dimen>
- 
+    
+    <!-- 地址显示列表 -->
+    <dimen name="address_item_nameAndphone">17sp</dimen>
+    <dimen name="address_item_address">15sp</dimen>
+
+    
 
 </resources>
