@@ -33,8 +33,12 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -57,6 +61,15 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 	HttpUtils httpUtils;
 	Gson gson;
 	Handler handler;
+	
+	@ViewInject(R.id.kejichangtan_frame)
+	FrameLayout kejichangtan_frame;
+	@ViewInject(R.id.lapin_loadingContent)
+	RelativeLayout lapinLoadingContent;// 加载动画页面
+	@ViewInject(R.id.lapin_loadingContent_rotatingImg)
+	ImageView lapinLoadingImg;// 加载旋转动画图片
+	RotateAnimation rotateAnimation;
+	LinearInterpolator lin;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +77,22 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.itquan_kejichangtan);
 		ViewUtils.inject(this);
+		initRotateAnimation();//开时旋转动画
 		init();//数据初始化
 		getListViewDatas();//获得listItem数据
 	}
+	/**
+	 * 加载动画的初始化
+	 */
+	public void initRotateAnimation() {
+		 rotateAnimation = (RotateAnimation) AnimationUtils
+				.loadAnimation(KejiChatActivity.this, R.anim.rotating);
+		 lin = new LinearInterpolator();// 设置为匀速转动
+		rotateAnimation.setInterpolator(lin);
+		lapinLoadingImg.startAnimation(rotateAnimation);
+
+	}
+	
 	/*
 	 * 数据初始化
 	 */
@@ -141,6 +167,9 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 							System.out.println("获得数据为空");
 							e.printStackTrace();
 						}
+						lapinLoadingImg.clearAnimation();
+						lapinLoadingContent.setVisibility(View.GONE);
+						kejichangtan_frame.setVisibility(View.VISIBLE);
 
 					}
 
@@ -221,16 +250,25 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 		case R.id.kejichangtan_listHead_rb_hotTie:
 			Toast.makeText(KejiChatActivity.this, "热帖", Toast.LENGTH_SHORT)
 					.show();
+			lapinLoadingContent.setVisibility(View.VISIBLE);
+			kejichangtan_frame.setVisibility(View.GONE);
+			lapinLoadingImg.startAnimation(rotateAnimation);
 			getListViewDatas();
 			break;
 		case R.id.kejichangtan_listHead_rb_newRespon:
 			Toast.makeText(KejiChatActivity.this, "最新回复", Toast.LENGTH_SHORT)
 					.show();
+			lapinLoadingContent.setVisibility(View.VISIBLE);
+			kejichangtan_frame.setVisibility(View.GONE);
+			lapinLoadingImg.startAnimation(rotateAnimation);
 			getListViewDatas();
 			break;
 		case R.id.kejichangtan_listHead_rb_newFaBiao:
 			Toast.makeText(KejiChatActivity.this, "最新发表", Toast.LENGTH_SHORT)
 					.show();
+			lapinLoadingContent.setVisibility(View.VISIBLE);
+			kejichangtan_frame.setVisibility(View.GONE);
+			lapinLoadingImg.startAnimation(rotateAnimation);
 			getListViewDatas();
 			break;
 

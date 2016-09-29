@@ -25,17 +25,22 @@
 
     </RelativeLayout>
     
-    
-    <FrameLayout 
+    <RelativeLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <include layout="@layout/lapin_loading"/>
+        <FrameLayout 
+        android:id="@+id/kejichangtan_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
         <me.maxwin.view.XListView 
         android:id="@+id/kejichangtan_xListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         
-    </me.maxwin.view.XListView>
-    <ImageView 
+        </me.maxwin.view.XListView>
+       <ImageView 
         android:id="@+id/kejichangtan_imgEdit"
         android:layout_width="@dimen/topHeight"
         android:layout_height="@dimen/topHeight"
@@ -43,6 +48,8 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="@dimen/topHeight"/>
     </FrameLayout>
+    </RelativeLayout>
+    
     
 
 </LinearLayout>
