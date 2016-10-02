@@ -1,6 +1,8 @@
 package com.hkd.ithome.bean;
 
-public class AddressInfo {
+import java.io.Serializable;
+
+public class AddressInfo implements Serializable{
 	int id;
 	String isDefault;
 	String name;

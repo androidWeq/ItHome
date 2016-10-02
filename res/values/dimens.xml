@@ -45,6 +45,7 @@
     <dimen name="jianju_stytle">2dp</dimen>
     <dimen name="jianju_stytleLine">0.5dp</dimen>
     <dimen name="jianju_stytle3">15dp</dimen>
+    <dimen name="img_Hwidth">40dp</dimen>
     <!-- 高度(刘双杰)end -->
 
 
@@ -116,5 +117,12 @@
     <dimen name="detial_img_heigh">410dp</dimen>
     <dimen name="detial_bottom_heigh">50dp</dimen>
     <dimen name="detial_bottom_buy_size">17sp</dimen>
+
+    
+    <!-- 地址显示列表 -->
+    <dimen name="address_item_nameAndphone">17sp</dimen>
+    <dimen name="address_item_address">15sp</dimen>
+
+    
 
 </resources>

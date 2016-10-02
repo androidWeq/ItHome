@@ -102,6 +102,14 @@
         <activity android:name="com.hkd.ithome.activities.ItQuan_KeJiChat_ClickImgEdit">
         </activity>
 
+        <activity android:name="com.hkd.ithome.activities.ShowAddressList">           
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.LaPinAddressAdd">           
+        </activity>
+
+        <activity android:name="com.hkd.ithome.activities.SouSuoActivity"></activity>
+
+
     </application>
 
 </manifest>
