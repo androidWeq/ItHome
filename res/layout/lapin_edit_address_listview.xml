@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/gray_light" >
+
+        <ImageView
+            android:id="@+id/lapin_edit_address_list_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_diaolog_othercost" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/lapin_edit_address_list_back"
+            android:text="收货地址管理"
+            android:textSize="20sp" />
+
+        
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lapin_edit_address_list_listview"
+        android:layout_width="match_parent"
+        android:dividerHeight="10dp"
+        android:divider="@color/gray_heavy"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+         >
+    </ListView>
+    
+    <TextView android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/lapin_edit_address_list_addNewAddress"
+        android:text="添加新地址"
+        android:textColor="@color/white"
+        android:background="@color/orange"
+        android:gravity="center"
+        android:textSize="17sp"/>
+
+</LinearLayout>

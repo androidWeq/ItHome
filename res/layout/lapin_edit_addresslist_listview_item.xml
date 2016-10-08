@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/address_edit_listview_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="王恩强"
+            android:textSize="@dimen/address_item_nameAndphone" />
+
+        <TextView
+            android:id="@+id/address_edit_listview_item_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="15670706197"
+            android:textSize="@dimen/address_item_nameAndphone" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/address_edit_listview_item_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="河南省洛阳市涧西区长安街道河南科技大学"
+        android:textSize="@dimen/address_item_address" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_heavy" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp" >
+
+        <CheckBox
+            android:id="@+id/address_edit_listview_item_isdefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/address_checkbox_select"
+            android:button="@null"
+            android:checked="true" />
+
+        <TextView
+            android:id="@+id/address_edit_listview_item_defaulttxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="默认地址" />
+
+        <TextView
+            android:id="@+id/address_edit_listview_item_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:drawableLeft="@drawable/ic_clear_search_history"
+            android:gravity="center_vertical"
+            android:text="编辑" />
+
+        <TextView
+            android:id="@+id/address_edit_listview_item_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:drawableLeft="@drawable/ic_clear_search_history"
+            android:gravity="center_vertical"
+            android:text="删除" />
+    </LinearLayout>
+
+</LinearLayout>

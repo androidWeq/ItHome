@@ -40,7 +40,8 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 	BitmapUtils bitmapUtils;
 	HttpUtils httpUtils;
 	GoodInfo goodInfo;
-
+	RequestParams params;
+	public final int TO_ADDRESS_LIST=1;
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -53,7 +54,14 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 	protected void onStart() {
 		
 		super.onStart();
-		getDefaultAddress();
+		System.out.println("-----进入商品订单onstart");
+		//判断是否从收货地址列表过来的 true则表示不是
+		if(AppApplication.getApp().isAddressIsDefault()){
+			getDefaultAddress();
+		}
+		
+		
+		
 	}
 
 	/**
@@ -61,7 +69,7 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 	 */
 	private void getDefaultAddress() {
 		httpUtils = new HttpUtils();
-		RequestParams params = new RequestParams();
+		 params = new RequestParams();
 		// 获取当前登录的用户的用户名
 		String username = AppApplication.getApp().getUsername();
 		params.addQueryStringParameter("params", "{\"username\":\"" + username
@@ -71,7 +79,7 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 					public void onSuccess(ResponseInfo<String> responseInfo) {
 						// 网页返回的json 数据
 						String info = responseInfo.result;
-						System.out.println(info);
+						//System.out.println(info);
 						Gson gson = new Gson();
 						// 转换为AddressInfo对象
 						AddressInfo addressInfo = gson.fromJson(info,
@@ -120,7 +128,7 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 							goodInfo=(GoodInfo) intent.getSerializableExtra("goodInfo");
 							title.setText(goodInfo.getTitle());
 							price.setText("¥"+goodInfo.getPrice());
-							bitmapUtils.display(goodImg,NoChange.SELECT_DEFAULT_ADDRESS+goodInfo.getImg());
+							bitmapUtils.display(goodImg,NoChange.WEB_SERVERS_ADDRESS+goodInfo.getImg());
 							name.setText(addressInfo.getName());
 							phone.setText(addressInfo.getPhone());
 							address.setText(addressInfo.getAddress());
@@ -141,6 +149,7 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 	 * 组件的绑定
 	 */
 	private void init() {
+		bitmapUtils=new BitmapUtils(LaPinOrder.this);
 		name = (TextView) findViewById(R.id.lapin_order_name);
 		address = (TextView) findViewById(R.id.lapin_order_address);
 		phone = (TextView) findViewById(R.id.lapin_order_phone);
@@ -156,10 +165,10 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 		goodImg = (ImageView) findViewById(R.id.lapin_order_img_good);
 		toChangeAddress = (LinearLayout) findViewById(R.id.lapin_order_img_toaddress);
 		linearHidden=(LinearLayout) findViewById(R.id.lapin_order_linear_hidden);
-		bitmapUtils = new BitmapUtils(this);
 		addNum.setOnClickListener(this);
 		reduceNum.setOnClickListener(this);
 		goodNum.addTextChangedListener(this);
+		toChangeAddress.setOnClickListener(this);
 	}
 
 
@@ -173,6 +182,11 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
         case R.id.lapin_order_reduce:
         	goodNum.setText((Integer.parseInt(goodNum.getText().toString())-1)+"");
 			break;
+        case R.id.lapin_order_img_toaddress:
+        	//跳转到地址列表
+        	Intent intent=new Intent(LaPinOrder.this,ShowAddressList.class);
+        	startActivityForResult(intent,TO_ADDRESS_LIST);
+        	break;
 
 		default:
 			break;
@@ -185,6 +199,24 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 			int after) {
 		
 		
+	}
+	
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch (resultCode) {
+		//从收货列表点击item传递值到order界面
+		case 2:
+			AddressInfo info=(AddressInfo) data.getSerializableExtra("addressInfo");
+			System.out.println("-------"+info);
+			name.setText(info.getName());
+			phone.setText(info.getPhone());
+			address.setText(info.getAddress());
+			break;
+
+		default:
+			break;
+		}
 	}
 
 
