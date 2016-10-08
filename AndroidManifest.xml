@@ -102,7 +102,39 @@
         <activity android:name="com.hkd.ithome.activities.ItQuan_KeJiChat_ClickImgEdit">
         </activity>
         <activity android:name="com.hkd.ithome.activities.SouSuoActivity"></activity>
-
+        
+        
+        
+        <!-- lsj图片上传 -->
+         <!-- <activity
+            android:name="com.king.photo.activity.ImageGridActivity" android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.king.photo.activity.TestPicActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.king.photo.activity.PhotoActivity"
+            android:screenOrientation="portrait" />
+         -->
+        
+        <activity
+            android:name="com.hkd.ithome.activities.Photoes_AlbumActivity"
+            android:screenOrientation="portrait">
+        </activity>
+         <activity
+            android:name="com.hkd.ithome.activities.Photoes_GalleryActivity">
+        </activity>
+         <activity
+            android:name="com.hkd.ithome.activities.Photoes_ImageFile">
+        </activity>
+         <activity
+            android:name="com.hkd.ithome.activities.Photoes_MainActivity">
+        </activity>
+         <activity
+            android:name="com.hkd.ithome.activities.Photoes_ShowAllPhoto">
+        </activity>
+       <!-- lsj图片上传end -->
     </application>
 
 </manifest>

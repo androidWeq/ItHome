@@ -55,5 +55,12 @@
     <color name="subscribe_bg">#fff5f5f5</color>
     <color name="subscribe_seperate_line">#ffcdcdcd</color>
 	<!-- 陈雅博 频道管理用 end-->
+	<!-- lsj图片 -->
+	
+ <color name="none_color">#00000000</color>
+ <color name="plugin_camera_black">#000000</color>
+ <color name="albumback">#E1E0DE</color>
+ 
+	<!-- lsj图片end -->
     
 </resources>
