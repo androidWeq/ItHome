@@ -107,8 +107,10 @@
         <activity android:name="com.hkd.ithome.activities.LaPinAddressAdd">           
         </activity>
 
-        <activity android:name="com.hkd.ithome.activities.SouSuoActivity"></activity>
-
+        <activity android:name="com.hkd.ithome.activities.SouSuoActivity">
+        </activity>
+		<activity android:name="com.hkd.ithome.activities.EditAddressList">
+		</activity>
 
     </application>
 

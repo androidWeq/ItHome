@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    
     android:orientation="vertical" >
     
     <RelativeLayout
@@ -32,7 +33,7 @@
     <ListView
         android:id="@+id/lapin_edit_address_list_listview"
         android:layout_width="match_parent"
-        android:dividerHeight="4dp"
+        android:dividerHeight="10dp"
         android:divider="@color/gray_heavy"
         android:layout_height="0dp"
         android:layout_weight="1"

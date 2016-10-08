@@ -30,8 +30,8 @@
 
     <!-- news页面布局end -->
 
-    <dimen name="lapin_topTxt_normal_size">16sp</dimen>
-    <dimen name="lapin_toptxt_check_size">20sp</dimen>
+    <dimen name="lapin_topTxt_normal_size">14sp</dimen>
+    <dimen name="lapin_toptxt_check_size">18sp</dimen>
     <dimen name="lapin_listview_item_titleTxtSize">16sp</dimen>
     <dimen name="lapin_listview_item_youhuiTxtSize">14sp</dimen>
     <dimen name="lapin_listview_item_timeTxtSize">13sp</dimen>

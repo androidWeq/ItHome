@@ -18,7 +18,6 @@ import com.google.gson.Gson;
 import com.hkd.ithome.app.AppApplication;
 import com.hkd.ithome.bean.AddressInfo;
 import com.hkd.ithome.bean.GetJsonModel;
-import com.hkd.ithome.bean.GoodInfo;
 import com.hkd.ithome.tools.NoChange;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -31,6 +30,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -124,7 +124,10 @@ public class LaPinAddressAdd extends Activity implements OnClickListener,OnWheel
 		switch (v.getId()) {
 		case R.id.addressinfo_city:
 			// 在参照的View控件下方显示
-		     popupWindow.showAsDropDown(LaPinAddressAdd.this.findViewById(R.id.addressinfo_xiangxi));
+		     //popupWindow.showAsDropDown(LaPinAddressAdd.this.findViewById(R.id.addressinfo_xiangxi));
+			//从底部显示
+			popupWindow.showAtLocation(LaPinAddressAdd.this.findViewById(R.id.addressinfo_xiangxi),
+					Gravity.BOTTOM, 0, 0);
 				updateCities();
 				updateAreas();
 			break;
