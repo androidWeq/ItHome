@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#f00" >
+    android:background="#f00"
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,26 +13,30 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/lapin_quanbu_listviewHead_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="200dp" >
+            android:layout_height="@dimen/viewpager_head_height"
+            android:background="@color/black" >
         </android.support.v4.view.ViewPager>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_alignParentBottom="true"
+            android:background="#80000000"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:background="@color/black"
-            android:alpha="0.3"
             android:paddingRight="10dp" >
 
             <TextView
                 android:id="@+id/lapin_quanbu_listviewHead_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="先科N-162金属小钢炮蓝牙音箱24.9元" />
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#80000000"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="iPhone 7正式发布，7，在此。"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/lapin_quanbu_listviewHead_img1"

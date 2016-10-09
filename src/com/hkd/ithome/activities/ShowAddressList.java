@@ -20,13 +20,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ShowAddressList extends Activity implements OnItemClickListener {
+public class ShowAddressList extends Activity implements OnItemClickListener,OnClickListener  {
 	ListView listView;//listview
 	ImageView back;  //返回图片
 	TextView toEditAddress;//去往地址管理界面
@@ -44,7 +45,9 @@ public class ShowAddressList extends Activity implements OnItemClickListener {
 		httpUtils=new HttpUtils();
 		listView=(ListView) findViewById(R.id.lapin_address_list_listview);
 		back=(ImageView) findViewById(R.id.lapin_address_list_back);
+		toEditAddress=(TextView) findViewById(R.id.lapin_address_list_toEdit);
 		listView.setOnItemClickListener(this);
+		toEditAddress.setOnClickListener(this); 
 	}
 	
 	protected void onStart() {
@@ -84,6 +87,13 @@ public class ShowAddressList extends Activity implements OnItemClickListener {
 		setResult(ADDRESSLIST2ORDER,intent);
 		AppApplication.getApp().setAddressIsDefault(false);
 		finish();
+		
+	}
+	@Override
+	public void onClick(View v) {
+		//跳转到编辑地址列表界面 
+		Intent intent=new Intent(ShowAddressList.this,EditAddressList.class);
+		startActivity(intent);
 		
 	}
 

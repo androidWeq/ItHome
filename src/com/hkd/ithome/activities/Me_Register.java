@@ -165,7 +165,7 @@ public class Me_Register extends Activity {
 
 	public void addUserInfo() {
 		String md5pwd = MD5.toMD5(value_repet);
-		String url = "http://192.168.1.118:8080/ITHome_DB/userInfo_addUserInfo?";
+		String url = "http://192.168.1.124:8080/ITHome_DB/userInfo_addUserInfo?";
 		RequestParams params = new RequestParams();
 		UserInfoModle modle = new UserInfoModle();
 		modle.setUsername(value_user);
