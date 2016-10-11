@@ -9,6 +9,7 @@ import com.example.ithome.R.integer;
 import com.hkd.ithome.bean.ItQuanBeen;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 public class ItQuan_listAdapter extends BaseAdapter{
 	Context context;
 	List<ItQuanBeen> listdata;
+	AnimationDrawable animationDrawable;
 	public ItQuan_listAdapter(Context context,List<ItQuanBeen> listdata ){
 		this.context=context;
 		this.listdata=listdata;

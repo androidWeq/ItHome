@@ -15,7 +15,7 @@
             android:layout_height="@dimen/pic_item_list_height"
             android:layout_marginLeft="@dimen/pic_item_list_margin_left"
             android:layout_marginTop="@dimen/pic_item_list_margin_right"
-            android:background="@drawable/news_item1" />
+            android:background="@color/black" />
 
         <TextView
             android:id="@+id/newsTitle"
