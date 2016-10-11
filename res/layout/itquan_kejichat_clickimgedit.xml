@@ -90,28 +90,14 @@
            android:layout_height="wrap_content"
             android:background="@drawable/abc_list_selector_disabled_holo_light"
             android:layout_margin="@dimen/jianju_stytle1"
-            android:visibility="gone">
-           <ImageView
-            android:id="@+id/contentSelectImg"
-            android:layout_width="@dimen/topHeight"
-            android:layout_height="100dp"
-            android:layout_margin="@dimen/jianju_stytle1"/>
-           <!--  <GridView 
+            android:visibility="visible">
+             <ListView 
         android:id="@+id/noScrollgridview"
-        android:layout_width="290dp"
-        android:layout_height="350dp"
-        android:layout_marginLeft="5dp"
-        android:horizontalSpacing="3dp"        
-        android:numColumns="4"
-        android:scrollbars="none"
-        android:verticalSpacing="5dp" >
-    </GridView> -->
-           <ImageView 
-               android:id="@+id/Img_del"
-               android:layout_width="20dp"
-               android:layout_height="20dp"
-               android:src="@drawable/quan_del"
-               android:layout_alignParentRight="true"/>
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="5dp" >
+           </ListView>
+          
        </RelativeLayout>
         <!-- 选择图片结束 -->
 <RelativeLayout 

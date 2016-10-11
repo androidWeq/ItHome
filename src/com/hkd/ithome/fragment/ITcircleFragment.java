@@ -99,6 +99,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		 v = inflater.inflate(R.layout.fragment_itcircle, null);
 		ViewUtils.inject(this, v);
 		initRotateAnimation();//动画
+		init();
 		getListViewDatas();
 		Image_sousuo.setOnClickListener(this);
 		myList.setOnItemClickListener(this);
@@ -175,12 +176,12 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 			@Override
 			public void run() {
 				// myList.add(listdata.size() + "下拉刷新,头部");
-				if (listdata == null) {
-					listdata = new ArrayList<ItQuanBeen>();
-
-				} else {
-
-				}
+//				if (listdata == null) {
+//					listdata = new ArrayList<ItQuanBeen>();
+//
+//				} else {
+//
+//				}
 				// listdata.add(object)
 				Toast.makeText(getActivity(), "进入", Toast.LENGTH_LONG).show();
 				adapter.notifyDataSetChanged();
@@ -193,10 +194,13 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 
 	private void onLoad() {
 		// TODO Auto-generated method stub
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");//设置日期格式
 		//System.out.println());// new Date()为获取当前系统时间
 		myList.stopRefresh();
 		myList.stopLoadMore();
+//		if(df.format(new Date())>){
+//			
+//		}
 		myList.setRefreshTime(df.format(new Date()));
 		//
 		
@@ -264,7 +268,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	 * @param index  页码
 	 */
 	private void getListViewDatas() {
-		//System.out.println("-------进入-getListViewDatas()-从网络解析json填充到数据源");
+		System.out.println("-------进入-getListViewDatas()-从网络解析json填充到数据源");
 		httpUtils = new HttpUtils();
 		httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
 				new RequestCallBack<String>() {
@@ -276,7 +280,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 							listdata=new ArrayList<ItQuanBeen>();
 							adapterList = new ItQuan_listAdapter(getActivity(),listdata);
 							getJsonData(info);
-							init();
+//							init();
 							myList.setAdapter(adapterList);
 						}else{
 							getJsonData(info);

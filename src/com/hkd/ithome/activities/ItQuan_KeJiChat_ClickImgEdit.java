@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.ithome.R;
+import com.hkd.ithome.adapter.ItQuan_keji_editext_photoListViewAdapter;
 import com.hkd.ithome.app.AppApplication;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -18,13 +19,18 @@ import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -35,6 +41,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -57,27 +64,40 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 	ImageView Img_backward_btn;
 	@ViewInject(R.id.relativeLayout_showHidden)//选择图片的显示与隐藏布局
 	RelativeLayout relativeLayout_showHidden;
-	@ViewInject(R.id.contentSelectImg)//将选中的图片放到该ImageView里面
-	ImageView contentSelectImg;
-	@ViewInject(R.id.Img_del)//删除已选中的图片
-	ImageView Img_del;
+//	@ViewInject(R.id.contentSelectImg)//将选中的图片放到该ImageView里面
+//	ImageView contentSelectImg;
+//	@ViewInject(R.id.Img_del)//删除已选中的图片
+//	ImageView Img_del;
+	
 	EditText phoneNum,yanZhengNum;
 	TextView UserHaiWai;
 	Button bt_getNum,bt_yanZheng;
-	/*ArrayList<HashMap<String, String>> listPhoto;
-	@ViewInject(R.id.contentSelectImg)
-	GridView gridView;*/
+	//photoListView
+	ArrayList<HashMap<String, String>> listPhotodata;
+	@ViewInject(R.id.noScrollgridview)//相片listview
+	ListView myPhotoList;
+	ItQuan_keji_editext_photoListViewAdapter photoAdapter;
 	
-	
+	broadCastRe bCastRe;
 	private static final int  PHOTO=101;
 	private static final int CAMERA=100;
+	Thread it;//开一个线程   耗时操作
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.itquan_kejichat_clickimgedit);
 		ViewUtils.inject(this);
+		listPhotodata=new ArrayList<HashMap<String,String>>();//相片集合
 //		get();
 		init();
+		//广播的接收
+		bCastRe=new broadCastRe();
+		IntentFilter deleteFilter=new IntentFilter();
+		deleteFilter.addAction("deleteItem");
+		registerReceiver(bCastRe, deleteFilter);
+		
+		
+		
 		
 	}
 	private void init() {
@@ -87,7 +107,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 		img_photo.setOnClickListener(this);//打开照片监听
 		tv_help.setOnClickListener(this);//点击帮助监听
 		tv_fabiao.setOnClickListener(this);//点击发表监听
-		Img_del.setOnClickListener(this);//删除已选中的图片
+//		Img_del.setOnClickListener(this);//删除已选中的图片
 		
 	}
 	/*
@@ -113,9 +133,6 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 				
 				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
-					// TODO Auto-generated method stub
-//					Intent intent=new Intent(ItQuan_KeJiChat_ClickImgEdit.this, KejiChatActivity.class);
-//					 setResult(122, intent);
 					 finish();
 				}
 			});
@@ -131,9 +148,9 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 			Intent intent_photo=new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 			startActivityForResult(intent_photo, PHOTO);
 			break;
-		case R.id.Img_del://隐藏布局
-		    relativeLayout_showHidden.setVisibility(View.GONE);
-		    break;
+//		case R.id.Img_del://隐藏布局
+//		    relativeLayout_showHidden.setVisibility(View.GONE);
+//		    break;
 		case R.id.tv_fabiao://发表 判断是否已登录   1没登录 先登录2 已登录就发表
 			/*
 			 * 判断是否已登录  
@@ -142,6 +159,11 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 			 *  !!!!3.把将要发表的内容添加到listView中 并第一个显示（未做）
 			 */
 			System.out.println("---------发表");
+			  //前提是标题不为空
+			if(edit_title.getText()!=null && edit_title.getText().toString()!=""){
+				//，内容不为空
+				if(editext_content.getText()!=null && edit_title.getText().toString()!=""){
+					//用户名不能为空   即：先登录后发表
 			if(AppApplication.getApp().getUsername()!=null){            
                 AlertDialog dialog_yanZheng = new AlertDialog.Builder
                 		(this).create();
@@ -190,7 +212,12 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 				setResult(121, intent);
 				finish();
 			}
-//			
+			}else{
+				Toast.makeText(ItQuan_KeJiChat_ClickImgEdit.this, "内容不能为空", Toast.LENGTH_LONG).show();
+			}
+			}else{
+				Toast.makeText(ItQuan_KeJiChat_ClickImgEdit.this, "标题不能为空", Toast.LENGTH_LONG).show();
+			}
 			break;
 
 		default:
@@ -231,29 +258,21 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 //	                  String imgSize = cursor.getString(2); // 图片大小 
 //	                  String imgName = cursor.getString(3); // 图片文件名
 	                  cursor.close();
-	                  Bitmap bitmap2=BitmapFactory.decodeFile(imgPath);
-	                  contentSelectImg.setImageBitmap(bitmap2);
+	                  final Bitmap bitmap2=BitmapFactory.decodeFile(imgPath);
+//	                  contentSelectImg.setImageBitmap(bitmap2);
+//	                  PhotoesContain(bitmap2);
+	                  it=new Thread(new Runnable() {
+						
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							Message message=Message.obtain();
+							message.obj=bitmap2;
+							handler.sendMessage(message);
+						}
+					});
 					  relativeLayout_showHidden.setVisibility(View.VISIBLE);
 //					  getLoadPhotoes();
-				/*if(listPhoto==null){
-					listPhoto=new ArrayList<HashMap<String,String>>();
-				}*/
-//				Bitmap bitmap2[]={BitmapFactory.decodeFile(imgPath)};
-		         /*
-					 * 1将拍下的照片放到容器里面
-					 * 2.显示布局
-					 */
-		         //contentSelectImg.setImageBitmap(bitmap2[]);
-				
-/*//				for(int i=0;i<4;i++){
-					HashMap<String,String> map=new HashMap<String, String>();
-					map.put("photoLoad", R.drawable.btn_capture_pressed2+"");
-//				}
-				String from[]={"photoLoad"};
-				int to[]={R.id.contentSelectImg};
-				SimpleAdapter adapter=new SimpleAdapter(ItQuan_KeJiChat_ClickImgEdit.this, listPhoto, 
-						R.layout.itquan_loadphotoes, from, to);
-				gridView.setAdapter(adapter);*/
 //				
 				break;
 			default:
@@ -261,32 +280,6 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 			}
 		}
 	}
-	
-	
-	
-	
-//	public void getPhoto(String imgPath){
-//		if(listPhoto==null){
-//			listPhoto=new ArrayList<HashMap<String,String>>();
-//		}
-//		Bitmap bitmap2[]={BitmapFactory.decodeFile(imgPath)};
-//         /*
-//			 * 1将拍下的照片放到容器里面
-//			 * 2.显示布局
-//			 */
-//         //contentSelectImg.setImageBitmap(bitmap2[]);
-//		
-////		for(int i=0;i<4;i++){
-//			HashMap<String,String> map=new HashMap<String, String>();
-//			map.put("photoLoad", bitmap2[0]+"");
-////		}
-//		String from[]={"photoLoad"};
-//		int to[]={R.id.contentSelectImg};
-//		SimpleAdapter adapter=new SimpleAdapter(ItQuan_KeJiChat_ClickImgEdit.this, listPhoto, 
-//				R.layout.itquan_loadphotoes, from, to);
-//		gridView.setAdapter(adapter);
-////		SimpleAdapter photoesAdapter=new SimpleAdapter(ItQuan_KeJiChat_ClickImgEdit.this, listPhotoes,R.layout.itquan_loadphotoes,from,to)
-//	}
 	
 	//图片上传
 	public void getLoadPhotoes(){
@@ -313,6 +306,45 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 		});
 	}
 	
+	//图片容器  listview
+	public void PhotoesContain(Bitmap bit){
+		//添加之后刷新
+			HashMap<String, String> map=new HashMap<String, String>();
+			map.put("img", bit+"");
+			listPhotodata.add(map);
+			if(photoAdapter!=null){
+				photoAdapter.notifyDataSetChanged();
+			}else{
+			photoAdapter=new ItQuan_keji_editext_photoListViewAdapter(ItQuan_KeJiChat_ClickImgEdit.this, listPhotodata);
+	        myPhotoList.setAdapter(photoAdapter);
+			}
+	
+	}
+	/*
+	 * handler
+	 */
+	Handler handler=new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			PhotoesContain((Bitmap) msg.obj);
+			
+		}
+	};
+	//广播接受者
+	public class broadCastRe extends BroadcastReceiver{
+
+		@Override
+		public void onReceive(Context arg0, Intent intent) {
+			// TODO Auto-generated method stub
+			if(intent.equals("deleteItem")){//删除指定的图片即：listItem
+				System.out.println("-------index:"+intent.getIntExtra("index", 0));
+				myPhotoList.removeViewAt(intent.getIntExtra("index", 0));
+			}
+		}
+		
+	}
 	
 
 }

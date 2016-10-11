@@ -140,7 +140,14 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 									KejiChatActivity.this, listdata);
 
 							getJsonData(info);
-							initHead();
+							if(myList.getHandler()==null){
+								/*
+								 * 判断mylist是否有头部
+								 * 若没有  添加头部 否则不然
+								 */
+								initHead();
+							}
+							
 							myList.setAdapter(adapterList);
 						} else {
 							getJsonData(info);
