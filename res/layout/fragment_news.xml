@@ -109,9 +109,7 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="invisible" />
-
-        <include layout="@layout/lapin_loading" />
+            android:visibility="visible" />
     </RelativeLayout>
 
 </LinearLayout>

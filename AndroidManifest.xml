@@ -8,11 +8,13 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
     <!-- 相机,SD卡权限 -->
-    <uses-permission android:name="android.permission.CAMERA" />  
-    <uses-feature android:name="android.hardware.camera"/>  
-    <uses-feature android:name="android.hardware.camera.autofocus"/>  
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />  
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />  
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 允许读取手机状态相关数据 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 允许访问SD卡 -->
@@ -49,6 +51,22 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- 短信验证end -->
+
+
+    <!-- shareSDK -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- 蓝牙分享所需的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- shareSDK end -->
 
     <application
         android:name="com.hkd.ithome.app.AppApplication"
@@ -89,27 +107,74 @@
         </activity>
         <activity android:name="com.hkd.ithome.activities.Me_Register" >
         </activity>
-
         <activity android:name="com.hkd.ithome.activities.Me_Gold_Shop" >
         </activity>
-
 
         <!-- 辣品界面__详情__确认订单 -->
         <activity android:name="com.hkd.ithome.activities.LaPinDetial" >
         </activity>
         <activity android:name="com.hkd.ithome.activities.LaPinOrder" >
         </activity>
-        <activity android:name="com.hkd.ithome.activities.ItQuan_KeJiChat_ClickImgEdit">
+        <activity android:name="com.hkd.ithome.activities.ItQuan_KeJiChat_ClickImgEdit" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.SouSuoActivity" >
         </activity>
 
-        <activity android:name="com.hkd.ithome.activities.ShowAddressList">           
+        <!-- lsj图片上传 -->
+        <activity
+            android:name="com.king.photo.activity.ImageGridActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.hkd.ithome.activities.LaPinAddressAdd">           
+        <activity
+            android:name="com.king.photo.activity.TestPicActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.king.photo.activity.PhotoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.hkd.ithome.activities.Photoes_AlbumActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Photoes_GalleryActivity" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Photoes_ImageFile" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Photoes_MainActivity" >
+        </activity>
+        <activity android:name="com.hkd.ithome.activities.Photoes_ShowAllPhoto" >
+        </activity>
+        <!-- ShareSDK -->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
-        <activity android:name="com.hkd.ithome.activities.SouSuoActivity"></activity>
-
-
+        <!-- 微信分享回调 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>

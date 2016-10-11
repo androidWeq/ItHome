@@ -1,8 +1,20 @@
 package com.hkd.ithome.activities;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.example.ithome.R;
 import com.hkd.ithome.app.AppApplication;
+import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,9 +33,12 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickListener{
 	@ViewInject(R.id.edit_title)
@@ -33,7 +48,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 	@ViewInject(R.id.tv_fabiao)//发表
 	TextView tv_fabiao;
 	@ViewInject(R.id.editext_content)
-	EditText editext_content;
+	EditText editext_content;//内容
 	@ViewInject(R.id.img_camera)//照相机
 	ImageView img_camera;
 	@ViewInject(R.id.img_photo)//相册
@@ -49,6 +64,10 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 	EditText phoneNum,yanZhengNum;
 	TextView UserHaiWai;
 	Button bt_getNum,bt_yanZheng;
+	/*ArrayList<HashMap<String, String>> listPhoto;
+	@ViewInject(R.id.contentSelectImg)
+	GridView gridView;*/
+	
 	
 	private static final int  PHOTO=101;
 	private static final int CAMERA=100;
@@ -57,6 +76,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.itquan_kejichat_clickimgedit);
 		ViewUtils.inject(this);
+//		get();
 		init();
 		
 	}
@@ -68,6 +88,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 		tv_help.setOnClickListener(this);//点击帮助监听
 		tv_fabiao.setOnClickListener(this);//点击发表监听
 		Img_del.setOnClickListener(this);//删除已选中的图片
+		
 	}
 	/*
 	 * 单击事件
@@ -93,8 +114,8 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
 					// TODO Auto-generated method stub
-					Intent intent=new Intent(ItQuan_KeJiChat_ClickImgEdit.this, KejiChatActivity.class);
-					 startActivity(intent);
+//					Intent intent=new Intent(ItQuan_KeJiChat_ClickImgEdit.this, KejiChatActivity.class);
+//					 setResult(122, intent);
 					 finish();
 				}
 			});
@@ -120,6 +141,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 			 *  2 已登录就发表     弹出一个提示框 短信验证
 			 *  !!!!3.把将要发表的内容添加到listView中 并第一个显示（未做）
 			 */
+			System.out.println("---------发表");
 			if(AppApplication.getApp().getUsername()!=null){            
                 AlertDialog dialog_yanZheng = new AlertDialog.Builder
                 		(this).create();
@@ -157,8 +179,16 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 			
 			
 			}else{
-				Intent intent=new Intent(ItQuan_KeJiChat_ClickImgEdit.this,Me_Login.class);
-				startActivity(intent);
+				//把将要发表的评论  带到上一界面
+				System.out.println("-------name:"+AppApplication.getApp().getUsername());
+//				Toast.makeText(ItQuan_KeJiChat_ClickImgEdit.this, AppApplication.getApp().getUsername(), 100).show();
+				Intent intent=new Intent(ItQuan_KeJiChat_ClickImgEdit.this,KejiChatActivity.class);
+				intent.putExtra("title", edit_title.getText());
+				intent.putExtra("content",editext_content.getText());
+				System.out.println("---title"+edit_title.getText()+"======"+editext_content.getText());
+//				intent.putExtra("photoes", img_photo);
+				setResult(121, intent);
+				finish();
 			}
 //			
 			break;
@@ -188,7 +218,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 				 * 1将拍下的照片放到容器里面
 				 * 2.显示布局
 				 */
-				contentSelectImg.setImageBitmap(bitmap);
+//				contentSelectImg.setImageBitmap(bitmap);
 				relativeLayout_showHidden.setVisibility(View.VISIBLE);
 				break;
 			case PHOTO:
@@ -201,13 +231,30 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 //	                  String imgSize = cursor.getString(2); // 图片大小 
 //	                  String imgName = cursor.getString(3); // 图片文件名
 	                  cursor.close();
-	                Bitmap bitmap2 = BitmapFactory.decodeFile(imgPath);
-	                /*
+	                  Bitmap bitmap2=BitmapFactory.decodeFile(imgPath);
+	                  contentSelectImg.setImageBitmap(bitmap2);
+					  relativeLayout_showHidden.setVisibility(View.VISIBLE);
+//					  getLoadPhotoes();
+				/*if(listPhoto==null){
+					listPhoto=new ArrayList<HashMap<String,String>>();
+				}*/
+//				Bitmap bitmap2[]={BitmapFactory.decodeFile(imgPath)};
+		         /*
 					 * 1将拍下的照片放到容器里面
 					 * 2.显示布局
 					 */
-	                contentSelectImg.setImageBitmap(bitmap2);
-					relativeLayout_showHidden.setVisibility(View.VISIBLE);
+		         //contentSelectImg.setImageBitmap(bitmap2[]);
+				
+/*//				for(int i=0;i<4;i++){
+					HashMap<String,String> map=new HashMap<String, String>();
+					map.put("photoLoad", R.drawable.btn_capture_pressed2+"");
+//				}
+				String from[]={"photoLoad"};
+				int to[]={R.id.contentSelectImg};
+				SimpleAdapter adapter=new SimpleAdapter(ItQuan_KeJiChat_ClickImgEdit.this, listPhoto, 
+						R.layout.itquan_loadphotoes, from, to);
+				gridView.setAdapter(adapter);*/
+//				
 				break;
 			default:
 				break;
@@ -218,7 +265,53 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 	
 	
 	
+//	public void getPhoto(String imgPath){
+//		if(listPhoto==null){
+//			listPhoto=new ArrayList<HashMap<String,String>>();
+//		}
+//		Bitmap bitmap2[]={BitmapFactory.decodeFile(imgPath)};
+//         /*
+//			 * 1将拍下的照片放到容器里面
+//			 * 2.显示布局
+//			 */
+//         //contentSelectImg.setImageBitmap(bitmap2[]);
+//		
+////		for(int i=0;i<4;i++){
+//			HashMap<String,String> map=new HashMap<String, String>();
+//			map.put("photoLoad", bitmap2[0]+"");
+////		}
+//		String from[]={"photoLoad"};
+//		int to[]={R.id.contentSelectImg};
+//		SimpleAdapter adapter=new SimpleAdapter(ItQuan_KeJiChat_ClickImgEdit.this, listPhoto, 
+//				R.layout.itquan_loadphotoes, from, to);
+//		gridView.setAdapter(adapter);
+////		SimpleAdapter photoesAdapter=new SimpleAdapter(ItQuan_KeJiChat_ClickImgEdit.this, listPhotoes,R.layout.itquan_loadphotoes,from,to)
+//	}
 	
+	//图片上传
+	public void getLoadPhotoes(){
+		HttpUtils httpUtils=new HttpUtils();
+		String url="http://192.168.1.124:8080/ITHome_DB/itquan_selectItQuanInfo";
+		RequestParams params=new RequestParams();
+		String headPath="/tencent/MicroMsg/WeiXin/mmexport1473460957586.jpeg";
+		File f=new File(headPath);
+		System.out.println("--------------f:"+f.getName());
+		params.addBodyParameter("ico",f,"image/*");
+		httpUtils.send(HttpMethod.POST, url, params,new RequestCallBack<String>() {
+
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
 	
 	
 

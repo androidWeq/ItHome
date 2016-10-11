@@ -96,7 +96,9 @@ public class Me_Login extends Activity {
          break;
 		case R.id.Login_Me:
 
+
         String url=MeTool.SELECTLogin;
+
         RequestParams params = new RequestParams();
 		UserInfoModle modle=new UserInfoModle();
 		String md5pwd = MD5.toMD5(value_pad);

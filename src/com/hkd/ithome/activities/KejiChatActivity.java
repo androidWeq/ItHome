@@ -70,6 +70,8 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 	ImageView lapinLoadingImg;// 加载旋转动画图片
 	RotateAnimation rotateAnimation;
 	LinearInterpolator lin;
+	
+	private static final int GETFABIAO=122;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -223,9 +225,12 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 			finish();
 			break;
 		case R.id.kejichangtan_imgEdit:
-			Intent intent_imgEdit=new Intent(this, ItQuan_KeJiChat_ClickImgEdit.class);
-			startActivity(intent_imgEdit);
-			finish();
+//			Intent intent_imgEdit=new Intent(this, ItQuan_KeJiChat_ClickImgEdit.class);
+			Intent intent_imgEdit=new Intent(this,ItQuan_KeJiChat_ClickImgEdit.class);
+//			System.out.println("-------------要进入Photoes_MainActivity");
+//			startActivity(intent_imgEdit);
+			startActivityForResult(intent_imgEdit, GETFABIAO);//GETFABIAO=122
+			
 			break;
 		
 		default:
@@ -248,24 +253,24 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 		// TODO Auto-generated method stub
 		switch (arg1) {
 		case R.id.kejichangtan_listHead_rb_hotTie:
-			Toast.makeText(KejiChatActivity.this, "热帖", Toast.LENGTH_SHORT)
-					.show();
+//			Toast.makeText(KejiChatActivity.this, "热帖", Toast.LENGTH_SHORT)
+//					.show();
 			lapinLoadingContent.setVisibility(View.VISIBLE);
 			kejichangtan_frame.setVisibility(View.GONE);
 			lapinLoadingImg.startAnimation(rotateAnimation);
 			getListViewDatas();
 			break;
 		case R.id.kejichangtan_listHead_rb_newRespon:
-			Toast.makeText(KejiChatActivity.this, "最新回复", Toast.LENGTH_SHORT)
-					.show();
+//			Toast.makeText(KejiChatActivity.this, "最新回复", Toast.LENGTH_SHORT)
+//					.show();
 			lapinLoadingContent.setVisibility(View.VISIBLE);
 			kejichangtan_frame.setVisibility(View.GONE);
 			lapinLoadingImg.startAnimation(rotateAnimation);
 			getListViewDatas();
 			break;
 		case R.id.kejichangtan_listHead_rb_newFaBiao:
-			Toast.makeText(KejiChatActivity.this, "最新发表", Toast.LENGTH_SHORT)
-					.show();
+//			Toast.makeText(KejiChatActivity.this, "最新发表", Toast.LENGTH_SHORT)
+//					.show();
 			lapinLoadingContent.setVisibility(View.VISIBLE);
 			kejichangtan_frame.setVisibility(View.GONE);
 			lapinLoadingImg.startAnimation(rotateAnimation);
@@ -276,5 +281,42 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 			break;
 		}
 	}
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	// TODO Auto-generated method stub
+	super.onActivityResult(requestCode, resultCode, data);
+//	Toast.makeText(KejiChatActivity.this, listdata.get(0).getTitle(), 100).show();
+	if(requestCode==121){
+		/*
+		 * 得到将要发表的数据   1.转换为json数据   再由HttpUtil解析数据给listView添加新数据
+		 */
+//		String title=data.getStringExtra("title");
+//		Toast.makeText(KejiChatActivity.this, "未添加", 100).show();
+//		String content=data.getStringExtra("content");
+//		ItQuanBeen itQuanInformation=new ItQuanBeen();
+//		
+//		itQuanInformation.setTitle(title);
+//		ItQuanBeen itQuanInformation = gson.fromJson(
+//				json, ItQuanBeen.class);// String转化成JavaBean
+//		listdata.add(itQuanInformation);// 加入Listdata
+//		listdata.add(0,itQuanInformation);
+		
+//		adapterList.notifyDataSetChanged();
+//		myList.invalidate();
+		
+//		listAdapter.notifyDataSetChanged();
+//		listView.invalidate();
+	}
+//	Toast.makeText(KejiChatActivity.this, "&&&&&&&&&&&&&"+listdata.get(0).getTitle(), 100000).show();
+	
+	
+	
+	
+	
+	}
+	
+//	String url="http://192.168.1.124:8080/ITHome_DB/itquan_selectItQuanInfo";
 
 }
