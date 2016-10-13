@@ -9,7 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cacheColorHint="#00000000"
+        android:visibility="invisible"
+        android:scrollbars="none"
         android:divider="@null" >
     </me.maxwin.view.XListView>
+
+    <include layout="@layout/lapin_loading" />
 
 </RelativeLayout>

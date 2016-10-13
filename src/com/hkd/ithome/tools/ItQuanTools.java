@@ -5,7 +5,13 @@ public class ItQuanTools {
 	/**
 	 * 服务器地址
 	 */
-	public final static String WEB_SERVERS_ADDRESS="http://192.168.56.1:8080/ITHome_DB";
+
+
+	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.125:8080/ITHome";
+
+	
+
+
 	
 	/**
 	 * 查询信息的接口
