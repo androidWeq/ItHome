@@ -91,12 +91,25 @@
             android:background="@drawable/abc_list_selector_disabled_holo_light"
             android:layout_margin="@dimen/jianju_stytle1"
             android:visibility="visible">
-             <ListView 
+             <!-- <ListView 
         android:id="@+id/noScrollgridview"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginLeft="5dp" >
-           </ListView>
+           </ListView> -->
+           <ImageView
+            android:id="@+id/contentSelectImg"
+            android:layout_width="@dimen/topHeight"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_launcher"
+            android:layout_margin="@dimen/jianju_stytle1"/>
+           <ImageView 
+               android:id="@+id/Img_del"
+               android:layout_width="20dp"
+               android:layout_height="20dp"
+               android:src="@drawable/quan_del"
+               android:layout_alignParentRight="true"/>
           
        </RelativeLayout>
         <!-- 选择图片结束 -->

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.example.ithome.R;
+import com.hkd.ithome.bean.ItQuanBeen;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -12,6 +14,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender.SendIntentException;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,10 +24,12 @@ import android.widget.ImageView;
 
 public class ItQuan_keji_editext_photoListViewAdapter extends BaseAdapter{
 	Context context;
-	ArrayList<HashMap<String, String>> listPhoto;
+	ArrayList<HashMap<String, Object>> listPhoto;
+//	ArrayList<ItQuanBeen> listPhoto;
+	BitmapUtils bitmapUtils;
 	
-	
-  public ItQuan_keji_editext_photoListViewAdapter(Context context,ArrayList<HashMap<String, String>> listPhoto){
+  public ItQuan_keji_editext_photoListViewAdapter(Context context,ArrayList<HashMap<String, Object>> listPhoto){
+	  bitmapUtils=new BitmapUtils(context);
 	  this.context=context;
 	  this.listPhoto=listPhoto;
   }
@@ -59,8 +64,11 @@ public class ItQuan_keji_editext_photoListViewAdapter extends BaseAdapter{
 		}else{
 			holder=(Holder) viewPhoto.getTag();
 		}
-		HashMap<String, String> map=listPhoto.get(arg0);
-		holder.contentSelectImg.setImageResource(Integer.parseInt(map.get("map")));
+//		HashMap<String, Object> map=listPhoto.get(arg0);
+//		ItQuanBeen been=new ItQuanBeen();
+//		holder.contentSelectImg.setImageResource(Integer.parseInt(listPhoto.get(arg0).getFabiao_img()));
+//		holder.contentSelectImg.setImageResource((Integer) map.get("img"));//Integer.parseInt(map.get("map"))
+//		 bitmapUtils.display(holder.contentSelectImg, uri);
 		holder.Img_del.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -86,14 +94,14 @@ public class ItQuan_keji_editext_photoListViewAdapter extends BaseAdapter{
 
 //	@Override
 //	public void onClick(View arg) {
-//		// 发送广播 删除该item
-////		Intent intent=new Intent();
-////		intent.setAction("deleteItem");
-////		intent.putExtra("index", arg0);
-////		context.sendBroadcast(intent);
-//		 
-//           
-//         //发送广播  
+		// 发送广播 删除该item
+//		Intent intent=new Intent();
+//		intent.setAction("deleteItem");
+//		intent.putExtra("index", arg0);
+//		context.sendBroadcast(intent);
+		 
+           
+         //发送广播  
 //          
 //		
 //		

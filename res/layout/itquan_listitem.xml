@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="[讨论]UWP微信"
+            android:lines="2"
             android:textSize="@dimen/wenzi_Style_1"
             android:layout_marginLeft="@dimen/jianju_stytle2"
             android:layout_toRightOf="@id/itquan_listitem_img"
@@ -34,6 +35,7 @@
             android:layout_below="@+id/itquan_listitem_tvTitle"
             android:layout_toRightOf="@id/itquan_listitem_img"
             android:text="shuai11055"
+            android:maxLength="10"
             android:layout_marginTop="@dimen/jianju_stytle2"
             android:textSize="@dimen/wenzi_Style_4" />
 
@@ -52,7 +54,8 @@
             android:id="@+id/itquan_listitem_tvAuthor2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="&apos;Pose"
+            android:text="ssdasaPose%%%%"
+            android:maxLength="10"
             android:textSize="@dimen/wenzi_Style_4"
             android:layout_marginLeft="@dimen/jianju_stytle1"
             android:layout_toRightOf="@id/itquan_listitem_tvDate"
@@ -83,21 +86,23 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignBottom="@id/itquan_listitem_tvphone"
-            android:layout_marginRight="@dimen/jianju_stytle2"
+            android:layout_marginRight="@dimen/jianju_stytle"
             android:drawableLeft="@drawable/quan_comment"
-            android:drawablePadding="@dimen/jianju_stytle2"
-            android:text="53" />
+            android:drawablePadding="@dimen/jianju_stytle"
+            android:text="53333223" 
+            android:maxLength="4"/>
 
         <TextView
             android:id="@+id/itquan_listitem_tvScan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/itquan_listitem_tvphone"
-            android:layout_marginRight="@dimen/jianju_stytle2"
+            android:layout_marginRight="@dimen/jianju_stytle"
             android:layout_toLeftOf="@id/itquan_listitem_tvResponse"
             android:drawableLeft="@drawable/quan_hit"
-            android:drawablePadding="@dimen/jianju_stytle2"
-            android:text="3149" />
+            android:drawablePadding="@dimen/jianju_stytle"
+            android:text="314933223" 
+            android:maxLength="4"/>
         
     </RelativeLayout>
    <LinearLayout 

@@ -95,7 +95,7 @@ public class Me_Login extends Activity {
          break;
 		case R.id.Login_Me:
 
-        String url="http://192.168.1.124:8080/ITHome_DB/userInfo_selectUserInfoLogin?";
+        String url="http://192.168.1.177:8080/ITHome_DB/userInfo_selectUserInfoLogin?";
     	
         RequestParams params = new RequestParams();
 		UserInfoModle modle=new UserInfoModle();
