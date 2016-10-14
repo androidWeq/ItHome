@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import me.maxwin.view.XListView;
 import me.maxwin.view.XListView.IXListViewListener;
 
@@ -100,7 +104,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		ViewUtils.inject(this, v);
 		initRotateAnimation();//动画
 		init();
-		getListViewDatas();
+//		getListViewDatas();
 		Image_sousuo.setOnClickListener(this);
 		myList.setOnItemClickListener(this);
 		return v;
@@ -176,13 +180,12 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 			@Override
 			public void run() {
 				// myList.add(listdata.size() + "下拉刷新,头部");
-//				if (listdata == null) {
-//					listdata = new ArrayList<ItQuanBeen>();
-//
-//				} else {
-//
-//				}
-				// listdata.add(object)
+				   if(listdata!=null){
+					   listdata.clear();
+				   }
+					getListViewDatas();
+				
+//				 listdata.add(object)
 				Toast.makeText(getActivity(), "进入", Toast.LENGTH_LONG).show();
 				adapter.notifyDataSetChanged();
 				onLoad();
@@ -211,20 +214,74 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		// TODO Auto-generated method stub
 
 	}
+	/*
+	 * onStart() 
+	 * @see android.support.v4.app.Fragment#onStart()
+	 */
+	@Override
+	public void onStart() {
+		// TODO Auto-generated method stub
+		System.out.println("-----进入onStart()");
+		if(listdata!=null){
+			listdata.clear();
+		}
+		getListViewDatas();
+		//浏览量+1
+		
+		super.onStart();
+		
+	}
+	
+	
      //点击gridViewItem
 	@Override               
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
 		case R.id.itquan_listView://XlistView点击事件 
+			// 从数据库获得 浏览量 进行加一
+//			public void getscanner(){
+			httpUtils = new HttpUtils();
+			httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
+					new RequestCallBack<String>() {
+						public void onSuccess(ResponseInfo<String> responseInfo) {
+							String info = responseInfo.result;
+							 try {
+								 System.out.println("-----try");
+								JSONArray jarray=new JSONArray(info);
+								JSONObject job=jarray.getJSONObject(arg2);
+								//记录浏览量Scan
+								int Scan=((Integer) job.get("scanner"))+1;
+								System.out.println("------scanner:"+Scan);
+//								holder.tvScan.setText(Scan);
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+
+								 System.out.println("-----catch");
+								e.printStackTrace();
+							}
+									
+							
+						}
+
+						@Override
+						public void onFailure(HttpException error,
+								String msg) {
+							// TODO Auto-generated method stub
+							
+						}
 			
-			Intent intent=new Intent(getActivity(),WebviewActivity.class);
-			intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);//头像
-			startActivity(intent);
+			});
+//			}
+//			Intent intent=new Intent(getActivity(),WebviewActivity.class);
+//			intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);//头像
+//			startActivity(intent);
+			
 			break;
 		case R.id.itquan_gridView://GridView点击事件
 			Intent inten=new Intent(getActivity(),KejiChatActivity.class);
 			startActivity(inten);
+			break;
 //            switch (arg2) {
 //			case 0:
 //				Intent intent0=new Intent(getActivity(),KejiChatActivity.class);
@@ -255,7 +312,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 //			default:
 //				break;
 //			}
-			break;
+			
 		default:
 			break;
 		}

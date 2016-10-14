@@ -307,8 +307,10 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 		String content=data.getStringExtra("content");
 		String author=data.getStringExtra("author");
 		String fromQuan=data.getStringExtra("type_quan");
+		String img_path=data.getStringExtra("photo_path");
 		String date=data.getStringExtra("date");
 		ItQuanBeen itQuan_fabiao = new ItQuanBeen();
+		itQuan_fabiao.setImgpath(img_path);//头像路径
 		itQuan_fabiao.setTitle(content);//发帖内容
 		itQuan_fabiao.setAuthor(author);//发帖人
 		itQuan_fabiao.setDate(date);//发帖日期

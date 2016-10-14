@@ -2,16 +2,30 @@ package com.hkd.ithome.activities;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.ithome.R;
-import com.hkd.ithome.adapter.ItQuan_keji_editext_photoListViewAdapter;
 import com.hkd.ithome.app.AppApplication;
-import com.hkd.ithome.bean.ItQuanBeen;
+import com.hkd.ithome.tools.ItQuanTools;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -21,36 +35,6 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.provider.MediaStore;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickListener{
 	@ViewInject(R.id.edit_title)
@@ -71,17 +55,18 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 	RelativeLayout relativeLayout_showHidden;
 //	@ViewInject(R.id.contentSelectImg)//将选中的图片放到该ImageView里面
 //	ImageView contentSelectImg;
-//	@ViewInject(R.id.Img_del)//删除已选中的图片
+	@ViewInject(R.id.Img_del)//删除已选中的图片
 	ImageView Img_del;
 	@ViewInject(R.id.contentSelectImg)//选择的图片
 	ImageView contentSelectImg;
+    String  imgPath ;
 	
 //	View viewPhoto;
 	EditText phoneNum,yanZhengNum;
 	TextView UserHaiWai;
 	Button bt_getNum,bt_yanZheng;
 	//photoListView
-	ArrayList<HashMap<String, Object>> listPhotodata;
+//	ArrayList<HashMap<String, Object>> listPhotodata;
 //	ArrayList<ItQuanBeen> itquan_fabiaoData;
 	@ViewInject(R.id.noScrollgridview)//相片listview
 	ListView myPhotoList;
@@ -122,7 +107,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 		img_photo.setOnClickListener(this);//打开照片监听
 		tv_help.setOnClickListener(this);//点击帮助监听
 		tv_fabiao.setOnClickListener(this);//点击发表监听
-//		Img_del.setOnClickListener(this);//删除已选中的图片
+		Img_del.setOnClickListener(this);//删除已选中的图片
 		
 	}
 	/*
@@ -133,7 +118,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
-		case R.id.Img_backward_btn:
+		case R.id.Img_backward_btn://返回按钮
 			/*
 			 * 点击返回:科技畅谈页面
 			 * 1.弹出一个对话框  询问：是否要退出编辑
@@ -163,9 +148,9 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 			Intent intent_photo=new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 			startActivityForResult(intent_photo, PHOTO);
 			break;
-//		case R.id.Img_del://隐藏布局
-//		    relativeLayout_showHidden.setVisibility(View.GONE);
-//		    break;
+		case R.id.Img_del://隐藏布局
+		    relativeLayout_showHidden.setVisibility(View.GONE);
+		    break;
 		case R.id.tv_fabiao://发表 判断是否已登录   1没登录 先登录2 已登录就发表
 			/*
 			 * 判断是否已登录  
@@ -220,7 +205,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 //						 * 1.以json的方式上传到数据库
 //						 * 2.在上一界面解析得到数据
 						 */
-						System.out.println("-------name:"+AppApplication.getApp().getUsername());
+						System.out.println("-------Username:"+AppApplication.getApp().getUsername());
 //						Toast.makeText(ItQuan_KeJiChat_ClickImgEdit.this, AppApplication.getApp().getUsername(), 100).show();
 						Intent intent=new Intent(ItQuan_KeJiChat_ClickImgEdit.this,KejiChatActivity.class);
 						intent.putExtra("title", edit_title.getText().toString());//发表标题
@@ -229,8 +214,9 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 						SimpleDateFormat date=new SimpleDateFormat("yy-MM-dd");
 						intent.putExtra("date",date.format(new Date())+"");//获得当前时间
 						intent.putExtra("type_quan","iOS圈");//默认圈子类型
-//						intent.putExtra("photo",listPhotodata);//得到取得的图片
-						System.out.println("listPhotodata:"+listPhotodata.size());
+						System.out.println("Username-----------:"+AppApplication.getApp().getUsername());
+//						intent.putExtra("photo_path",imgPath);//得到取得的图片
+//						System.out.println("listPhotodata:"+listPhotodata.size());
 //						System.out.println("---title"+edit_title.getText()+"======"+editext_content.getText());
 //						intent.putExtra("photoes", img_photo);
 						setResult(121, intent);
@@ -288,16 +274,18 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 	                        null, null, null);
 	                cursor.moveToFirst();
 //	                  String imgNo = cursor.getString(0); // 图片编号 
-	                 final String  imgPath = cursor.getString(1); // 图片文件路径 
+	                imgPath = cursor.getString(1); // 图片文件路径 
 //	                  String imgSize = cursor.getString(2); // 图片大小 
 //	                  String imgName = cursor.getString(3); // 图片文件名
 	                  cursor.close();
-//	                  getLoadPhotoes(imgPath);//将图片上传到img文件夹
+	                  getLoadPhotoes(imgPath);//将图片上传到img文件夹
 	                  
 	                  final Bitmap bitmap2=BitmapFactory.decodeFile(imgPath);
 	                  contentSelectImg.setImageBitmap(bitmap2);
 //	                  PhotoesContain(bitmap2);
 	                  System.out.println("-----------进入到case PHOTO:"+imgPath);
+//-----------进入到case PHOTO:/storage/sdcard/KuwoMusic/welcome/20161011-ad.jpg
+
 //	                  it=new Thread(new Runnable() {
 //						
 //						@Override
@@ -324,12 +312,15 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements OnClickLis
 	 */
 	public void getLoadPhotoes(String path){
 		HttpUtils httpUtils=new HttpUtils();
-		String url="http://192.168.1.124:8080/ITHome_DB/itquan_selectItQuanInfo";
+		//上传服务器地址和有关方法
+		String url=ItQuanTools.SELECT_information;
+//		String url="http://192.168.1.124:8080/ITHome_DB/itquan_selectItQuanInfo";
 		RequestParams params=new RequestParams();
-//		String headPath="/tencent/MicroMsg/WeiXin/mmexport1473460957586.jpeg";
-		String headPath=path;
-		File f=new File(headPath);
-		System.out.println("--------------f:"+f.getName());
+		String head_Path="path";
+//				"MicroMsg/WeiXin/mmexport1473460957586.jpeg";
+//		String headPath=path;
+		File f=new File(head_Path);
+//		System.out.println("--------------f:"+f.getName());
 		params.addBodyParameter("ico",f,"image/*");
 		httpUtils.send(HttpMethod.POST, url, params,new RequestCallBack<String>() {
 

@@ -11,31 +11,39 @@
         android:padding="@dimen/jianju_stytle1">
         <ImageView 
             android:id="@+id/itquan_listitem_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/jianju_stytle1"/>
+         <TextView 
+            android:id="@+id/itquan_listitem_tvType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@drawable/quan_zhanwu"
-            android:layout_margin="@dimen/jianju_stytle1"/>
+            android:text="[讨论]"
+            android:textSize="@dimen/wenzi_Style_1"
+            android:layout_marginLeft="@dimen/jianju_stytle2"
+            android:layout_toRightOf="@id/itquan_listitem_img"
+            android:layout_alignTop="@id/itquan_listitem_img"/>
         <TextView 
             android:id="@+id/itquan_listitem_tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="[讨论]UWP微信"
+            android:text="UWP微信"
             android:lines="2"
             android:textSize="@dimen/wenzi_Style_1"
             android:layout_marginLeft="@dimen/jianju_stytle2"
-            android:layout_toRightOf="@id/itquan_listitem_img"
+            android:layout_toRightOf="@id/itquan_listitem_tvType"
             android:layout_alignTop="@id/itquan_listitem_img"/>
 
         <TextView
             android:id="@+id/itquan_listitem_tvAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/itquan_listitem_tvTitle"
+            android:layout_alignLeft="@id/itquan_listitem_tvType"
             android:layout_below="@+id/itquan_listitem_tvTitle"
             android:layout_toRightOf="@id/itquan_listitem_img"
             android:text="shuai11055"
-            android:maxLength="10"
+            android:maxLength="6"
             android:layout_marginTop="@dimen/jianju_stytle2"
             android:textSize="@dimen/wenzi_Style_4" />
 
@@ -55,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ssdasaPose%%%%"
-            android:maxLength="10"
+            android:maxLength="6"
             android:textSize="@dimen/wenzi_Style_4"
             android:layout_marginLeft="@dimen/jianju_stytle1"
             android:layout_toRightOf="@id/itquan_listitem_tvDate"

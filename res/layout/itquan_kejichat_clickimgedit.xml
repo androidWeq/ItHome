@@ -87,7 +87,7 @@
        <RelativeLayout
            android:id="@+id/relativeLayout_showHidden" 
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"
+           android:layout_height="100dp"
             android:background="@drawable/abc_list_selector_disabled_holo_light"
             android:layout_margin="@dimen/jianju_stytle1"
             android:visibility="visible">
@@ -100,9 +100,8 @@
            <ImageView
             android:id="@+id/contentSelectImg"
             android:layout_width="@dimen/topHeight"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_launcher"
             android:layout_margin="@dimen/jianju_stytle1"/>
            <ImageView 
                android:id="@+id/Img_del"

@@ -14,7 +14,7 @@ public class AppApplication extends Application {
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
-		mAppApplication = this;
+		mAppApplication =this;
 	}
 
 	/** 获取Application */

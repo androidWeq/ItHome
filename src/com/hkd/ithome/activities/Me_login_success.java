@@ -13,6 +13,8 @@ import com.hkd.ithome.bean.UserInfoModle;
 import com.hkd.ithome.fragment.MineFragment;
 import com.hkd.ithome.interfaces.OnUpdateText;
 import com.hkd.ithome.tools.MD5;
+import com.hkd.ithome.tools.MeTool;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -67,7 +69,7 @@ public class Me_login_success extends Activity {
 	HttpUtils http;
 	private Bitmap head;// 头像Bitmap
 	private static String path = "/sdcard/DemoHead/";// sd路径
-
+	BitmapUtils bitmapUtils;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -174,13 +176,18 @@ public class Me_login_success extends Activity {
 		mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
 		// 动画效果
 		mPopupWindow.setAnimationStyle(R.style.popupAnimation);
-		Bitmap bt = BitmapFactory.decodeFile(path + "head.jpg");// 从Sd中找头像，转换成Bitmap
+		Bitmap bt = BitmapFactory.decodeFile(path + u_success.getText().toString()+".jpg");// 从Sd中找头像，转换成Bitmap
 		if (bt != null) {
 			// 如果本地有头像图片的话
 			head_pic.setImageBitmap(bt);
 		} else {
-			// 如果本地没有头像图片则从服务器取头像，然后保存在SD卡中，本Demo的网络请求头像部分忽略
-
+		 // 如果本地没有头像图片则从服务器取头像，然后保存在SD卡中，本Demo的网络请求头像部分忽略
+           bitmapUtils=new BitmapUtils(this);
+           //加载成功前面,默认显示的图片
+   		  bitmapUtils.configDefaultLoadingImage(R.drawable.avatar_default_cir);
+   		   //加载失败,显示哪张图片
+   		  bitmapUtils.configDefaultLoadFailedImage(R.drawable.avatar_default_cir);
+		  bitmapUtils.display(head_pic, MeTool.IMG_SERVICE+u_success.getText().toString()+".jpg");
 		}
 	}
 
@@ -272,7 +279,7 @@ public class Me_login_success extends Activity {
 				Toast.makeText(Me_login_success.this, "两次密码输入不一致", Toast.LENGTH_SHORT).show();
 					return;
 				}
-				String url = "http://192.168.1.119:8080/ITHome/userInfo_selectUserInfoLogin?";
+				String url = MeTool.SELECTLogin;
 				RequestParams params = new RequestParams();
 				UserInfoModle modle = new UserInfoModle();
 				String md5pwd = MD5.toMD5(value_old);
@@ -288,7 +295,7 @@ public class Me_login_success extends Activity {
 					 Toast.makeText(Me_login_success.this,"原密码错误!", Toast.LENGTH_SHORT).show();   
                  
 				 } else {
-					 String url="http://192.168.1.119:8080/ITHome/userInfo_updateUserInfo?";
+					 String url=MeTool.UPDATE;
 					 RequestParams params = new RequestParams();
 					 UserInfoModle modle = new UserInfoModle();
 					 String md5pwd = MD5.toMD5(value_new);
@@ -367,6 +374,28 @@ public class Me_login_success extends Activity {
 					 */
 					setPicToView(head);// 保存在SD卡中
 					head_pic.setImageBitmap(head);// 用ImageView显示出来
+					
+					String url=MeTool.UPLOADFILE;
+					RequestParams params=new RequestParams();
+					String headpath=path+u_success.getText().toString()+".jpg";
+					File f=new File(headpath);
+					params.addBodyParameter("ico", f, "image/*");
+					params.addQueryStringParameter("params", u_success.getText().toString());
+					http.send(HttpMethod.POST, url,params, new RequestCallBack<String>() {
+
+						@Override
+						public void onSuccess(ResponseInfo<String> responseInfo) {
+							
+							
+						}
+
+						@Override
+						public void onFailure(HttpException error, String msg) {
+						
+							
+						}
+					});
+					
 				}
 			}
 			break;
@@ -391,8 +420,8 @@ public class Me_login_success extends Activity {
 		intent.putExtra("aspectX", 1);
 		intent.putExtra("aspectY", 1);
 		// outputX outputY 是裁剪图片宽高
-		intent.putExtra("outputX", 150);
-		intent.putExtra("outputY", 150);
+		intent.putExtra("outputX", 300);
+		intent.putExtra("outputY", 300);
 		intent.putExtra("return-data", true);
 		// 进入系统裁剪图片的界面
 		startActivityForResult(intent, 3);
@@ -406,7 +435,7 @@ public class Me_login_success extends Activity {
 		FileOutputStream b = null;
 		File file = new File(path);
 		file.mkdirs();// 创建以此File对象为名（path）的文件夹
-		String fileName = path + "head.jpg";// 图片名字
+		String fileName = path + u_success.getText().toString()+".jpg";// 图片名字
 		try {
 			b = new FileOutputStream(fileName);
 			mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, b);// 把数据写入文件（compress：压缩）

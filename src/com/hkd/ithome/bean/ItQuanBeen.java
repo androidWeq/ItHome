@@ -1,7 +1,7 @@
 package com.hkd.ithome.bean;
 
 public class ItQuanBeen {
-	private String imgPath;
+	private String imgpath;
 	private String title;
 	private String author;
 	private String date;
@@ -10,8 +10,15 @@ public class ItQuanBeen {
 	private int scanner;
 	private int response;
 	private String fromQuan;
+	private String type;
 	
-	   String fabiao_title;
+	   public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	String fabiao_title;
 	   String fabiao_content;
 	   String fabiao_img;
 	
@@ -33,11 +40,11 @@ public class ItQuanBeen {
 	public void setFabiao_img(String fabiao_img) {
 		this.fabiao_img = fabiao_img;
 	}
-//	public String getImgPath() {
-//		return imgPath;
-//	}
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
+	public String getImgpath() {
+		return imgpath;
+	}
+	public void setImgpath(String imgpath) {
+		this.imgpath = imgpath;
 	}
 	public String getTitle() {
 		return title;
