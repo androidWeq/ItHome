@@ -11,6 +11,12 @@ import com.hkd.ithome.db.GoodsOrderDBUtil;
 import com.hkd.ithome.db.GoodsOrderSQLHelper;
 import com.hkd.ithome.tools.NoChange;
 import com.lidroid.xutils.BitmapUtils;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -20,6 +26,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LaPinDetial extends Activity implements OnClickListener {
 	TextView title, time, youhui, describe, toBuy, toShopCar;
@@ -28,6 +35,7 @@ public class LaPinDetial extends Activity implements OnClickListener {
 	GoodInfo info;
 	int goodsId; // 商品id
 	double untiPrice;// 商品单价
+	HttpUtils httpUtils;
 
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -95,40 +103,28 @@ public class LaPinDetial extends Activity implements OnClickListener {
 				Intent intent2 = new Intent(LaPinDetial.this, Me_Login.class);
 				startActivity(intent2);
 			} else {
-				int orderid = GoodsOrderDBUtil.getInstance(LaPinDetial.this)
-						.selectOrderId(username);
-				System.out.println("______________orderId" + orderid);
-				if (orderid < 0) {
-					ContentValues values = new ContentValues();
-					values.put(GoodsOrderSQLHelper.ORDERID, 0);
-					values.put(GoodsOrderSQLHelper.USERNAME, username);
-					SimpleDateFormat format = new SimpleDateFormat(
-							"yyyy-MM-dd HH:mm:ss");
-					String dateTime = format.format(new Date());
-					values.put(GoodsOrderSQLHelper.ORDERTIME, dateTime);
-					values.put(GoodsOrderSQLHelper.ORDERNUM, dateTime + "-"
-							+ username);
-					GoodsOrderDBUtil.getInstance(LaPinDetial.this).insertOrder(
-							values);
+				httpUtils=new HttpUtils();
+				RequestParams params=new RequestParams();
+				params.addQueryStringParameter("params","{\"goodId\":\"" + goodsId
+				+ "\",\"username\":\"" + username + "\"}");
+				httpUtils.send(HttpMethod.POST,NoChange.ADD_SHOP_CAR,params,new RequestCallBack<String>() {
+
 					
-					ContentValues valuesLine = new ContentValues();
-					valuesLine.put(GoodsOrderSQLHelper.ORDERID, 0);
-					valuesLine.put(GoodsOrderSQLHelper.GOODSID,goodsId);
-					valuesLine.put(GoodsOrderSQLHelper.QUANITY,1);
-					valuesLine.put(GoodsOrderSQLHelper.UNITPRICE, untiPrice);
-					valuesLine.put(GoodsOrderSQLHelper.USERNAME, username);
-					GoodsOrderDBUtil.getInstance(LaPinDetial.this)
-							.insertLineItem(valuesLine);
-				} else {
-					ContentValues valuesLine = new ContentValues();
-					valuesLine.put(GoodsOrderSQLHelper.ORDERID, orderid);
-					valuesLine.put(GoodsOrderSQLHelper.GOODSID,goodsId);
-					valuesLine.put(GoodsOrderSQLHelper.QUANITY,1);
-					valuesLine.put(GoodsOrderSQLHelper.UNITPRICE, untiPrice);
-					valuesLine.put(GoodsOrderSQLHelper.USERNAME, username);
-					GoodsOrderDBUtil.getInstance(LaPinDetial.this)
-							.insertLineItem(valuesLine);
-				}
+					public void onSuccess(ResponseInfo<String> responseInfo) {
+						
+						if ("添加购物车成功".equals(responseInfo.result)) {
+							Toast.makeText(LaPinDetial.this,"添加购物车成功",1).show();
+						}else{
+							System.out.println("________ 添加购物车失败");
+						}
+					}
+
+					
+					public void onFailure(HttpException error, String msg) {
+						
+						System.out.println("______添加购物车网络失败");
+					}
+				});
 			}
 
 			break;

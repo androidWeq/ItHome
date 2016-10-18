@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/address_checkbox_select"
             android:button="@null"
-            android:checked="true" 
+            android:checked="false" 
             android:layout_marginLeft="20dp"/>
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="left"
-            android:text="¥129.00"
+            android:text="¥0.00"
             android:textColor="@color/orange"
             android:textSize="17sp" />
 
