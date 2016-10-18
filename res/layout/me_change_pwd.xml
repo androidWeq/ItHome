@@ -49,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:background="@null"
+            android:inputType="textPassword"
             android:maxLength="20"
             android:singleLine="true" />
     </LinearLayout>
@@ -84,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:background="@null"
+            android:inputType="textPassword"
             android:maxLength="20"
             android:singleLine="true" />
     </LinearLayout>
@@ -119,6 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:background="@null"
+            android:inputType="textPassword"
             android:maxLength="20"
             android:singleLine="true" />
     </LinearLayout>
@@ -162,12 +165,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/red"
+            android:enabled="false"
             android:paddingBottom="@dimen/change_PaddingBottom"
             android:paddingLeft="@dimen/change_PaddingLeft"
             android:paddingRight="@dimen/change_PaddingRight"
             android:paddingTop="@dimen/change_PaddingTop"
             android:text="@string/qd"
-            android:enabled="false"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
