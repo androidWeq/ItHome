@@ -18,6 +18,24 @@ public class GoodInfo implements Serializable{
 	String typeId;
 	String describe;
 	double price;
+	int goodNum;
+	int orderId;
+	
+	
+	
+
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+	public int getGoodNum() {
+		return goodNum;
+	}
+	public void setGoodNum(int goodNum) {
+		this.goodNum = goodNum;
+	}
 	public int getId() {
 		return id;
 	}

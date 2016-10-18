@@ -5,17 +5,7 @@ public class NoChange {
 	/**
 	 * 服务器地址
 	 */
-
-
-	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.125:8080/ITHome";
-
-
-
-
-
-
-
-	
+	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.134:8080/ITHome";
 	/**
 	 * 查询辣品信息的接口
 	 */
@@ -49,4 +39,21 @@ public class NoChange {
 	 * 更新地址信息
 	 */
 	public final static String UPDATE_ADDRESSINFO=WEB_SERVERS_ADDRESS+"/lapin_update?";
+	/**
+	 * 添加购物车信息
+	 */
+	public final static String ADD_SHOP_CAR=WEB_SERVERS_ADDRESS+"/lapin_addShopCar?";
+	/**
+	 * 查询购物车信息
+	 */
+	public final static String SELECT_SHOP_CAR=WEB_SERVERS_ADDRESS+"/lapin_selectShopCarInfo?";
+	/**
+	 * 更新购物车单品数量
+	 */
+	public final static String UPDATE_SHOPCAR_GOODNUM=WEB_SERVERS_ADDRESS+"/lapin_updateShopCarGoodNum?";
+	
+	/**
+	 * 添加购物订单
+	 */
+	
 }

@@ -48,6 +48,7 @@ public class ShowAddressList extends Activity implements OnItemClickListener,OnC
 		toEditAddress=(TextView) findViewById(R.id.lapin_address_list_toEdit);
 		listView.setOnItemClickListener(this);
 		toEditAddress.setOnClickListener(this); 
+		back.setOnClickListener(this);
 	}
 	
 	protected void onStart() {
@@ -91,9 +92,21 @@ public class ShowAddressList extends Activity implements OnItemClickListener,OnC
 	}
 	@Override
 	public void onClick(View v) {
-		//跳转到编辑地址列表界面 
-		Intent intent=new Intent(ShowAddressList.this,EditAddressList.class);
-		startActivity(intent);
+		
+		
+		switch (v.getId()) {
+		case R.id.lapin_address_list_toEdit:
+			//跳转到编辑地址列表界面 
+			Intent intent=new Intent(ShowAddressList.this,EditAddressList.class);
+			startActivity(intent);
+			break;
+		case R.id.lapin_address_list_back:
+			finish();
+			break;
+
+		default:
+			break;
+		}
 		
 	}
 

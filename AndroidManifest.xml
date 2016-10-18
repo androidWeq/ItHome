@@ -168,6 +168,16 @@
             </intent-filter>
         </activity>
 
+		<activity android:name="com.hkd.ithome.activities.EditAddressList">
+		</activity>
+		<activity android:name="com.hkd.ithome.activities.LaPinShopCar">
+		</activity>
+		<activity android:name="com.hkd.ithome.activities.ShowAddressList">
+		</activity>
+		<activity android:name="com.hkd.ithome.activities.LaPinAddressAdd">
+		</activity>
+
+
         <!-- 微信分享回调 -->
         <activity
             android:name=".wxapi.WXEntryActivity"

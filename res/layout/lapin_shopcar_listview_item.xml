@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <CheckBox
+        android:id="@+id/shopcar_listviewitem_payone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:checked="false"
+        android:background="@drawable/address_checkbox_select"
+        android:button="@null" />
+
+    <ImageView
+        android:id="@+id/shopcar_listviewitem_img"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/shopcar_listviewitem_title"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:text="恢复大师来开发大神了fdakjfhda;l" />
+
+       
+        
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            
+            <TextView android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:text="--"
+                android:id="@+id/shopcar_listviewitem_jian"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:textSize="17sp"/>
+            <TextView android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:text="5"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:id="@+id/shopcar_listviewitem_num"
+                android:gravity="center"
+                android:textSize="17sp"/>
+            <TextView android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:text="++"
+                android:id="@+id/shopcar_listviewitem_jia"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:textSize="17sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/shopcar_listviewitem_unitprice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textColor="@color/orange"
+                android:textSize="17sp"
+                android:text="¥8300" />
+
+            <TextView
+                android:id="@+id/shopcar_listviewitem_checknum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:text="X1"
+                android:layout_marginRight="20dp" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
