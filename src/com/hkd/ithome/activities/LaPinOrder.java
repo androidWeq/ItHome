@@ -226,7 +226,7 @@ public class LaPinOrder extends Activity implements OnClickListener,TextWatcher{
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		int num;
 		//判断当删除所有数时,强制设置num=0
-		if("".equals(goodNum.getText().toString()) || Integer.parseInt(goodNum.getText().toString())<0 ){
+		if("".equals(s.toString()) || Integer.parseInt(goodNum.getText().toString())<0 ){
 			num=0;
 			goodNum.setText(0+"");
 		}else{

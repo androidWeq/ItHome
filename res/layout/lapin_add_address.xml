@@ -58,7 +58,7 @@
     <EditText
         android:id="@+id/addressinfo_street"
         style="@style/address_style"
-        android:text="街道" />
+        android:hint="街道" />
 
     <View style="@style/address_1dp_view" />
 
