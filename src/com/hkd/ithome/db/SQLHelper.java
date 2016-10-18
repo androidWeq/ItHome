@@ -15,6 +15,8 @@ public class SQLHelper extends SQLiteOpenHelper {
 	public static final String NAME = "name";
 	public static final String ORDERID = "orderId";
 	public static final String SELECTED = "selected";
+	
+	
 	private Context context;
 	public SQLHelper(Context context) {
 		super(context, DB_NAME, null, VERSION);
