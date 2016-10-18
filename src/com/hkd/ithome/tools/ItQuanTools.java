@@ -6,7 +6,7 @@ public class ItQuanTools {
 	 * 服务器地址
 	 */
 
-	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.177:8080/ITHome";
+	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.134:8080/ITHome";
 
 	
 
