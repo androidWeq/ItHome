@@ -5,7 +5,7 @@ public class NoChange {
 	/**
 	 * 服务器地址
 	 */
-	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.159:8080/ItHomeSSH";
+	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.102:8080/ItHomeSSH";
 	
 	/**
 	 * 查询辣品信息的接口
