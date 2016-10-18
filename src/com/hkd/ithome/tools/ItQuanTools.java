@@ -7,7 +7,7 @@ public class ItQuanTools {
 	 */
 
 
-	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.134:8080/ITHome";
+	public final static String WEB_SERVERS_ADDRESS="http://192.168.1.162:8080/ITHome";
 
 	
 
