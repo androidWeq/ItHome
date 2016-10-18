@@ -1,13 +1,13 @@
 package com.hkd.ithome.adapter;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 
 import com.example.ithome.R;
 import com.hkd.ithome.app.AppApplication;
 import com.hkd.ithome.bean.GoodInfo;
-import com.hkd.ithome.bean.ShopCarInfo;
+
 import com.hkd.ithome.interfaces.OnUpdateText;
 import com.hkd.ithome.tools.NoChange;
 import com.lidroid.xutils.BitmapUtils;
@@ -37,7 +37,7 @@ public class ShopCarAdapter extends BaseAdapter   {
 	Context context;
 	List<GoodInfo> datas;
 	BitmapUtils bitmapUtils;
-	static ShopCarAdapter adapter;
+	ShopCarAdapter adapter;
 	OnUpdateText onUpdateText;
 	double allprice=0;
 	int isTrue=0;
@@ -45,19 +45,23 @@ public class ShopCarAdapter extends BaseAdapter   {
 	
 	
 	
-	public static ShopCarAdapter getAdapter(Context context,List<GoodInfo> datas){
+	/*public ShopCarAdapter getAdapter(Context context,List<GoodInfo> datas){
 		if(adapter==null){
 			adapter=new ShopCarAdapter(context,datas);
 		}
 		
 		return adapter;
 		
-	}
+	}*/
+	
 	
 	 
 	public double getAllprice() {
 		return allprice;
 	}
+
+
+	
 
 
 	public void setAllprice(double allprice) {
@@ -89,7 +93,7 @@ public class ShopCarAdapter extends BaseAdapter   {
 	
 
 
-	private ShopCarAdapter(Context context,List<GoodInfo> datas) {
+	public ShopCarAdapter(Context context,List<GoodInfo> datas) {
 		super();
 		this.context = context;
 		this.datas = datas;

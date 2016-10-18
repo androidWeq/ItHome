@@ -80,7 +80,9 @@ public class LaPinShopCar  extends Activity implements OnUpdateText,OnClickListe
 				Gson gson =new Gson();
 				datas=gson.fromJson(responseInfo.result,new TypeToken<List<GoodInfo>>(){}.getType());
 				//System.out.println(datas.size()+"__________");
-				adapter=ShopCarAdapter.getAdapter(LaPinShopCar.this,datas);
+				if (adapter==null) {
+					adapter=new ShopCarAdapter(LaPinShopCar.this,datas);
+				}
 				adapter.setOnUpdateText(LaPinShopCar.this);
 				listView.setAdapter(adapter);
 			}
