@@ -251,9 +251,10 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(this, WebviewActivity.class);
+		Intent intent = new Intent(this, ItQuan_WebViewActivity.class);
 		intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);
-		startActivity(intent);
+		intent.putExtra("index",arg2);
+		startActivityForResult(intent, 111);
 
 	}
 
@@ -320,8 +321,11 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 		listdata.add(0,itQuan_fabiao);
 		adapterList.notifyDataSetChanged();
 		myList.invalidate();
-	}else{
-		System.out.println("进入122");
+	}else if(resultCode==112){
+		System.out.println("WebView进入111");
+		int index=data.getIntExtra("index", 0);
+		int countScanner=listdata.get(index).getScanner()+1;
+		System.out.println("------------浏览量Scanner---=:"+countScanner);
 	}
 //	Toast.makeText(KejiChatActivity.this, "&&&&&&&&&&&&&"+listdata.get(0).getTitle(), 100000).show();
 	

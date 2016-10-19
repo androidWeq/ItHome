@@ -259,10 +259,6 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements
 						params.width = screenWidth;
 						params.height = (int) (screenHeigh * 0.7);
 						dialog_yanZheng.getWindow().setAttributes(params);
-						
-						
-						
-						
 						// 点击获取验证码
 						bt_getNum.setOnClickListener(new OnClickListener() {
     
@@ -450,14 +446,11 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements
 				Object data = msg.obj;
 				Log.e("event", "event=" + event);
 				if (result == SMSSDK.RESULT_COMPLETE) {
+					System.out.println("-----------验证码SMSSDK.RESULT_COMPLETE:"+SMSSDK.RESULT_COMPLETE);
 					// 短信注册成功后，返回MainActivity,然后提示
 					if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {// 提交验证码成功
 						Toast.makeText(getApplicationContext(), "提交验证码成功",
 								Toast.LENGTH_SHORT).show();
-						// Intent intent = new
-						// Intent(ItQuan_KeJiChat_ClickImgEdit.this,
-						// MainActivity.class);
-						// startActivity(intent);
 						/*
 						 * 把将要发表的评论上传 跳转到上一界面 // * 1.以json的方式上传到数据库 // *
 						 * 2.在上一界面解析得到数据
@@ -545,7 +538,7 @@ public class ItQuan_KeJiChat_ClickImgEdit extends Activity implements
 	}
 
 	/**
-	 * progressbar
+	 * progressbar进度条
 	 */
 	private void createProgressBar() {
 		FrameLayout layout = (FrameLayout) findViewById(android.R.id.content);

@@ -3,7 +3,7 @@ package com.hkd.ithome.tools;
 public class MeTool {
 	
 	
-	public static final String WEB_SERVICE="http://192.168.1.134:8080/ITHome/";
+	public static final String WEB_SERVICE="http://120.27.92.205:8080/ITHome/";
 
 	public static final String SELECT=WEB_SERVICE+"userInfo_selectUserInfo?";
 

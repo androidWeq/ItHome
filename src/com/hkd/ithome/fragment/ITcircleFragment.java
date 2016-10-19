@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.hkd.ithome.activities.ItQuan_WebViewActivity;
 import com.hkd.ithome.activities.KejiChatActivity;
 import com.hkd.ithome.activities.SouSuoActivity;
 import com.hkd.ithome.activities.WebviewActivity;
@@ -37,7 +38,10 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.IntentSender.SendIntentException;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -94,6 +98,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	View v;
 	RelativeLayout lapinLoadingContent;// 加载动画页面
 	ImageView lapinLoadingImg;// 加载旋转动画图片
+	int Scan=0;
 //	
 	
 
@@ -103,7 +108,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		 v = inflater.inflate(R.layout.fragment_itcircle, null);
 		ViewUtils.inject(this, v);
 		initRotateAnimation();//动画
-		init();
+		init();  
 //		getListViewDatas();
 		Image_sousuo.setOnClickListener(this);
 		myList.setOnItemClickListener(this);
@@ -239,87 +244,77 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
 		case R.id.itquan_listView://XlistView点击事件 
-			// 从数据库获得 浏览量 进行加一
-//			public void getscanner(){
-			httpUtils = new HttpUtils();
-			httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
-					new RequestCallBack<String>() {
-						public void onSuccess(ResponseInfo<String> responseInfo) {
-							String info = responseInfo.result;
-							 try {
-								 System.out.println("-----try");
-								JSONArray jarray=new JSONArray(info);
-								JSONObject job=jarray.getJSONObject(arg2);
-								//记录浏览量Scan
-								int Scan=((Integer) job.get("scanner"))+1;
-								System.out.println("------scanner:"+Scan);
-//								holder.tvScan.setText(Scan);
-							} catch (JSONException e) {
-								// TODO Auto-generated catch block
-
-								 System.out.println("-----catch");
-								e.printStackTrace();
-							}
-									
-							
-						}
-
-						@Override
-						public void onFailure(HttpException error,
-								String msg) {
-							// TODO Auto-generated method stub
-							
-						}
+			Intent intent=new Intent(getActivity(),ItQuan_WebViewActivity.class);
+			intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);//头像
+			intent.putExtra("index", arg2);
+			startActivityForResult(intent, 11);
 			
-			});
-//			}
-//			Intent intent=new Intent(getActivity(),WebviewActivity.class);
-//			intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);//头像
-//			startActivity(intent);
+//			
+//		
 			
 			break;
 		case R.id.itquan_gridView://GridView点击事件
 			Intent inten=new Intent(getActivity(),KejiChatActivity.class);
 			startActivity(inten);
 			break;
-//            switch (arg2) {
-//			case 0:
-//				Intent intent0=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent0);
-//				break;
-//			case 1:
-//				Intent intent1=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent1);
-//				break;
-//			case 2:
-//				Intent intent2=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent2);
-//				break;
-//			case 3:
-//				Intent intent3=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent3);
-//				break;
-//			case 4:
-//				Intent intent4=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent4);
-//				break;
-//
-//			default:
-//				break;
-//			}
 			
 		default:
 			break;
 		}
 	
 		}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if(resultCode==112){
+		int	index=data.getIntExtra("index", 0);
+		getUpdateScanner(index);
+		// 发送广播在adapter里面改变数据   从数据库获得 浏览量 进行+1
+		Intent intent=new Intent();
+		intent.setAction("UpdateScanner");
+		intent.putExtra("Scan", Scan);
+		getActivity().sendBroadcast(intent);
+		
+		}
+	}
 		
 	
+	public void getUpdateScanner(final int arg2) {
+		httpUtils = new HttpUtils();
+		httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
+				new RequestCallBack<String>() {
+					public void onSuccess(ResponseInfo<String> responseInfo) {
+						String info = responseInfo.result;
+						 try {
+							 System.out.println("-----try");
+							JSONArray jarray=new JSONArray(info);
+							JSONObject job=jarray.getJSONObject(arg2);
+							//记录浏览量Scan
+							Scan=((Integer) job.get("scanner"))+1;
+							System.out.println("------scanner:"+Scan);
+//							holder.tvScan.setText(Scan);
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+
+							 System.out.println("-----catch");
+							e.printStackTrace();
+						}
+								
+						
+					}
+
+					@Override
+					public void onFailure(HttpException error,
+							String msg) {
+						// TODO Auto-generated method stub
+						
+					}
+		
+		});
+		
+	}
 	/**
 	 * 从网络解析json填充到数据源
 	 * @param index  页码
@@ -331,7 +326,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 				new RequestCallBack<String>() {
 					public void onSuccess(ResponseInfo<String> responseInfo) {
 						String info = responseInfo.result;
-						 System.out.println(info+"--------");
+//						 System.out.println(info+"--------");
 						 gson = new Gson();
 						if(listdata==null){
 							listdata=new ArrayList<ItQuanBeen>();

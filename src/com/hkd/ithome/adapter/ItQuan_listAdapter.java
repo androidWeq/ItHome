@@ -2,7 +2,10 @@ package com.hkd.ithome.adapter;
 
 import java.util.List;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 import com.example.ithome.R;
 import com.google.gson.Gson;
 import com.hkd.ithome.bean.ItQuanBeen;
+import com.hkd.ithome.fragment.ITcircleFragment;
 import com.hkd.ithome.tools.ItQuanTools;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
@@ -23,11 +27,18 @@ public class ItQuan_listAdapter extends BaseAdapter{
 	List<ItQuanBeen> listdata;
 	AnimationDrawable animationDrawable;
 	BitmapUtils bitmapUtils;
+	BroadCast broadCast;
+	Holder holder;
 	Gson gson;
 	public ItQuan_listAdapter(Context context,List<ItQuanBeen> listdata ){
 		this.context=context;
 		this.listdata=listdata;
 		 bitmapUtils=new BitmapUtils(context);
+		 //注册广播
+		 broadCast=new BroadCast();
+		 IntentFilter filter_Scanner=new IntentFilter();
+		 filter_Scanner.addAction("UpdateScanner");
+		 context.registerReceiver(broadCast, filter_Scanner);
 	}
 
 	@Override
@@ -52,7 +63,7 @@ public class ItQuan_listAdapter extends BaseAdapter{
 	public View getView(final int arg0, View arg1, ViewGroup arg2) {
 //		System.out.println("-------进入adapter()");
 		// TODO Auto-generated method stub
-		final Holder holder;
+		
 		if(arg1==null){
 			holder=new Holder();
 			arg1=LayoutInflater.from(context).inflate(R.layout.itquan_listitem, null);
@@ -105,6 +116,22 @@ public class ItQuan_listAdapter extends BaseAdapter{
 		         tvdate1,tvPhone,tvScan,tvResponse,tv_type;
 		
 		
+		
+	}
+	/*
+	 * 广播接受者
+	 */
+	public class BroadCast extends BroadcastReceiver{
+
+		@Override
+		public void onReceive(Context arg0, Intent intent) {
+			// TODO Auto-generated method stub
+			if(intent.getAction().equals("UpdateScanner")){
+				int Scan=intent.getIntExtra("index", 0);
+				System.out.println("--------广播接受者:"+Scan);
+				holder.tvScan.setText(Scan);
+			}
+		}
 		
 	}
 }
