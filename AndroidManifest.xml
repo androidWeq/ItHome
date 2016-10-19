@@ -119,6 +119,7 @@
         </activity>
         <activity android:name="com.hkd.ithome.activities.SouSuoActivity" >
         </activity>
+        <activity android:name="com.hkd.ithome.activities.ItQuan_WebViewActivity"/>
 
         <!-- lsj图片上传 -->
         <activity

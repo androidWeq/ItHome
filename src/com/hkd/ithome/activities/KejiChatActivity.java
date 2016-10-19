@@ -140,7 +140,16 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 									KejiChatActivity.this, listdata);
 
 							getJsonData(info);
-							initHead();
+							System.out.println("头部："+myList.getHeaderViewsCount());
+							if(myList.getHeaderViewsCount()==1){
+								System.out.println("if头部：");
+								/*
+								 * 判断mylist是否有头部
+								 * 若没有  添加头部 否则不然
+								 */
+								initHead();
+							}
+							
 							myList.setAdapter(adapterList);
 						} else {
 							getJsonData(info);
@@ -238,13 +247,14 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 		}
 
 	}
-
+	//打开一个webView
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(this, WebviewActivity.class);//打开一个webView
+		Intent intent = new Intent(this, ItQuan_WebViewActivity.class);
 		intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);
-		startActivity(intent);
+		intent.putExtra("index",arg2);
+		startActivityForResult(intent, 111);
 
 	}
 
@@ -255,25 +265,25 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 		case R.id.kejichangtan_listHead_rb_hotTie:
 //			Toast.makeText(KejiChatActivity.this, "热帖", Toast.LENGTH_SHORT)
 //					.show();
-			lapinLoadingContent.setVisibility(View.VISIBLE);
-			kejichangtan_frame.setVisibility(View.GONE);
-			lapinLoadingImg.startAnimation(rotateAnimation);
+//			lapinLoadingContent.setVisibility(View.VISIBLE);
+//			kejichangtan_frame.setVisibility(View.GONE);
+//			lapinLoadingImg.startAnimation(rotateAnimation);
 			getListViewDatas();
 			break;
 		case R.id.kejichangtan_listHead_rb_newRespon:
 //			Toast.makeText(KejiChatActivity.this, "最新回复", Toast.LENGTH_SHORT)
 //					.show();
-			lapinLoadingContent.setVisibility(View.VISIBLE);
-			kejichangtan_frame.setVisibility(View.GONE);
-			lapinLoadingImg.startAnimation(rotateAnimation);
+//			lapinLoadingContent.setVisibility(View.VISIBLE);
+//			kejichangtan_frame.setVisibility(View.GONE);
+//			lapinLoadingImg.startAnimation(rotateAnimation);
 			getListViewDatas();
 			break;
 		case R.id.kejichangtan_listHead_rb_newFaBiao:
 //			Toast.makeText(KejiChatActivity.this, "最新发表", Toast.LENGTH_SHORT)
 //					.show();
-			lapinLoadingContent.setVisibility(View.VISIBLE);
-			kejichangtan_frame.setVisibility(View.GONE);
-			lapinLoadingImg.startAnimation(rotateAnimation);
+//			lapinLoadingContent.setVisibility(View.VISIBLE);
+//			kejichangtan_frame.setVisibility(View.GONE);
+//			lapinLoadingImg.startAnimation(rotateAnimation);
 			getListViewDatas();
 			break;
 
@@ -287,27 +297,35 @@ public class KejiChatActivity extends Activity implements IXListViewListener,
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	// TODO Auto-generated method stub
 	super.onActivityResult(requestCode, resultCode, data);
-//	Toast.makeText(KejiChatActivity.this, listdata.get(0).getTitle(), 100).show();
-	if(requestCode==121){
+	Toast.makeText(KejiChatActivity.this, requestCode+"----"+resultCode, 100).show();
+	if(resultCode==121){
+		System.out.println("------进入121");
 		/*
 		 * 得到将要发表的数据   1.转换为json数据   再由HttpUtil解析数据给listView添加新数据
 		 */
-//		String title=data.getStringExtra("title");
-//		Toast.makeText(KejiChatActivity.this, "未添加", 100).show();
-//		String content=data.getStringExtra("content");
-//		ItQuanBeen itQuanInformation=new ItQuanBeen();
-//		
-//		itQuanInformation.setTitle(title);
-//		ItQuanBeen itQuanInformation = gson.fromJson(
-//				json, ItQuanBeen.class);// String转化成JavaBean
-//		listdata.add(itQuanInformation);// 加入Listdata
-//		listdata.add(0,itQuanInformation);
-		
-//		adapterList.notifyDataSetChanged();
-//		myList.invalidate();
-		
-//		listAdapter.notifyDataSetChanged();
-//		listView.invalidate();
+		String title=data.getStringExtra("title");
+//		System.out.println("-------:"+title);
+		String content=data.getStringExtra("content");
+		String author=data.getStringExtra("author");
+		String fromQuan=data.getStringExtra("type_quan");
+		String img_path=data.getStringExtra("photo_path");
+		String date=data.getStringExtra("date");
+		ItQuanBeen itQuan_fabiao = new ItQuanBeen();
+		itQuan_fabiao.setImgpath(img_path);//头像路径
+		itQuan_fabiao.setTitle(content);//发帖内容
+		itQuan_fabiao.setAuthor(author);//发帖人
+		itQuan_fabiao.setDate(date);//发帖日期
+		itQuan_fabiao.setFromQuan(fromQuan);//圈子来源
+//		itQuan_fabiao.setFabiao_content(content);
+		// 加入Listdata
+		listdata.add(0,itQuan_fabiao);
+		adapterList.notifyDataSetChanged();
+		myList.invalidate();
+	}else if(resultCode==112){
+		System.out.println("WebView进入111");
+		int index=data.getIntExtra("index", 0);
+		int countScanner=listdata.get(index).getScanner()+1;
+		System.out.println("------------浏览量Scanner---=:"+countScanner);
 	}
 //	Toast.makeText(KejiChatActivity.this, "&&&&&&&&&&&&&"+listdata.get(0).getTitle(), 100000).show();
 	

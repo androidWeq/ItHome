@@ -1,30 +1,44 @@
 package com.hkd.ithome.adapter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import com.example.ithome.R;
-import com.example.ithome.R.integer;
-import com.hkd.ithome.bean.ItQuanBeen;
-
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.example.ithome.R;
+import com.google.gson.Gson;
+import com.hkd.ithome.bean.ItQuanBeen;
+import com.hkd.ithome.fragment.ITcircleFragment;
+import com.hkd.ithome.tools.ItQuanTools;
+import com.lidroid.xutils.BitmapUtils;
+import com.lidroid.xutils.HttpUtils;
 
 public class ItQuan_listAdapter extends BaseAdapter{
 	Context context;
 	List<ItQuanBeen> listdata;
 	AnimationDrawable animationDrawable;
+	BitmapUtils bitmapUtils;
+	BroadCast broadCast;
+	Holder holder;
+	Gson gson;
 	public ItQuan_listAdapter(Context context,List<ItQuanBeen> listdata ){
 		this.context=context;
 		this.listdata=listdata;
-		
+		 bitmapUtils=new BitmapUtils(context);
+		 //注册广播
+		 broadCast=new BroadCast();
+		 IntentFilter filter_Scanner=new IntentFilter();
+		 filter_Scanner.addAction("UpdateScanner");
+		 context.registerReceiver(broadCast, filter_Scanner);
 	}
 
 	@Override
@@ -46,10 +60,10 @@ public class ItQuan_listAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public View getView(int arg0, View arg1, ViewGroup arg2) {
+	public View getView(final int arg0, View arg1, ViewGroup arg2) {
 //		System.out.println("-------进入adapter()");
 		// TODO Auto-generated method stub
-		Holder holder;
+		
 		if(arg1==null){
 			holder=new Holder();
 			arg1=LayoutInflater.from(context).inflate(R.layout.itquan_listitem, null);
@@ -59,8 +73,6 @@ public class ItQuan_listAdapter extends BaseAdapter{
 		}
 		
 		holder.imgTu=(ImageView) arg1.findViewById(R.id.itquan_listitem_img);
-//		holder.imgScan=(ImageView) arg1.findViewById(R.id.itquan_listitem_img);
-//		holder.imgResponse=(ImageView) arg1.findViewById(R.id.itquan_listitem_img);
 		holder.tvTitle=(TextView) arg1.findViewById(R.id.itquan_listitem_tvTitle);
 		holder.tvAuthor=(TextView) arg1.findViewById(R.id.itquan_listitem_tvAuthor);
 		holder.tvdate=(TextView) arg1.findViewById(R.id.itquan_listitem_tvDate);
@@ -69,17 +81,28 @@ public class ItQuan_listAdapter extends BaseAdapter{
 		holder.tvPhone=(TextView) arg1.findViewById(R.id.itquan_listitem_tvphone);
 		holder.tvScan=(TextView) arg1.findViewById(R.id.itquan_listitem_tvScan);
 		holder.tvResponse=(TextView) arg1.findViewById(R.id.itquan_listitem_tvResponse);
+		holder.tv_type=(TextView) arg1.findViewById(R.id.itquan_listitem_tvType);
 		
-//		holder.imgTu.setBackgroundResource((Integer) listdata.get(arg0).getImgPath());
+		bitmapUtils.display(holder.imgTu, ItQuanTools.IMG_PATH+"//"+listdata.get(arg0).getImgpath());
+		holder.tv_type.setText(listdata.get(arg0).getType());
 		holder.tvTitle.setText(listdata.get(arg0).getTitle());
 		holder.tvAuthor.setText(listdata.get(arg0).getAuthor());
 		holder.tvdate.setText(listdata.get(arg0).getDate());
 		holder.tvAuthor1.setText(listdata.get(arg0).getAuthor1());
 		holder.tvdate1.setText(listdata.get(arg0).getDate1());
 		holder.tvPhone.setText(listdata.get(arg0).getFromQuan());
-//		holder.tvScan.setText((Integer)listdata.get(arg0).getScanner());
-//		holder.tvResponse.setText((Integer)listdata.get(arg0).getResponse());
+		holder.tvScan.setText(listdata.get(arg0).getScanner()+"");
+		holder.tvResponse.setText(listdata.get(arg0).getResponse()+"");
 		
+		/*
+		 * 浏览量  回复量
+		 * 点击浏览量  则++
+		 */
+		holder.tvScan.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View view) {}
+		});
 		
 		
 		return arg1;
@@ -89,9 +112,26 @@ public class ItQuan_listAdapter extends BaseAdapter{
 	class Holder{
 		
 		ImageView imgTu,imgScan,imgResponse;
-		TextView tvTitle,tvAuthor,tvdate,tvAuthor1,tvdate1,tvPhone,tvScan,tvResponse;
+		TextView tvTitle,tvAuthor,tvdate,tvAuthor1,
+		         tvdate1,tvPhone,tvScan,tvResponse,tv_type;
 		
 		
+		
+	}
+	/*
+	 * 广播接受者
+	 */
+	public class BroadCast extends BroadcastReceiver{
+
+		@Override
+		public void onReceive(Context arg0, Intent intent) {
+			// TODO Auto-generated method stub
+			if(intent.getAction().equals("UpdateScanner")){
+				int Scan=intent.getIntExtra("index", 0);
+				System.out.println("--------广播接受者:"+Scan);
+				holder.tvScan.setText(Scan);
+			}
+		}
 		
 	}
 }

@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import me.maxwin.view.XListView;
 import me.maxwin.view.XListView.IXListViewListener;
 
@@ -15,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.hkd.ithome.activities.ItQuan_WebViewActivity;
 import com.hkd.ithome.activities.KejiChatActivity;
 import com.hkd.ithome.activities.SouSuoActivity;
 import com.hkd.ithome.activities.WebviewActivity;
@@ -33,7 +38,10 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.IntentSender.SendIntentException;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -90,6 +98,7 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 	View v;
 	RelativeLayout lapinLoadingContent;// 加载动画页面
 	ImageView lapinLoadingImg;// 加载旋转动画图片
+	int Scan=0;
 //	
 	
 
@@ -99,7 +108,8 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		 v = inflater.inflate(R.layout.fragment_itcircle, null);
 		ViewUtils.inject(this, v);
 		initRotateAnimation();//动画
-		getListViewDatas();
+		init();  
+//		getListViewDatas();
 		Image_sousuo.setOnClickListener(this);
 		myList.setOnItemClickListener(this);
 		return v;
@@ -175,13 +185,12 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 			@Override
 			public void run() {
 				// myList.add(listdata.size() + "下拉刷新,头部");
-				if (listdata == null) {
-					listdata = new ArrayList<ItQuanBeen>();
-
-				} else {
-
-				}
-				// listdata.add(object)
+				   if(listdata!=null){
+					   listdata.clear();
+				   }
+					getListViewDatas();
+				
+//				 listdata.add(object)
 				Toast.makeText(getActivity(), "进入", Toast.LENGTH_LONG).show();
 				adapter.notifyDataSetChanged();
 				onLoad();
@@ -193,10 +202,13 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 
 	private void onLoad() {
 		// TODO Auto-generated method stub
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");//设置日期格式
 		//System.out.println());// new Date()为获取当前系统时间
 		myList.stopRefresh();
 		myList.stopLoadMore();
+//		if(df.format(new Date())>){
+//			
+//		}
 		myList.setRefreshTime(df.format(new Date()));
 		//
 		
@@ -207,76 +219,120 @@ public class ITcircleFragment extends Fragment implements IXListViewListener,OnI
 		// TODO Auto-generated method stub
 
 	}
+	/*
+	 * onStart() 
+	 * @see android.support.v4.app.Fragment#onStart()
+	 */
+	@Override
+	public void onStart() {
+		// TODO Auto-generated method stub
+		System.out.println("-----进入onStart()");
+		if(listdata!=null){
+			listdata.clear();
+		}
+		getListViewDatas();
+		//浏览量+1
+		
+		super.onStart();
+		
+	}
+	
+	
      //点击gridViewItem
 	@Override               
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
 		case R.id.itquan_listView://XlistView点击事件 
-			
-			Intent intent=new Intent(getActivity(),WebviewActivity.class);
+			Intent intent=new Intent(getActivity(),ItQuan_WebViewActivity.class);
 			intent.putExtra("link",ItQuanTools.WEBVIEW_ADDRESS);//头像
-			startActivity(intent);
+			intent.putExtra("index", arg2);
+			startActivityForResult(intent, 11);
+			
+//			
+//		
+			
 			break;
 		case R.id.itquan_gridView://GridView点击事件
 			Intent inten=new Intent(getActivity(),KejiChatActivity.class);
 			startActivity(inten);
-//            switch (arg2) {
-//			case 0:
-//				Intent intent0=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent0);
-//				break;
-//			case 1:
-//				Intent intent1=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent1);
-//				break;
-//			case 2:
-//				Intent intent2=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent2);
-//				break;
-//			case 3:
-//				Intent intent3=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent3);
-//				break;
-//			case 4:
-//				Intent intent4=new Intent(getActivity(),KejiChatActivity.class);
-//				Toast.makeText(getActivity(), "GridView点击事件", 100).show();
-//				startActivity(intent4);
-//				break;
-//
-//			default:
-//				break;
-//			}
 			break;
+			
 		default:
 			break;
 		}
 	
 		}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if(resultCode==112){
+		int	index=data.getIntExtra("index", 0);
+		getUpdateScanner(index);
+		// 发送广播在adapter里面改变数据   从数据库获得 浏览量 进行+1
+		Intent intent=new Intent();
+		intent.setAction("UpdateScanner");
+		intent.putExtra("Scan", Scan);
+		getActivity().sendBroadcast(intent);
+		
+		}
+	}
 		
 	
-	/**
-	 * 从网络解析json填充到数据源
-	 * @param index  页码
-	 */
-	private void getListViewDatas() {
-		//System.out.println("-------进入-getListViewDatas()-从网络解析json填充到数据源");
+	public void getUpdateScanner(final int arg2) {
 		httpUtils = new HttpUtils();
 		httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
 				new RequestCallBack<String>() {
 					public void onSuccess(ResponseInfo<String> responseInfo) {
 						String info = responseInfo.result;
-						 System.out.println(info+"--------");
+						 try {
+							 System.out.println("-----try");
+							JSONArray jarray=new JSONArray(info);
+							JSONObject job=jarray.getJSONObject(arg2);
+							//记录浏览量Scan
+							Scan=((Integer) job.get("scanner"))+1;
+							System.out.println("------scanner:"+Scan);
+//							holder.tvScan.setText(Scan);
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+
+							 System.out.println("-----catch");
+							e.printStackTrace();
+						}
+								
+						
+					}
+
+					@Override
+					public void onFailure(HttpException error,
+							String msg) {
+						// TODO Auto-generated method stub
+						
+					}
+		
+		});
+		
+	}
+	/**
+	 * 从网络解析json填充到数据源
+	 * @param index  页码
+	 */
+	private void getListViewDatas() {
+		System.out.println("-------进入-getListViewDatas()-从网络解析json填充到数据源");
+		httpUtils = new HttpUtils();
+		httpUtils.send(HttpMethod.POST,ItQuanTools.SELECT_information,
+				new RequestCallBack<String>() {
+					public void onSuccess(ResponseInfo<String> responseInfo) {
+						String info = responseInfo.result;
+//						 System.out.println(info+"--------");
 						 gson = new Gson();
 						if(listdata==null){
 							listdata=new ArrayList<ItQuanBeen>();
 							adapterList = new ItQuan_listAdapter(getActivity(),listdata);
 							getJsonData(info);
-							init();
+//							init();
 							myList.setAdapter(adapterList);
 						}else{
 							getJsonData(info);
