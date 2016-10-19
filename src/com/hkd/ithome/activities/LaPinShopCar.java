@@ -29,6 +29,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LaPinShopCar  extends Activity implements OnUpdateText,OnClickListener{
 	ListView listView;
@@ -38,7 +39,7 @@ public class LaPinShopCar  extends Activity implements OnUpdateText,OnClickListe
 	TextView totalPrice,topay;
 	CheckBox payall;
 	ArrayList<ShopCarInfo> shopcarDatas;
-	
+	Gson gson =new Gson();
 	
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,14 +78,19 @@ public class LaPinShopCar  extends Activity implements OnUpdateText,OnClickListe
 
 			
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				Gson gson =new Gson();
-				datas=gson.fromJson(responseInfo.result,new TypeToken<List<GoodInfo>>(){}.getType());
-				//System.out.println(datas.size()+"__________");
-				if (adapter==null) {
-					adapter=new ShopCarAdapter(LaPinShopCar.this,datas);
-				}
-				adapter.setOnUpdateText(LaPinShopCar.this);
-				listView.setAdapter(adapter);
+				if("购物车无商品".equals(responseInfo.result)){
+					return ;
+				}else{
+					datas=gson.fromJson(responseInfo.result,new TypeToken<List<GoodInfo>>(){}.getType());
+					if(datas.size()>0){
+						System.out.println(adapter+"__________adaptersS");
+						if (adapter==null) {
+							adapter=new ShopCarAdapter(LaPinShopCar.this,datas);
+						}
+						adapter.setOnUpdateText(LaPinShopCar.this);
+						listView.setAdapter(adapter);
+					}
+				}	
 			}
 
 			
@@ -125,19 +131,43 @@ public class LaPinShopCar  extends Activity implements OnUpdateText,OnClickListe
 				shopcarDatas.add(info);
 			}
 		}
-		System.out.println(shopcarDatas.size()+"_______");
+		RequestParams params=new RequestParams();
 		
-		
-		
+		String json=gson.toJson(shopcarDatas);
+		System.out.println(json);
+		params.addQueryStringParameter("params",json);
+		httpUtils.send(HttpMethod.POST,NoChange.ADD_ORDERINFO,params,new RequestCallBack<String>() {
+
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				System.out.println(responseInfo.result+"______");
+				if("添加订单详情成功".equals(responseInfo.result)){
+					Toast.makeText(LaPinShopCar.this,"支付成功",1).show();
+					adapter.updatas();
+					payall.setChecked(false);
+				}else{
+					Toast.makeText(LaPinShopCar.this,"支付失败",1).show();
+					}
+				
+			}
+
+			@Override
+			public void onFailure(HttpException error, String msg) {
+				
+				Toast.makeText(LaPinShopCar.this,"支付网络错误",1).show();
+			}
+		});
 		
 	}
 	
-	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		adapter.setAllprice(0);
-		adapter.setIsTrue(0);
+		if(adapter!=null){
+			adapter.setAllprice(0);
+			adapter.setIsTrue(0);
+		}
+		
 	}
 
 }

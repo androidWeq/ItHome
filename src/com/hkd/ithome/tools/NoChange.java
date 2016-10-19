@@ -55,5 +55,5 @@ public class NoChange {
 	/**
 	 * 添加购物订单
 	 */
-	
+	public final static String ADD_ORDERINFO=WEB_SERVERS_ADDRESS+"/lapin_addOrderInfo?";
 }

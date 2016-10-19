@@ -86,6 +86,10 @@ public class ShopCarAdapter extends BaseAdapter   {
 	
 	
 	public void initCheckBox(boolean isChecked) {
+		if(datas.size()==0){
+			onUpdateText.updateText("0.0");
+		}
+		isSelected=new HashMap<Integer, Boolean>();
         for (int i = 0; i<datas.size();i++) {
         	isSelected.put(i,isChecked);
         }
@@ -121,6 +125,17 @@ public class ShopCarAdapter extends BaseAdapter   {
 	public GoodInfo getItem(int position) {
 		// TODO Auto-generated method stub
 		return datas.get(position);
+	}
+	
+	public void updatas(){
+		int length=isSelected.size()-1;
+		for(int i=length;i>=0;i--){
+			if(isSelected.get(i)){
+				datas.remove(i);
+			}
+		}
+		initCheckBox(false);
+		updateAdapter();
 	}
 
 	
@@ -176,7 +191,10 @@ public class ShopCarAdapter extends BaseAdapter   {
 		}
 		/**
 		 * 是否选中当前商品提交订单
+		 * 
 		 */
+		System.out.println(datas.size()+"________"+isSelected.size());
+		
 		holder.checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 		
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -186,22 +204,29 @@ public class ShopCarAdapter extends BaseAdapter   {
 					//System.out.println("_______adapter checkBox+++");
 					allprice+=price*num;
 					isTrue++;
-					System.out.println(isTrue+"______istrue");
+					//System.out.println(isTrue+"______istrue++");
 				}else{
 					allprice-=price*num;
 					isTrue--;
+					//System.out.println(isTrue+"______istrue--");
 				}
 				//记录当前item变化的状态
 				isSelected.put(position,isChecked);
 				
 				if(isTrue==datas.size()){
-					//更新全部选择为选择
+					//设置全选为真
 					onUpdateText.updateBoolean(true);
 				}else{
-					//更新全部选择为选择
+					//设置全选为假
 					onUpdateText.updateBoolean(false);
 				}
-				onUpdateText.updateText(allprice+"");
+				if(isTrue==0){
+					onUpdateText.updateText("0.0");
+					allprice=0;
+				}else{
+					onUpdateText.updateText(allprice+"");
+				}
+				
 				
 			}
 		});
@@ -211,6 +236,13 @@ public class ShopCarAdapter extends BaseAdapter   {
 		 */
 		holder.jian.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				
+				//功能:当选中当前item的checkbox时,减少该商品数量底部的总价也会对应减少
+				if(isSelected.get(position)){
+					allprice-=getItem(position).getPrice();
+					onUpdateText.updateText(allprice+"");
+				}
+				
 				int num=getItem(position).getGoodNum();
 				if(num-1>0){
 					getItem(position).setGoodNum(num-1);
@@ -229,6 +261,11 @@ public class ShopCarAdapter extends BaseAdapter   {
 		 */
 		holder.jia.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				//功能:当选中当前item的checkbox时,增加该商品数量底部的总价也会对应增加
+				if(isSelected.get(position)){
+					allprice+=getItem(position).getPrice();
+					onUpdateText.updateText(allprice+"");
+				}
 				int num=getItem(position).getGoodNum();
 				getItem(position).setGoodNum(num+1);
 				updateMySqlShopCar(getItem(position).getId(),num+1);
@@ -243,11 +280,16 @@ public class ShopCarAdapter extends BaseAdapter   {
 		holder.num.setText(num+"");
 		holder.price.setText(price+"");
 		holder.title.setText(getItem(position).getTitle());
-		holder.checkNum.setText(price*num+"");
+		holder.checkNum.setText(price*num+"");		
+		//为了点击全选按钮让item的checkbox全为true
 		
 		holder.checkBox.setChecked(isSelected.get(position));
+		
+		
 		return convertView;
 	}
+	
+	
 	
 	
 	
