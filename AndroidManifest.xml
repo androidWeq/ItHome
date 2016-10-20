@@ -186,6 +186,13 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 二维码扫描 -->
+         <activity android:name="com.dtr.zxing.activity.ResultActivity" >
+        </activity>
+        <activity
+            android:name="com.dtr.zxing.activity.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
     </application>
 
 </manifest>
